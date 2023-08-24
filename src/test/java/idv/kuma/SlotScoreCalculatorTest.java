@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 class SlotScoreCalculatorTest {
     @Test
-    void name() {
+    void lose() {
 
         SlotScoreCalculator sut = new SlotScoreCalculator();
 
