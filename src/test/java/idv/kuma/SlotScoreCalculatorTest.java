@@ -6,6 +6,11 @@ import org.junit.jupiter.api.Test;
 class SlotScoreCalculatorTest {
     @Test
     void name() {
-        Assertions.assertThat(1).isEqualTo(1);
+
+        SlotScoreCalculator sut = new SlotScoreCalculator();
+
+        int win = sut.calculate();
+
+        Assertions.assertThat(win).isEqualTo(0);
     }
 }
