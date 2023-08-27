@@ -11,11 +11,11 @@ class SlotScoreCalculatorTest {
 
         SlotScoreCalculator sut = new SlotScoreCalculator(
                 List.of(
-                        List.of("A", "1", "2"),
-                        List.of("A", "1", "2"),
-                        List.of("A", "1", "2"),
-                        List.of("A", "1", "2"),
-                        List.of("A", "2", "3")
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "3", "4")
                 )
         );
 
@@ -29,11 +29,11 @@ class SlotScoreCalculatorTest {
 
         SlotScoreCalculator sut = new SlotScoreCalculator(
                 List.of(
-                        List.of("A", "1", "2"),
-                        List.of("A", "1", "2"),
-                        List.of("A", "1", "2"),
-                        List.of("A", "1", "2"),
-                        List.of("1", "2", "3")
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("2", "3", "4")
                 )
         );
 
