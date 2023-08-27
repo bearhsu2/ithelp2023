@@ -6,24 +6,24 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 class SlotScoreCalculatorTest {
-//    @Test
-//    void two_lines() {
-//
-//        SlotScoreCalculator sut = new SlotScoreCalculator(
-//                List.of(
-//                        List.of("A", "2", "3"),
-//                        List.of("A", "2", "3"),
-//                        List.of("A", "2", "3"),
-//                        List.of("A", "2", "3"),
-//                        List.of("A", "2", "4")
-//                )
-//        );
-//
-//        int win = sut.calculate(10);
-//
-//        Assertions.assertThat(win).isEqualTo(400);
-//    }
-//
+    @Test
+    void two_lines() {
+
+        SlotScoreCalculator sut = new SlotScoreCalculator(
+                List.of(
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "4")
+                )
+        );
+
+        int win = sut.calculate(10);
+
+        Assertions.assertThat(win).isEqualTo(400);
+    }
+
     @Test
     void one_line() {
 
