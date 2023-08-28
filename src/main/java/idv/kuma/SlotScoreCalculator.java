@@ -15,10 +15,10 @@ public class SlotScoreCalculator {
 
 
         // # lines
-        int sumOfSameLines = getSumOfSameLines();
+        int lines = getLines();
 
         // get odds
-        int odd = getOdd(sumOfSameLines);
+        int odd = getOdd(lines);
 
         return odd * bet;
 
@@ -38,17 +38,17 @@ public class SlotScoreCalculator {
         return odd;
     }
 
-    private int getSumOfSameLines() {
-        int sumOfSameLines = 0;
+    private int getLines() {
+        int lines = 0;
         for (int i = 0; i < 3; i++) {
 
             int finalI = i;
             Set<String> distinctSymbols = wheels.stream().map(wheel -> wheel.get(finalI)).collect(Collectors.toSet());
 
             if (distinctSymbols.size() == 1) {
-                sumOfSameLines++;
+                lines++;
             }
         }
-        return sumOfSameLines;
+        return lines;
     }
 }
