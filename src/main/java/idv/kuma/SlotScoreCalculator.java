@@ -14,6 +14,13 @@ public class SlotScoreCalculator {
     public int calculate(int bet) {
 
 
+        int odd = getOdd();
+
+        return odd * bet;
+
+    }
+
+    private int getOdd() {
         // # lines
         int sumOfSameLines1 = 0;
         for (int i = 0; i < 3; i++) {
@@ -39,9 +46,7 @@ public class SlotScoreCalculator {
             throw new RuntimeException("TBD");
         }
         int odd = odd1;
-
-        return odd * bet;
-
+        return odd;
     }
 
 
