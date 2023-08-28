@@ -15,40 +15,34 @@ public class SlotScoreCalculator {
 
 
         // # lines
-        int sumOfSameLines = getSumOfSameLines();
-
-        // get odds
-        int odd = getOdd(sumOfSameLines);
-
-        return odd * bet;
-
-    }
-
-    private int getOdd(int sumOfSameLines) {
-        int odd;
-        if (sumOfSameLines == 0) {
-            odd = 0;
-        } else if (sumOfSameLines == 1) {
-            odd = 10;
-        } else if (sumOfSameLines == 2) {
-            odd = 40;
-        } else {
-            throw new RuntimeException("TBD");
-        }
-        return odd;
-    }
-
-    private int getSumOfSameLines() {
-        int sumOfSameLines = 0;
+        int sumOfSameLines1 = 0;
         for (int i = 0; i < 3; i++) {
 
             int finalI = i;
             Set<String> distinctSymbols = wheels.stream().map(wheel -> wheel.get(finalI)).collect(Collectors.toSet());
 
             if (distinctSymbols.size() == 1) {
-                sumOfSameLines++;
+                sumOfSameLines1++;
             }
         }
-        return sumOfSameLines;
+        int sumOfSameLines = sumOfSameLines1;
+
+        // get odds
+        int odd1;
+        if (sumOfSameLines == 0) {
+            odd1 = 0;
+        } else if (sumOfSameLines == 1) {
+            odd1 = 10;
+        } else if (sumOfSameLines == 2) {
+            odd1 = 40;
+        } else {
+            throw new RuntimeException("TBD");
+        }
+        int odd = odd1;
+
+        return odd * bet;
+
     }
+
+
 }
