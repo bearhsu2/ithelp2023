@@ -13,8 +13,33 @@ public class SlotScoreCalculator {
 
     public int calculate(int bet) {
 
-
         int odd = 0;
+        
+        // # lines
+        int sumOfSameLines = getSumOfSameLines();
+
+        // get odds
+        odd = getOdd(sumOfSameLines);
+
+        return odd * bet;
+
+    }
+
+    private int getOdd(int sumOfSameLines) {
+        int odd;
+        if (sumOfSameLines == 0) {
+            odd = 0;
+        } else if (sumOfSameLines == 1) {
+            odd = 10;
+        } else if (sumOfSameLines == 2) {
+            odd = 40;
+        } else {
+            throw new RuntimeException("TBD");
+        }
+        return odd;
+    }
+
+    private int getSumOfSameLines() {
         int sumOfSameLines = 0;
         for (int i = 0; i < 3; i++) {
 
@@ -25,18 +50,6 @@ public class SlotScoreCalculator {
                 sumOfSameLines++;
             }
         }
-
-        if (sumOfSameLines == 0) {
-            odd = 0;
-        } else if (sumOfSameLines == 1) {
-            odd = 10;
-        } else if (sumOfSameLines == 2) {
-            odd = 40;
-        } else {
-            throw new RuntimeException("TBD");
-        }
-
-        return odd * bet;
-
+        return sumOfSameLines;
     }
 }
