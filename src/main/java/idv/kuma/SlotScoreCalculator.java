@@ -13,13 +13,12 @@ public class SlotScoreCalculator {
 
     public int calculate(int bet) {
 
-        int odd = 0;
-        
+
         // # lines
         int sumOfSameLines = getSumOfSameLines();
 
         // get odds
-        odd = getOdd(sumOfSameLines);
+        int odd = getOdd(sumOfSameLines);
 
         return odd * bet;
 
