@@ -41,17 +41,17 @@ public class SlotScoreCalculator {
     }
 
     private int getLines() {
-        int sumOfSameLines = 0;
+        int lines = 0;
         for (int i = 0; i < 3; i++) {
 
             int finalI = i;
             Set<String> distinctSymbols = wheels.stream().map(wheel -> wheel.get(finalI)).collect(Collectors.toSet());
 
             if (distinctSymbols.size() == 1) {
-                sumOfSameLines++;
+                lines++;
             }
         }
-        return sumOfSameLines;
+        return lines;
     }
 
 
