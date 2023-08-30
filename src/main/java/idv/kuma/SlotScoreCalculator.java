@@ -11,15 +11,24 @@ public class SlotScoreCalculator {
             new AbstractMap.SimpleImmutableEntry<>(2, 40),
             new AbstractMap.SimpleImmutableEntry<>(3, 100)
     );
+    private final Random random;
 
-    public SlotScoreCalculator(List<List<String>> wheels) {
+    public SlotScoreCalculator(List<List<String>> wheels, Random random) {
         this.wheels = wheels;
+        this.random = random;
     }
 
     public int calculate(int bet) {
 
 
-        List<List<String>> screen = wheels;
+
+        List<List<String>> screen = new ArrayList<>();
+        for (List<String> wheel : wheels) {
+            int nextPosition = random.nextInt(wheel.size());
+            List<String> column = wheel.subList(nextPosition, nextPosition + 3);
+            screen.add(column);
+        }
+
         // -----------------
 
         int odd = getOdd(screen);
