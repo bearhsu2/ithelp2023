@@ -2,6 +2,7 @@ package idv.kuma;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.util.List;
 
@@ -9,6 +10,7 @@ class SlotScoreCalculatorTest {
 
     @Test
     void three_lines() {
+
 
         SlotScoreCalculator sut = new SlotScoreCalculator(
                 List.of(
