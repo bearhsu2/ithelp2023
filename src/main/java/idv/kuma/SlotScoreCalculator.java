@@ -5,6 +5,12 @@ import java.util.stream.Collectors;
 
 public class SlotScoreCalculator {
     private final List<List<String>> wheels;
+    private final Map<Integer, Integer> odds = Map.ofEntries(
+            new AbstractMap.SimpleImmutableEntry<>(0, 0),
+            new AbstractMap.SimpleImmutableEntry<>(1, 10),
+            new AbstractMap.SimpleImmutableEntry<>(2, 40),
+            new AbstractMap.SimpleImmutableEntry<>(3, 100)
+    );
 
     public SlotScoreCalculator(List<List<String>> wheels) {
         this.wheels = wheels;
@@ -26,13 +32,6 @@ public class SlotScoreCalculator {
     }
 
     private int getOdd(int lines) {
-
-        Map<Integer, Integer> odds = Map.ofEntries(
-                new AbstractMap.SimpleImmutableEntry<>(0, 0),
-                new AbstractMap.SimpleImmutableEntry<>(1, 10),
-                new AbstractMap.SimpleImmutableEntry<>(2, 40),
-                new AbstractMap.SimpleImmutableEntry<>(3, 100)
-        );
 
         Integer odd = odds.get(lines);
 
