@@ -19,14 +19,17 @@ public class SlotScoreCalculator {
     public int calculate(int bet) {
 
 
-        int odd = getOdd();
+        List<List<String>> screen = wheels;
+        // -----------------
+
+        int odd = getOdd(screen);
 
         return odd * bet;
 
     }
 
-    private int getOdd() {
-        int lines = getLines();
+    private int getOdd(List<List<String>> screen) {
+        int lines = getLines(screen);
 
         return getOdd(lines);
     }
@@ -42,12 +45,12 @@ public class SlotScoreCalculator {
         return odd;
     }
 
-    private int getLines() {
+    private int getLines(List<List<String>> screen) {
         int lines = 0;
         for (int i = 0; i < 3; i++) {
 
             int finalI = i;
-            Set<String> distinctSymbols = wheels.stream().map(wheel -> wheel.get(finalI)).collect(Collectors.toSet());
+            Set<String> distinctSymbols = screen.stream().map(wheel -> wheel.get(finalI)).collect(Collectors.toSet());
 
             if (distinctSymbols.size() == 1) {
                 lines++;
