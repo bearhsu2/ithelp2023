@@ -6,11 +6,12 @@ import java.util.stream.Stream;
 public class SlotScoreCalculator {
     private final List<List<String>> reels;
     private final Random random;
-    private final PayTable payTable = new PayTable();
+    private final PayTable payTable;
 
-    public SlotScoreCalculator(List<List<String>> reels, Random random) {
+    public SlotScoreCalculator(List<List<String>> reels, Random random, PayTable payTable) {
         this.reels = reels;
         this.random = random;
+        this.payTable = payTable;
     }
 
     public int calculate(int bet) {
