@@ -20,8 +20,6 @@ public class SlotScoreCalculator {
 
     public int calculate(int bet) {
 
-
-
         List<List<String>> screen = new ArrayList<>();
         for (List<String> wheel : wheels) {
             int nextPosition = random.nextInt(wheel.size());
@@ -49,17 +47,6 @@ public class SlotScoreCalculator {
         return getOdd(lines);
     }
 
-    private int getOdd(int lines) {
-
-        Integer odd = odds.get(lines);
-
-        if (Objects.isNull(odd)) {
-            throw new RuntimeException("Unsupported lines");
-        }
-
-        return odd;
-    }
-
     private int getLines(List<List<String>> screen) {
         int lines = 0;
         for (int i = 0; i < 3; i++) {
@@ -72,6 +59,17 @@ public class SlotScoreCalculator {
             }
         }
         return lines;
+    }
+
+    private int getOdd(int lines) {
+
+        Integer odd = odds.get(lines);
+
+        if (Objects.isNull(odd)) {
+            throw new RuntimeException("Unsupported lines");
+        }
+
+        return odd;
     }
 
 
