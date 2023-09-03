@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class SlotScoreCalculator {
-    private final List<List<String>> wheels;
+    private final List<List<String>> reels;
     private final Map<Integer, Integer> odds = Map.ofEntries(
             new AbstractMap.SimpleImmutableEntry<>(0, 0),
             new AbstractMap.SimpleImmutableEntry<>(1, 10),
@@ -13,15 +13,15 @@ public class SlotScoreCalculator {
     );
     private final Random random;
 
-    public SlotScoreCalculator(List<List<String>> wheels, Random random) {
-        this.wheels = wheels;
+    public SlotScoreCalculator(List<List<String>> reels, Random random) {
+        this.reels = reels;
         this.random = random;
     }
 
     public int calculate(int bet) {
 
         List<List<String>> screen = new ArrayList<>();
-        for (List<String> wheel : wheels) {
+        for (List<String> wheel : reels) {
             int nextPosition = random.nextInt(wheel.size());
 
             List dummyWheel = new ArrayList();
