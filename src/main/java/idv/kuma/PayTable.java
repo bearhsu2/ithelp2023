@@ -15,17 +15,17 @@ public class PayTable {
     }
 
     public int getOdd(List<List<String>> screen) {
-        int lines = getLines(screen);
+        int lines = getLines(new Screen(screen));
 
         return getOdd(lines);
     }
 
-    private int getLines(List<List<String>> screen) {
+    private int getLines(Screen screen) {
         int lines = 0;
         for (int i = 0; i < 3; i++) {
 
             int finalI = i;
-            Set<String> distinctSymbols = screen.stream().map(wheel -> wheel.get(finalI)).collect(Collectors.toSet());
+            Set<String> distinctSymbols = screen.rawScreen().stream().map(wheel -> wheel.get(finalI)).collect(Collectors.toSet());
 
             if (distinctSymbols.size() == 1) {
                 lines++;
