@@ -1,7 +1,6 @@
 package idv.kuma;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class PayTable {
     private final Map<Integer, Integer> odds = Map.ofEntries(
@@ -14,24 +13,10 @@ public class PayTable {
     public PayTable() {
     }
 
-    public int getOdd(List<List<String>> screen) {
-        int lines = getLines(new Screen(screen));
+    public int getOdd(List<List<String>> rawScreen) {
+        int lines = new Screen(rawScreen).countStraightLines();
 
         return getOdd(lines);
-    }
-
-    private int getLines(Screen screen) {
-        int lines = 0;
-        for (int i = 0; i < 3; i++) {
-
-            int finalI = i;
-            Set<String> distinctSymbols = screen.rawScreen().stream().map(wheel -> wheel.get(finalI)).collect(Collectors.toSet());
-
-            if (distinctSymbols.size() == 1) {
-                lines++;
-            }
-        }
-        return lines;
     }
 
     private int getOdd(int lines) {
