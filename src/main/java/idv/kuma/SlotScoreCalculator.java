@@ -2,6 +2,7 @@ package idv.kuma;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class SlotScoreCalculator {
     private final List<List<String>> reels;
@@ -21,14 +22,14 @@ public class SlotScoreCalculator {
     public int calculate(int bet) {
 
         List<List<String>> screen = new ArrayList<>();
-        for (List<String> wheel : reels) {
-            int nextPosition = random.nextInt(wheel.size());
+        for (List<String> reel : reels) {
+            int nextPosition = random.nextInt(reel.size());
 
-            List dummyWheel = new ArrayList();
-            dummyWheel.addAll(wheel);
-            dummyWheel.addAll(wheel);
 
-            List<String> column = dummyWheel.subList(nextPosition, nextPosition + 3);
+            List<String> column = Stream.concat(reel.stream(), reel.stream()).toList().subList(
+                    nextPosition, nextPosition + 3
+            );
+
 
             screen.add(column);
         }
