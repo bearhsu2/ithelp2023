@@ -1,16 +1,12 @@
 package idv.kuma;
 
-import java.util.*;
-
 public class SlotScoreCalculator {
-    private final Random random;
     private final PayTable payTable;
     private final Reels reels;
 
-    public SlotScoreCalculator(List<List<String>> rawReels, Random random, PayTable payTable) {
-        this.random = random;
+    public SlotScoreCalculator(PayTable payTable, Reels reels) {
         this.payTable = payTable;
-        this.reels = new Reels(rawReels, random);
+        this.reels = reels;
     }
 
     public int calculate(int bet) {
