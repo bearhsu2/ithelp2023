@@ -26,13 +26,9 @@ public class SlotScoreCalculator {
                 reel -> {
                     int nextPosition = random.nextInt(reel.size());
 
-
-                    List<String> column = Stream.concat(reel.stream(), reel.stream()).toList().subList(
+                    return Stream.concat(reel.stream(), reel.stream()).toList().subList(
                             nextPosition, nextPosition + 3
                     );
-
-
-                    return column;
                 }
         ).toList();
 
