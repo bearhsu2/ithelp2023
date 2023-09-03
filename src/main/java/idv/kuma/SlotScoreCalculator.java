@@ -1,15 +1,14 @@
 package idv.kuma;
 
 import java.util.*;
-import java.util.stream.Stream;
 
 public class SlotScoreCalculator {
-    private final List<List<String>> reels;
+    private final List<List<String>> rawReels;
     private final Random random;
     private final PayTable payTable;
 
-    public SlotScoreCalculator(List<List<String>> reels, Random random, PayTable payTable) {
-        this.reels = reels;
+    public SlotScoreCalculator(List<List<String>> rawReels, Random random, PayTable payTable) {
+        this.rawReels = rawReels;
         this.random = random;
         this.payTable = payTable;
     }
@@ -17,17 +16,9 @@ public class SlotScoreCalculator {
     public int calculate(int bet) {
 
 
-        List<List<String>> rawScreen = reels.stream().map(
-                reel -> {
-                    int nextPosition = random.nextInt(reel.size());
+        Reels reels1 = new Reels(rawReels);
 
-                    return Stream.concat(reel.stream(), reel.stream()).toList().subList(
-                            nextPosition, nextPosition + 3
-                    );
-                }
-        ).toList();
-
-        Screen screen = new Screen(rawScreen);
+        Screen screen = reels1.reelsToScreen(this.random);
 
         int odd = payTable.getOdd(screen);
 
