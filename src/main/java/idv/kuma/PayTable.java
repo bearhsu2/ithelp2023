@@ -10,16 +10,10 @@ public class PayTable {
             new AbstractMap.SimpleImmutableEntry<Integer, Integer>(3, 100)
     );
 
-    public PayTable() {
-    }
 
-    public int getOdd(List<List<String>> rawScreen) {
-        int lines = new Screen(rawScreen).countStraightLines();
+    public int getOdd(Screen screen) {
 
-        return getOdd(lines);
-    }
-
-    private int getOdd(int lines) {
+        int lines = screen.countStraightLines();
 
         Integer odd = odds.get(lines);
 
@@ -29,4 +23,6 @@ public class PayTable {
 
         return odd;
     }
+
+
 }
