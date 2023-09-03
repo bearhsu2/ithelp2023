@@ -3,22 +3,19 @@ package idv.kuma;
 import java.util.*;
 
 public class SlotScoreCalculator {
-//    private final List<List<String>> rawReels;
     private final Random random;
     private final PayTable payTable;
-    private final Reels reels1;
+    private final Reels reels;
 
     public SlotScoreCalculator(List<List<String>> rawReels, Random random, PayTable payTable) {
-//        this.rawReels = rawReels;
         this.random = random;
         this.payTable = payTable;
-        reels1 = new Reels(rawReels);
+        this.reels = new Reels(rawReels, random);
     }
 
     public int calculate(int bet) {
 
-
-        Screen screen = reels1.reelsToScreen(this.random);
+        Screen screen = reels.reelsToScreen();
 
         int odd = payTable.getOdd(screen);
 
