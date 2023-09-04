@@ -4,10 +4,10 @@ import java.util.*;
 
 public class PayTable {
     private final Map<Integer, Integer> odds = Map.ofEntries(
-            new AbstractMap.SimpleImmutableEntry<Integer, Integer>(0, 0),
-            new AbstractMap.SimpleImmutableEntry<Integer, Integer>(1, 10),
-            new AbstractMap.SimpleImmutableEntry<Integer, Integer>(2, 40),
-            new AbstractMap.SimpleImmutableEntry<Integer, Integer>(3, 100)
+            new AbstractMap.SimpleImmutableEntry<>(0, 0),
+            new AbstractMap.SimpleImmutableEntry<>(1, 10),
+            new AbstractMap.SimpleImmutableEntry<>(2, 40),
+            new AbstractMap.SimpleImmutableEntry<>(3, 100)
     );
 
 
