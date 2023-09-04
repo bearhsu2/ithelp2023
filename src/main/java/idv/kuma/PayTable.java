@@ -2,7 +2,6 @@ package idv.kuma;
 
 import java.util.AbstractMap;
 import java.util.Map;
-import java.util.function.Supplier;
 
 public class PayTable {
     private final Map<Integer, Integer> odds = Map.ofEntries(
@@ -23,8 +22,7 @@ public class PayTable {
 
     private Integer getOdd(int lines) {
 
-
-        DBC.checkPreCondition(() -> odds.containsKey(lines));
+        DBC.checkPreCondition(() -> odds.containsKey(lines), "Unsupported lines");
 
         return odds.get(lines);
     }
