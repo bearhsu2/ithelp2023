@@ -11,6 +11,7 @@ public class PayTable {
             new AbstractMap.SimpleImmutableEntry<>(2, 40),
             new AbstractMap.SimpleImmutableEntry<>(3, 100)
     );
+    private final idv.kuma.DBC DBC = new DBC();
 
 
     public int getOdd(Screen screen) {
@@ -22,18 +23,10 @@ public class PayTable {
 
     private Integer getOdd(int lines) {
 
-        Supplier<Boolean> preCondition = () -> odds.containsKey(lines);
 
-
-        checkPreCondition((Supplier<Boolean>) preCondition);
+        DBC.checkPreCondition(() -> odds.containsKey(lines));
 
         return odds.get(lines);
-    }
-
-    private void checkPreCondition(Supplier<Boolean> preCondition) {
-        if (!(boolean) preCondition.get()) {
-            throw new RuntimeException("Unsupported lines");
-        }
     }
 
 
