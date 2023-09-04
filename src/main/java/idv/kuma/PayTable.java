@@ -1,6 +1,7 @@
 package idv.kuma;
 
-import java.util.*;
+import java.util.AbstractMap;
+import java.util.Map;
 
 public class PayTable {
     private final Map<Integer, Integer> odds = Map.ofEntries(
@@ -15,13 +16,16 @@ public class PayTable {
 
         int lines = screen.countStraightLines();
 
-        Integer odd = odds.get(lines);
+        return getOdd(lines);
+    }
 
-        if (Objects.isNull(odd)) {
+    private Integer getOdd(int lines) {
+
+        if (!odds.containsKey(lines)) {
             throw new RuntimeException("Unsupported lines");
         }
 
-        return odd;
+        return odds.get(lines);
     }
 
 
