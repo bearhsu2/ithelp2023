@@ -15,13 +15,16 @@ public class PayTable {
 
         int lines = screen.countStraightLines();
 
-        Integer odd = odds.get(lines);
+        return getOdd(lines);
+    }
 
-        if (Objects.isNull(odd)) {
-            throw new RuntimeException("Unsupported lines");
+    private int getOdd(int lines) {
+
+        if (!odds.containsKey(lines)) {
+            throw new PreConditionViolation("Unsupported lines");
         }
 
-        return odd;
+        return odds.get(lines);
     }
 
 
