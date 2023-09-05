@@ -18,12 +18,12 @@ class SlotScoreCalculatorTest {
 
         SlotScoreCalculator sut = new SlotScoreCalculator(
                 new PayTable(), new Reels(List.of(
-                        List.of("A", "2", "3"),
-                        List.of("A", "2", "3"),
-                        List.of("A", "2", "3"),
-                        List.of("A", "2", "3"),
-                        List.of("A", "2", "3")
-                ), random)
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3")
+        ), random)
         );
 
         int win = sut.calculate(10);
@@ -37,12 +37,12 @@ class SlotScoreCalculatorTest {
 
         SlotScoreCalculator sut = new SlotScoreCalculator(
                 new PayTable(), new Reels(List.of(
-                        List.of("A", "2", "3"),
-                        List.of("A", "2", "3"),
-                        List.of("A", "2", "3"),
-                        List.of("A", "2", "3"),
-                        List.of("A", "2", "4")
-                ), random)
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("A", "2", "4")
+        ), random)
         );
 
         int win = sut.calculate(10);
@@ -56,12 +56,12 @@ class SlotScoreCalculatorTest {
 
         SlotScoreCalculator sut = new SlotScoreCalculator(
                 new PayTable(), new Reels(List.of(
-                        List.of("A", "2", "3"),
-                        List.of("A", "2", "3"),
-                        List.of("A", "2", "3"),
-                        List.of("A", "2", "3"),
-                        List.of("A", "3", "4")
-                ), random)
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("A", "3", "4")
+        ), random)
         );
 
         int win = sut.calculate(10);
@@ -75,12 +75,12 @@ class SlotScoreCalculatorTest {
 
         SlotScoreCalculator sut = new SlotScoreCalculator(
                 new PayTable(), new Reels(List.of(
-                        List.of("A", "2", "3"),
-                        List.of("A", "2", "3"),
-                        List.of("A", "2", "3"),
-                        List.of("A", "2", "3"),
-                        List.of("2", "3", "4")
-                ), random)
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("2", "3", "A")
+        ), random)
         );
 
         int win = sut.calculate(10);
