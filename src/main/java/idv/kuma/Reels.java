@@ -1,16 +1,15 @@
 package idv.kuma;
 
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Stream;
 
 public final class Reels {
     private final List<List<String>> rawReels;
     private final RandomNumberGenerator randomNumberGenerator;
 
-    public Reels(List<List<String>> rawReels, Random random) {
+    public Reels(List<List<String>> rawReels, RandomNumberGenerator randomNumberGenerator) {
         this.rawReels = rawReels;
-        randomNumberGenerator = new RandomNumberGenerator(random);
+        this.randomNumberGenerator = randomNumberGenerator;
     }
 
     Screen reelsToScreen() {
@@ -27,9 +26,7 @@ public final class Reels {
         return new Screen(rawScreen);
     }
 
-    private int nextInt(int bound) {
-        return randomNumberGenerator.nextInt(bound);
-    }
+
 
 
 }
