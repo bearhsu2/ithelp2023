@@ -26,7 +26,7 @@ class SlotScoreCalculatorTest {
         ), new NativeRandomNumberGenerator(random))
         );
 
-        int win = sut.calculate(10);
+        int win = sut.calculate(10).getValue();
 
         Assertions.assertThat(win).isEqualTo(1_000);
     }
@@ -45,7 +45,7 @@ class SlotScoreCalculatorTest {
         ), new NativeRandomNumberGenerator(random))
         );
 
-        int win = sut.calculate(10);
+        int win = sut.calculate(10).getValue();
 
         Assertions.assertThat(win).isEqualTo(400);
     }
@@ -64,13 +64,13 @@ class SlotScoreCalculatorTest {
         ), new NativeRandomNumberGenerator(random))
         );
 
-        int win = sut.calculate(10);
+        int win = sut.calculate(10).getValue();
 
         Assertions.assertThat(win).isEqualTo(100);
     }
 
     @Test
-    void lose() {
+    void spin_and_lose() {
         Mockito.when(random.nextInt(Mockito.anyInt())).thenReturn(1, 1, 1, 1, 2);
 
         SlotScoreCalculator sut = new SlotScoreCalculator(
@@ -83,8 +83,9 @@ class SlotScoreCalculatorTest {
         ), new NativeRandomNumberGenerator(random))
         );
 
-        int win = sut.calculate(10);
-
+        int win = sut.calculate(10).getValue();
         Assertions.assertThat(win).isEqualTo(0);
+
+
     }
 }
