@@ -12,7 +12,7 @@ public final class Reels {
         this.randomNumberGenerator = randomNumberGenerator;
     }
 
-    Screen reelsToScreen() {
+    Screen spin() {
         List<List<String>> rawScreen = rawReels.stream().map(
                 reel -> {
                     int nextPosition = randomNumberGenerator.nextInt(reel.size());
