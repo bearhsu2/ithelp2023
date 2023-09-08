@@ -74,13 +74,16 @@ class SlotScoreCalculatorTest {
         Mockito.when(random.nextInt(Mockito.anyInt())).thenReturn(1, 1, 1, 1, 2);
 
         SlotScoreCalculator sut = new SlotScoreCalculator(
-                new PayTable(), new Reels(List.of(
-                List.of("A", "2", "3"),
-                List.of("A", "2", "3"),
-                List.of("A", "2", "3"),
-                List.of("A", "2", "3"),
-                List.of("A", "2", "3")
-        ), new NativeRandomNumberGenerator(random))
+                new PayTable(),
+                new Reels(
+                        List.of(
+                                List.of("A", "2", "3"),
+                                List.of("A", "2", "3"),
+                                List.of("A", "2", "3"),
+                                List.of("A", "2", "3"),
+                                List.of("A", "2", "3")
+                        ), new NativeRandomNumberGenerator(random)
+                )
         );
 
         SpinResult spinResult = sut.calculate(10);
