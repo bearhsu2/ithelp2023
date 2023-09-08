@@ -27,6 +27,7 @@ public final class Reels {
 
     }
 
+    // todo: return VOID
     Screen spin() {
         List<List<String>> rawScreen = rawReels.stream().map(
                 reel -> {
