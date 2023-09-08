@@ -22,4 +22,7 @@ public class SlotScoreCalculator {
     }
 
 
+    public Screen getScreen() {
+        return reels.getScreen();
+    }
 }

@@ -102,4 +102,36 @@ class SlotScoreCalculatorTest {
 
 
     }
+
+    @Test
+    void init() {
+
+        SlotScoreCalculator sut = new SlotScoreCalculator(
+                new PayTable(),
+                new Reels(
+                        List.of(
+                                List.of("A", "2", "3"),
+                                List.of("A", "2", "3"),
+                                List.of("A", "2", "3"),
+                                List.of("A", "2", "3"),
+                                List.of("A", "2", "3")
+                        ), new NativeRandomNumberGenerator(random)
+                )
+        );
+
+        Screen screen = sut.getScreen();
+        Assertions.assertThat(screen).isEqualTo(
+                new Screen(
+                        List.of(
+                                List.of("A", "2", "3"),
+                                List.of("A", "2", "3"),
+                                List.of("A", "2", "3"),
+                                List.of("A", "2", "3"),
+                                List.of("A", "2", "3")
+                        )
+                )
+        );
+
+
+    }
 }
