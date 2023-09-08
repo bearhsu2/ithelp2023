@@ -26,7 +26,7 @@ class SlotScoreCalculatorTest {
         ), new NativeRandomNumberGenerator(random))
         );
 
-        int win = sut.calculate(10).getValue();
+        int win = sut.calculate(10).getWin();
 
         Assertions.assertThat(win).isEqualTo(1_000);
     }
@@ -45,7 +45,7 @@ class SlotScoreCalculatorTest {
         ), new NativeRandomNumberGenerator(random))
         );
 
-        int win = sut.calculate(10).getValue();
+        int win = sut.calculate(10).getWin();
 
         Assertions.assertThat(win).isEqualTo(400);
     }
@@ -64,7 +64,7 @@ class SlotScoreCalculatorTest {
         ), new NativeRandomNumberGenerator(random))
         );
 
-        int win = sut.calculate(10).getValue();
+        int win = sut.calculate(10).getWin();
 
         Assertions.assertThat(win).isEqualTo(100);
     }
@@ -87,7 +87,7 @@ class SlotScoreCalculatorTest {
         );
 
         SpinResult spinResult = sut.calculate(10);
-        Assertions.assertThat(spinResult.getValue()).isEqualTo(0);
+        Assertions.assertThat(spinResult.getWin()).isEqualTo(0);
         Assertions.assertThat(spinResult.getScreen()).isEqualTo(
                 new Screen(
                         List.of(
