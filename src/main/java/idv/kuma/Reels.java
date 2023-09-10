@@ -28,7 +28,7 @@ public final class Reels {
     }
 
     // todo: return VOID
-    Screen spin() {
+    public void spin() {
         List<List<String>> rawScreen = rawReels.stream().map(
                 reel -> {
                     int nextPosition = randomNumberGenerator.nextInt(reel.size());
@@ -39,10 +39,8 @@ public final class Reels {
                 }
         ).toList();
 
-
         this.screen = new Screen(rawScreen);
 
-        return screen;
     }
 
 
