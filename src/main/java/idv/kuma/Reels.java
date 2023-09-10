@@ -31,15 +31,16 @@ public final class Reels {
     public void spin() {
         List<List<String>> rawScreen = rawReels.stream().map(
                 reel -> {
-                    int nextPosition = randomNumberGenerator.nextInt(reel.size());
 
-                    return Stream.concat(reel.stream(), reel.stream()).toList().subList(
+                    int nextPosition = randomNumberGenerator.nextInt(reel.size()); // command
+
+                    return Stream.concat(reel.stream(), reel.stream()).toList().subList( // prepare for query
                             nextPosition, nextPosition + 3
                     );
                 }
         ).toList();
 
-        this.screen = new Screen(rawScreen);
+        this.screen = new Screen(rawScreen); // prepare for query
 
     }
 
