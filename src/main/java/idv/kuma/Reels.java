@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class Reels {
-    private final RandomNumberGenerator randomNumberGenerator;
 
     private final List<Reel> reelList = new ArrayList<>();
 
     public Reels(List<List<String>> rawReels, RandomNumberGenerator randomNumberGenerator) {
-        this.randomNumberGenerator = randomNumberGenerator;
 
         for (List<String> rawReel : rawReels) {
             Reel reel = new Reel(rawReel, randomNumberGenerator);
