@@ -70,7 +70,6 @@ class SlotScoreCalculatorTest {
                 )
         );
 
-        int win;
 
         Assertions.assertThat(sut.calculate(10).getWin()).isEqualTo(100);
     }
@@ -102,18 +101,25 @@ class SlotScoreCalculatorTest {
         );
 
 
-        Assertions.assertThat(sut.getScreen()).isEqualTo(
-                new Screen(
-                        List.of(
-                                List.of("2", "3", "A"),
-                                List.of("2", "3", "A"),
-                                List.of("2", "3", "A"),
-                                List.of("2", "3", "A"),
-                                List.of("3", "A", "2")
-                        )
+        then_screen_should_be(
+                List.of(
+                        List.of("2", "3", "A"),
+                        List.of("2", "3", "A"),
+                        List.of("2", "3", "A"),
+                        List.of("2", "3", "A"),
+                        List.of("3", "A", "2")
                 )
         );
 
+    }
+
+    private void then_screen_should_be(List<List<String>> rawScreen) {
+        Screen screen = sut.getScreen();
+        Assertions.assertThat(screen).isEqualTo(
+                new Screen(
+                        rawScreen
+                )
+        );
     }
 
     @Test
@@ -127,18 +133,13 @@ class SlotScoreCalculatorTest {
                 List.of("A", "2", "3")
         ));
 
-        Screen screen = sut.getScreen();
-        Assertions.assertThat(screen).isEqualTo(
-                new Screen(
-                        List.of(
-                                List.of("A", "2", "3"),
-                                List.of("A", "2", "3"),
-                                List.of("A", "2", "3"),
-                                List.of("A", "2", "3"),
-                                List.of("A", "2", "3")
-                        )
-                )
-        );
+        then_screen_should_be(List.of(
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3")
+        ));
 
 
     }
