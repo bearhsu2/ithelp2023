@@ -12,6 +12,7 @@ class SlotScoreCalculatorTest {
     private final Random random = Mockito.mock(Random.class);
     private final NativeRandomNumberGenerator randomNumberGenerator = new NativeRandomNumberGenerator(random);
     private SlotScoreCalculator sut;
+    private SpinResult spinResult;
 
     @Test
     void three_lines() {
@@ -26,9 +27,10 @@ class SlotScoreCalculatorTest {
                 List.of("A", "2", "3")
         ));
 
-        int win = sut.calculate(10).getWin();
 
-        Assertions.assertThat(win).isEqualTo(1_000);
+        spinResult = sut.calculate(10);
+
+        Assertions.assertThat(spinResult.getWin()).isEqualTo(1_000);
     }
 
     private void given_sut(List<List<String>> rawReels) {
@@ -51,9 +53,9 @@ class SlotScoreCalculatorTest {
                 List.of("A", "2", "4")
         ));
 
-        int win = sut.calculate(10).getWin();
+        spinResult = sut.calculate(10);
 
-        Assertions.assertThat(win).isEqualTo(400);
+        Assertions.assertThat(spinResult.getWin()).isEqualTo(400);
     }
 
     @Test
@@ -86,7 +88,8 @@ class SlotScoreCalculatorTest {
                 List.of("A", "2", "3")
         ));
 
-        SpinResult spinResult = sut.calculate(10);
+        spinResult = sut.calculate(10);
+
         Assertions.assertThat(spinResult.getWin()).isEqualTo(0);
         Assertions.assertThat(spinResult.getScreen()).isEqualTo(
                 new Screen(
