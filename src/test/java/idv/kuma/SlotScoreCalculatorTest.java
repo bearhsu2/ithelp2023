@@ -11,20 +11,23 @@ class SlotScoreCalculatorTest {
 
     private final Random random = Mockito.mock(Random.class);
     private final NativeRandomNumberGenerator randomNumberGenerator = new NativeRandomNumberGenerator(random);
+    private SlotScoreCalculator sut;
 
     @Test
     void three_lines() {
 
         Mockito.when(random.nextInt(Mockito.anyInt())).thenReturn(0);
 
-        SlotScoreCalculator sut = new SlotScoreCalculator(
-                new PayTable(), new Reels(List.of(
-                List.of("A", "2", "3"),
-                List.of("A", "2", "3"),
-                List.of("A", "2", "3"),
-                List.of("A", "2", "3"),
-                List.of("A", "2", "3")
-        ), randomNumberGenerator)
+        sut = new SlotScoreCalculator(
+                new PayTable(),
+                new Reels(
+                        List.of(
+                                List.of("A", "2", "3"),
+                                List.of("A", "2", "3"),
+                                List.of("A", "2", "3"),
+                                List.of("A", "2", "3"),
+                                List.of("A", "2", "3")
+                        ), randomNumberGenerator)
         );
 
         int win = sut.calculate(10).getWin();
@@ -36,7 +39,7 @@ class SlotScoreCalculatorTest {
     void two_lines() {
         Mockito.when(random.nextInt(Mockito.anyInt())).thenReturn(0);
 
-        SlotScoreCalculator sut = new SlotScoreCalculator(
+        sut = new SlotScoreCalculator(
                 new PayTable(), new Reels(List.of(
                 List.of("A", "2", "3"),
                 List.of("A", "2", "3"),
@@ -55,7 +58,7 @@ class SlotScoreCalculatorTest {
     void one_line() {
         Mockito.when(random.nextInt(Mockito.anyInt())).thenReturn(0);
 
-        SlotScoreCalculator sut = new SlotScoreCalculator(
+        sut = new SlotScoreCalculator(
                 new PayTable(), new Reels(List.of(
                 List.of("A", "2", "3"),
                 List.of("A", "2", "3"),
@@ -74,7 +77,7 @@ class SlotScoreCalculatorTest {
     void spin_and_lose() {
         Mockito.when(random.nextInt(Mockito.anyInt())).thenReturn(1, 1, 1, 1, 2);
 
-        SlotScoreCalculator sut = new SlotScoreCalculator(
+        sut = new SlotScoreCalculator(
                 new PayTable(),
                 new Reels(
                         List.of(
@@ -83,8 +86,7 @@ class SlotScoreCalculatorTest {
                                 List.of("A", "2", "3"),
                                 List.of("A", "2", "3"),
                                 List.of("A", "2", "3")
-                        ), randomNumberGenerator
-                )
+                        ), randomNumberGenerator)
         );
 
         SpinResult spinResult = sut.calculate(10);
@@ -119,7 +121,7 @@ class SlotScoreCalculatorTest {
     @Test
     void init() {
 
-        SlotScoreCalculator sut = new SlotScoreCalculator(
+        sut = new SlotScoreCalculator(
                 new PayTable(),
                 new Reels(
                         List.of(
@@ -128,8 +130,7 @@ class SlotScoreCalculatorTest {
                                 List.of("A", "2", "3"),
                                 List.of("A", "2", "3"),
                                 List.of("A", "2", "3")
-                        ), randomNumberGenerator
-                )
+                        ), randomNumberGenerator)
         );
 
         Screen screen = sut.getScreen();
