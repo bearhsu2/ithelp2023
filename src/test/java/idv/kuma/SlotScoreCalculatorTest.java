@@ -2,23 +2,23 @@ package idv.kuma;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.util.List;
-import java.util.Random;
 
 class SlotScoreCalculatorTest {
 
     // todo: replace NativeRandomNumberGenerator with CustomRNG, then kill random
-    private final Random random = Mockito.mock(Random.class);
-    private final NativeRandomNumberGenerator randomNumberGenerator = new NativeRandomNumberGenerator(random);
+//    private final Random random = Mockito.mock(Random.class);
+//    private final NativeRandomNumberGenerator randomNumberGenerator = new NativeRandomNumberGenerator(random);
+    private final CyclicRNG randomNumberGenerator = new CyclicRNG();
     private SlotScoreCalculator sut;
     private SpinResult spinResult;
 
     @Test
     void three_lines() {
 
-        Mockito.when(random.nextInt(Mockito.anyInt())).thenReturn(0);
+
+        randomNumberGenerator.resetExpectedValues(List.of(0));
 
         given_sut(List.of(
                 List.of("A", "2", "3"),
@@ -67,7 +67,8 @@ class SlotScoreCalculatorTest {
 
     @Test
     void two_lines() {
-        Mockito.when(random.nextInt(Mockito.anyInt())).thenReturn(0);
+
+        randomNumberGenerator.resetExpectedValues(List.of(0));
 
         given_sut(List.of(
                 List.of("A", "2", "3"),
@@ -94,7 +95,8 @@ class SlotScoreCalculatorTest {
 
     @Test
     void one_line() {
-        Mockito.when(random.nextInt(Mockito.anyInt())).thenReturn(0);
+
+        randomNumberGenerator.resetExpectedValues(List.of(0));
 
         given_sut(
                 List.of(
@@ -121,9 +123,11 @@ class SlotScoreCalculatorTest {
         );
     }
 
+
     @Test
     void spin_and_lose() {
-        Mockito.when(random.nextInt(Mockito.anyInt())).thenReturn(1, 1, 1, 1, 2);
+
+        randomNumberGenerator.resetExpectedValues(List.of(1, 1, 1, 1, 2));
 
         given_sut(List.of(
                 List.of("A", "2", "3"),
