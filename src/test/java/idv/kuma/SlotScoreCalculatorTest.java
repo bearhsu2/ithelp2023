@@ -28,7 +28,7 @@ class SlotScoreCalculatorTest {
         ));
 
 
-        spinResult = sut.calculate(10);
+        when_spin(10);
 
         Assertions.assertThat(spinResult.getWin()).isEqualTo(1_000);
     }
@@ -39,6 +39,10 @@ class SlotScoreCalculatorTest {
                 new Reels(
                         rawReels, randomNumberGenerator)
         );
+    }
+
+    private void when_spin(int bet) {
+        spinResult = sut.calculate(bet);
     }
 
     @Test
@@ -53,7 +57,7 @@ class SlotScoreCalculatorTest {
                 List.of("A", "2", "4")
         ));
 
-        spinResult = sut.calculate(10);
+        when_spin(10);
 
         Assertions.assertThat(spinResult.getWin()).isEqualTo(400);
     }
@@ -73,7 +77,9 @@ class SlotScoreCalculatorTest {
         );
 
 
-        Assertions.assertThat(sut.calculate(10).getWin()).isEqualTo(100);
+        when_spin(10);
+        
+        Assertions.assertThat(spinResult.getWin()).isEqualTo(100);
     }
 
     @Test
@@ -88,7 +94,7 @@ class SlotScoreCalculatorTest {
                 List.of("A", "2", "3")
         ));
 
-        spinResult = sut.calculate(10);
+        when_spin(10);
 
         Assertions.assertThat(spinResult.getWin()).isEqualTo(0);
         Assertions.assertThat(spinResult.getScreen()).isEqualTo(
