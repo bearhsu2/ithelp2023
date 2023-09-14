@@ -30,7 +30,17 @@ class SlotScoreCalculatorTest {
 
         when_spin(10);
 
-        Assertions.assertThat(spinResult.getWin()).isEqualTo(1_000);
+        then_returned_SpinResult_should_be(
+                1_000,
+                List.of(
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3")
+                )
+        );
+
     }
 
     private void given_sut(List<List<String>> rawReels) {
@@ -43,6 +53,15 @@ class SlotScoreCalculatorTest {
 
     private void when_spin(int bet) {
         spinResult = sut.calculate(bet);
+    }
+
+    private void then_returned_SpinResult_should_be(int win, List<List<String>> rawScreen) {
+        Assertions.assertThat(spinResult.getWin()).isEqualTo(win);
+        Assertions.assertThat(spinResult.getScreen()).isEqualTo(
+                new Screen(
+                        rawScreen
+                )
+        );
     }
 
     @Test
@@ -59,7 +78,17 @@ class SlotScoreCalculatorTest {
 
         when_spin(10);
 
-        Assertions.assertThat(spinResult.getWin()).isEqualTo(400);
+        then_returned_SpinResult_should_be(
+                400,
+                List.of(
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "4")
+                )
+        );
+
     }
 
     @Test
@@ -78,8 +107,17 @@ class SlotScoreCalculatorTest {
 
 
         when_spin(10);
-        
-        Assertions.assertThat(spinResult.getWin()).isEqualTo(100);
+
+        then_returned_SpinResult_should_be(
+                100,
+                List.of(
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "3", "4")
+                )
+        );
     }
 
     @Test
@@ -96,21 +134,18 @@ class SlotScoreCalculatorTest {
 
         when_spin(10);
 
-        Assertions.assertThat(spinResult.getWin()).isEqualTo(0);
-        Assertions.assertThat(spinResult.getScreen()).isEqualTo(
-                new Screen(
-                        List.of(
-                                List.of("2", "3", "A"),
-                                List.of("2", "3", "A"),
-                                List.of("2", "3", "A"),
-                                List.of("2", "3", "A"),
-                                List.of("3", "A", "2")
-                        )
-                )
-        );
+        then_returned_SpinResult_should_be(
+                0,
+                List.of(
+                        List.of("2", "3", "A"),
+                        List.of("2", "3", "A"),
+                        List.of("2", "3", "A"),
+                        List.of("2", "3", "A"),
+                        List.of("3", "A", "2")
+                ));
 
 
-        then_screen_should_be(
+        when_get_screen_then_should_get(
                 List.of(
                         List.of("2", "3", "A"),
                         List.of("2", "3", "A"),
@@ -122,7 +157,7 @@ class SlotScoreCalculatorTest {
 
     }
 
-    private void then_screen_should_be(List<List<String>> rawScreen) {
+    private void when_get_screen_then_should_get(List<List<String>> rawScreen) {
         Screen screen = sut.getScreen();
         Assertions.assertThat(screen).isEqualTo(
                 new Screen(
@@ -142,7 +177,7 @@ class SlotScoreCalculatorTest {
                 List.of("A", "2", "3")
         ));
 
-        then_screen_should_be(List.of(
+        when_get_screen_then_should_get(List.of(
                 List.of("A", "2", "3"),
                 List.of("A", "2", "3"),
                 List.of("A", "2", "3"),
