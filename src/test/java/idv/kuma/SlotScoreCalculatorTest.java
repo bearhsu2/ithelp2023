@@ -7,9 +7,6 @@ import java.util.List;
 
 class SlotScoreCalculatorTest {
 
-    // todo: replace NativeRandomNumberGenerator with CustomRNG, then kill random
-//    private final Random random = Mockito.mock(Random.class);
-//    private final NativeRandomNumberGenerator randomNumberGenerator = new NativeRandomNumberGenerator(random);
     private final CyclicRNG randomNumberGenerator = new CyclicRNG();
     private SlotScoreCalculator sut;
     private SpinResult spinResult;
