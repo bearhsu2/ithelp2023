@@ -10,6 +10,7 @@ import java.util.Random;
 class SlotScoreCalculatorTest {
 
     private final Random random = Mockito.mock(Random.class);
+    private final NativeRandomNumberGenerator randomNumberGenerator = new NativeRandomNumberGenerator(random);
 
     @Test
     void three_lines() {
@@ -23,7 +24,7 @@ class SlotScoreCalculatorTest {
                 List.of("A", "2", "3"),
                 List.of("A", "2", "3"),
                 List.of("A", "2", "3")
-        ), new NativeRandomNumberGenerator(random))
+        ), randomNumberGenerator)
         );
 
         int win = sut.calculate(10).getWin();
@@ -42,7 +43,7 @@ class SlotScoreCalculatorTest {
                 List.of("A", "2", "3"),
                 List.of("A", "2", "3"),
                 List.of("A", "2", "4")
-        ), new NativeRandomNumberGenerator(random))
+        ), randomNumberGenerator)
         );
 
         int win = sut.calculate(10).getWin();
@@ -61,7 +62,7 @@ class SlotScoreCalculatorTest {
                 List.of("A", "2", "3"),
                 List.of("A", "2", "3"),
                 List.of("A", "3", "4")
-        ), new NativeRandomNumberGenerator(random))
+        ), randomNumberGenerator)
         );
 
         int win = sut.calculate(10).getWin();
@@ -82,7 +83,7 @@ class SlotScoreCalculatorTest {
                                 List.of("A", "2", "3"),
                                 List.of("A", "2", "3"),
                                 List.of("A", "2", "3")
-                        ), new NativeRandomNumberGenerator(random)
+                        ), randomNumberGenerator
                 )
         );
 
@@ -127,7 +128,7 @@ class SlotScoreCalculatorTest {
                                 List.of("A", "2", "3"),
                                 List.of("A", "2", "3"),
                                 List.of("A", "2", "3")
-                        ), new NativeRandomNumberGenerator(random)
+                        ), randomNumberGenerator
                 )
         );
 
