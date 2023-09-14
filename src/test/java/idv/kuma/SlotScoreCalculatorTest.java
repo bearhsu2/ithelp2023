@@ -15,7 +15,7 @@ class SlotScoreCalculatorTest {
     void three_lines() {
 
 
-        randomNumberGenerator.resetExpectedValues(List.of(0));
+        assume_RNG_generates(List.of(0));
 
         given_sut(List.of(
                 List.of("A", "2", "3"),
@@ -39,6 +39,10 @@ class SlotScoreCalculatorTest {
                 )
         );
 
+    }
+
+    private void assume_RNG_generates(List<Integer> expecteds) {
+        randomNumberGenerator.resetExpectedValues(expecteds);
     }
 
     private void given_sut(List<List<String>> rawReels) {
@@ -65,7 +69,7 @@ class SlotScoreCalculatorTest {
     @Test
     void two_lines() {
 
-        randomNumberGenerator.resetExpectedValues(List.of(0));
+        assume_RNG_generates(List.of(0));
 
         given_sut(List.of(
                 List.of("A", "2", "3"),
@@ -93,7 +97,7 @@ class SlotScoreCalculatorTest {
     @Test
     void one_line() {
 
-        randomNumberGenerator.resetExpectedValues(List.of(0));
+        assume_RNG_generates(List.of(0));
 
         given_sut(
                 List.of(
@@ -120,11 +124,10 @@ class SlotScoreCalculatorTest {
         );
     }
 
-
     @Test
     void spin_and_lose() {
 
-        randomNumberGenerator.resetExpectedValues(List.of(1, 1, 1, 1, 2));
+        assume_RNG_generates(List.of(1, 1, 1, 1, 2));
 
         given_sut(List.of(
                 List.of("A", "2", "3"),
