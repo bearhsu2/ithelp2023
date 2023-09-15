@@ -12,27 +12,35 @@ class SlotScoreCalculatorTest {
     private SpinResult spinResult;
 
     @Test
-    void three_lines() {
+    void free_game() {
 
 
         assume_RNG_generates(List.of(0));
 
         given_sut(List.of(
-                List.of("A", "2", "3"),
-                List.of("A", "2", "3"),
-                List.of("A", "2", "3"),
-                List.of("A", "2", "3"),
-                List.of("A", "2", "3")
+                List.of("A", "A", "3"),
+                List.of("A", "A", "3"),
+                List.of("A", "A", "3"),
+                List.of("A", "A", "3"),
+                List.of("A", "A", "4")
         ));
 
-
-        when_spin(10);
-
-        then_returned_SpinResult_should_be(
-                1_000,
+        Reels freeGameReels = new Reels(
                 List.of(
                         List.of("A", "2", "3"),
                         List.of("A", "2", "3"),
+                        List.of("A", "2", "3")
+                ), randomNumberGenerator
+        );
+        sut.setFreeGameReels(freeGameReels);
+
+
+        when_spin(10);
+        spinResult = sut.spinFree();
+
+        then_returned_SpinResult_should_be(
+                5_000,
+                List.of(
                         List.of("A", "2", "3"),
                         List.of("A", "2", "3"),
                         List.of("A", "2", "3")
@@ -64,6 +72,36 @@ class SlotScoreCalculatorTest {
                         rawScreen
                 )
         );
+    }
+
+    @Test
+    void three_lines() {
+
+
+        assume_RNG_generates(List.of(0));
+
+        given_sut(List.of(
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3")
+        ));
+
+
+        when_spin(10);
+
+        then_returned_SpinResult_should_be(
+                1_000,
+                List.of(
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3")
+                )
+        );
+
     }
 
     @Test

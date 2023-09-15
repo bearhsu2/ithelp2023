@@ -1,5 +1,7 @@
 package idv.kuma;
 
+import java.util.List;
+
 public class SlotScoreCalculator {
     private final PayTable payTable;
     private final Reels reels;
@@ -26,5 +28,25 @@ public class SlotScoreCalculator {
 
     public Screen getScreen() {
         return reels.getScreen();
+    }
+
+    public void setFreeGameReels(Reels freeGameReels) {
+// logic
+    }
+
+    public SpinResult spinFree() {
+
+        // logic
+        
+        return new SpinResult(
+                5_000,
+                new Screen(
+                        List.of(
+                                List.of("A", "2", "3"),
+                                List.of("A", "2", "3"),
+                                List.of("A", "2", "3")
+                        )
+                )
+        );
     }
 }
