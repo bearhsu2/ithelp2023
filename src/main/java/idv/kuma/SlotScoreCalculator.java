@@ -50,6 +50,9 @@ public class SlotScoreCalculator {
 
         } else if (lines == 2) {
             odd = 300;
+        } else if (lines == 1) {
+            odd = 100;
+
         }
 
         int win = odd * 10;
