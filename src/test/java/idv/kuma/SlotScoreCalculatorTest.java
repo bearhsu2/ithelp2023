@@ -38,6 +38,72 @@ class SlotScoreCalculatorTest {
 
 
     }
+
+    private void assume_RNG_generates(List<Integer> expecteds) {
+        randomNumberGenerator.resetExpectedValues(expecteds);
+    }
+
+    private void given_sut(List<List<String>> baseGameRawReels, List<List<String>> freeGameRawReels) {
+
+        sut = new SlotScoreCalculator(
+                new PayTable(),
+                new Reels(
+                        baseGameRawReels, randomNumberGenerator),
+                new Reels(
+                        freeGameRawReels, randomNumberGenerator
+                )
+        );
+    }
+
+    private void when_spin_base(int bet) {
+        spinResult = sut.spinBase(bet);
+    }
+
+    @Test
+    void back_to_base_game() {
+
+
+        assume_RNG_generates(List.of(0));
+
+        given_sut(
+                List.of(
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "4")
+                ), List.of(
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "3", "4")
+                ));
+
+        when_spin_base(10);
+        when_spin_free();
+        when_spin_free();
+        when_spin_free();
+
+        Assertions.assertThatThrownBy(
+                () ->when_spin_free()
+        ).hasMessageContaining("wrong mode: BASE_GAME");
+
+
+
+    }
+
+    private void when_spin_free() {
+        spinResult = sut.spinFree();
+    }
+
+    private void then_returned_SpinResult_should_be(int win, List<List<String>> rawScreen) {
+        Assertions.assertThat(spinResult.getWin()).isEqualTo(win);
+        Assertions.assertThat(spinResult.getScreen()).isEqualTo(
+                new Screen(
+                        rawScreen
+                )
+        );
+    }
+
     @Test
     void free_game_3_times() {
 
@@ -72,6 +138,7 @@ class SlotScoreCalculatorTest {
         );
 
     }
+
     @Test
     void free_game_1_lines() {
 
@@ -103,39 +170,6 @@ class SlotScoreCalculatorTest {
                 )
         );
 
-    }
-
-    private void assume_RNG_generates(List<Integer> expecteds) {
-        randomNumberGenerator.resetExpectedValues(expecteds);
-    }
-
-    private void given_sut(List<List<String>> baseGameRawReels, List<List<String>> freeGameRawReels) {
-
-        sut = new SlotScoreCalculator(
-                new PayTable(),
-                new Reels(
-                        baseGameRawReels, randomNumberGenerator),
-                new Reels(
-                        freeGameRawReels, randomNumberGenerator
-                )
-        );
-    }
-
-    private void when_spin_base(int bet) {
-        spinResult = sut.spinBase(bet);
-    }
-
-    private void when_spin_free() {
-        spinResult = sut.spinFree();
-    }
-
-    private void then_returned_SpinResult_should_be(int win, List<List<String>> rawScreen) {
-        Assertions.assertThat(spinResult.getWin()).isEqualTo(win);
-        Assertions.assertThat(spinResult.getScreen()).isEqualTo(
-                new Screen(
-                        rawScreen
-                )
-        );
     }
 
     @Test
