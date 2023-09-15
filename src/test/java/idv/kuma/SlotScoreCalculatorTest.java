@@ -35,8 +35,8 @@ class SlotScoreCalculatorTest {
         sut.setFreeGameReels(freeGameReels);
 
 
-        when_spin(10);
-        spinResult = sut.spinFree();
+        when_spin_base(10);
+        when_spin_free();
 
         then_returned_SpinResult_should_be(
                 5_000,
@@ -47,6 +47,10 @@ class SlotScoreCalculatorTest {
                 )
         );
 
+    }
+
+    private void when_spin_free() {
+        spinResult = sut.spinFree();
     }
 
     private void assume_RNG_generates(List<Integer> expecteds) {
@@ -61,7 +65,7 @@ class SlotScoreCalculatorTest {
         );
     }
 
-    private void when_spin(int bet) {
+    private void when_spin_base(int bet) {
         spinResult = sut.spinBase(bet);
     }
 
@@ -89,7 +93,7 @@ class SlotScoreCalculatorTest {
         ));
 
 
-        when_spin(10);
+        when_spin_base(10);
 
         then_returned_SpinResult_should_be(
                 1_000,
@@ -117,7 +121,7 @@ class SlotScoreCalculatorTest {
                 List.of("A", "2", "4")
         ));
 
-        when_spin(10);
+        when_spin_base(10);
 
         then_returned_SpinResult_should_be(
                 400,
@@ -148,7 +152,7 @@ class SlotScoreCalculatorTest {
         );
 
 
-        when_spin(10);
+        when_spin_base(10);
 
         then_returned_SpinResult_should_be(
                 100,
@@ -175,7 +179,7 @@ class SlotScoreCalculatorTest {
                 List.of("A", "2", "3")
         ));
 
-        when_spin(10);
+        when_spin_base(10);
 
         then_returned_SpinResult_should_be(
                 0,
