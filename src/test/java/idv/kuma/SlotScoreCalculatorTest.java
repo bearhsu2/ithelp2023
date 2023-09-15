@@ -62,7 +62,7 @@ class SlotScoreCalculatorTest {
     }
 
     private void when_spin(int bet) {
-        spinResult = sut.calculate(bet);
+        spinResult = sut.spinBase(bet);
     }
 
     private void then_returned_SpinResult_should_be(int win, List<List<String>> rawScreen) {

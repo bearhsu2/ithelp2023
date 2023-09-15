@@ -5,13 +5,14 @@ import java.util.List;
 public class SlotScoreCalculator {
     private final PayTable payTable;
     private final Reels reels;
+    private Reels freeGameReels;
 
     public SlotScoreCalculator(PayTable payTable, Reels reels) {
         this.payTable = payTable;
         this.reels = reels;
     }
 
-    public SpinResult calculate(int bet) {
+    public SpinResult spinBase(int bet) {
 
         reels.spin();
 
@@ -31,13 +32,14 @@ public class SlotScoreCalculator {
     }
 
     public void setFreeGameReels(Reels freeGameReels) {
-// logic
+
+        this.freeGameReels = freeGameReels;
     }
 
     public SpinResult spinFree() {
 
         // logic
-        
+
         return new SpinResult(
                 5_000,
                 new Screen(
