@@ -58,10 +58,19 @@ class SlotScoreCalculatorTest {
     }
 
     private void given_sut(List<List<String>> rawReels) {
+        Reels freeGameReels = new Reels(
+                List.of(
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3")
+                ), randomNumberGenerator
+        );
+
         sut = new SlotScoreCalculator(
                 new PayTable(),
                 new Reels(
-                        rawReels, randomNumberGenerator)
+                        rawReels, randomNumberGenerator),
+                freeGameReels
         );
     }
 
