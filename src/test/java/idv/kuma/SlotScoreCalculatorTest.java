@@ -17,23 +17,18 @@ class SlotScoreCalculatorTest {
 
         assume_RNG_generates(List.of(0));
 
-        given_sut(List.of(
-                List.of("A", "A", "3"),
-                List.of("A", "A", "3"),
-                List.of("A", "A", "3"),
-                List.of("A", "A", "3"),
-                List.of("A", "A", "4")
-        ));
-
-        Reels freeGameReels = new Reels(
+        given_sut(
                 List.of(
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "4")
+                ), List.of(
                         List.of("A", "2", "3"),
                         List.of("A", "2", "3"),
                         List.of("A", "2", "3")
-                ), randomNumberGenerator
-        );
-        sut.setFreeGameReels(freeGameReels);
-
+                ));
 
         when_spin_base(10);
         when_spin_free();
@@ -49,33 +44,28 @@ class SlotScoreCalculatorTest {
 
     }
 
-    private void when_spin_free() {
-        spinResult = sut.spinFree();
-    }
-
     private void assume_RNG_generates(List<Integer> expecteds) {
         randomNumberGenerator.resetExpectedValues(expecteds);
     }
 
-    private void given_sut(List<List<String>> rawReels) {
-        Reels freeGameReels = new Reels(
-                List.of(
-                        List.of("A", "2", "3"),
-                        List.of("A", "2", "3"),
-                        List.of("A", "2", "3")
-                ), randomNumberGenerator
-        );
+    private void given_sut(List<List<String>> baseGameRawReels, List<List<String>> freeGameRawReels) {
 
         sut = new SlotScoreCalculator(
                 new PayTable(),
                 new Reels(
-                        rawReels, randomNumberGenerator),
-                freeGameReels
+                        baseGameRawReels, randomNumberGenerator),
+                new Reels(
+                        freeGameRawReels, randomNumberGenerator
+                )
         );
     }
 
     private void when_spin_base(int bet) {
         spinResult = sut.spinBase(bet);
+    }
+
+    private void when_spin_free() {
+        spinResult = sut.spinFree();
     }
 
     private void then_returned_SpinResult_should_be(int win, List<List<String>> rawScreen) {
@@ -96,6 +86,10 @@ class SlotScoreCalculatorTest {
         given_sut(List.of(
                 List.of("A", "2", "3"),
                 List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3")
+        ), List.of(
                 List.of("A", "2", "3"),
                 List.of("A", "2", "3"),
                 List.of("A", "2", "3")
@@ -128,6 +122,10 @@ class SlotScoreCalculatorTest {
                 List.of("A", "2", "3"),
                 List.of("A", "2", "3"),
                 List.of("A", "2", "4")
+        ), List.of(
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3")
         ));
 
         when_spin_base(10);
@@ -157,6 +155,10 @@ class SlotScoreCalculatorTest {
                         List.of("A", "2", "3"),
                         List.of("A", "2", "3"),
                         List.of("A", "3", "4")
+                ), List.of(
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3")
                 )
         );
 
@@ -183,6 +185,10 @@ class SlotScoreCalculatorTest {
         given_sut(List.of(
                 List.of("A", "2", "3"),
                 List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3")
+        ), List.of(
                 List.of("A", "2", "3"),
                 List.of("A", "2", "3"),
                 List.of("A", "2", "3")
@@ -228,6 +234,10 @@ class SlotScoreCalculatorTest {
         given_sut(List.of(
                 List.of("A", "2", "3"),
                 List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3"),
+                List.of("A", "2", "3")
+        ), List.of(
                 List.of("A", "2", "3"),
                 List.of("A", "2", "3"),
                 List.of("A", "2", "3")
