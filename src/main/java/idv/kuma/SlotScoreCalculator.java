@@ -51,10 +51,6 @@ public class SlotScoreCalculator {
         return reels.getScreen();
     }
 
-    public void setFreeGameReels(Reels freeGameReels) {
-
-        this.freeGameReels = freeGameReels;
-    }
 
     public SpinResult spinFree() {
 
