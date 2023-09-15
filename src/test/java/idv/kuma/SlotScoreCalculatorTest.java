@@ -39,6 +39,40 @@ class SlotScoreCalculatorTest {
 
     }
     @Test
+    void free_game_3_times() {
+
+
+        assume_RNG_generates(List.of(0));
+
+        given_sut(
+                List.of(
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "4")
+                ), List.of(
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "3", "4")
+                ));
+
+        when_spin_base(10);
+        when_spin_free();
+        when_spin_free();
+        when_spin_free();
+
+        then_returned_SpinResult_should_be(
+                1_000,
+                List.of(
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "3", "4")
+                )
+        );
+
+    }
+    @Test
     void free_game_1_lines() {
 
 
