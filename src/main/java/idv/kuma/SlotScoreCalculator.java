@@ -1,9 +1,12 @@
 package idv.kuma;
 
+import java.util.List;
+
 public class SlotScoreCalculator {
     private final PayTable payTable;
     private final Reels reels;
     private Reels freeGameReels;
+    private int freeGameCount;
 
     public SlotScoreCalculator(PayTable payTable, Reels reels, Reels freeGameReels) {
         this.payTable = payTable;
@@ -13,6 +16,11 @@ public class SlotScoreCalculator {
 
     public SpinResult spinBase(int bet) {
 
+        if (freeGameCount > 0) {
+            throw new RuntimeException("wrong mode: FREE_GAME");
+        }
+
+
         reels.spin();
 
         Screen screen = reels.getScreen();
@@ -20,6 +28,19 @@ public class SlotScoreCalculator {
         int odd = payTable.getOdd(screen);
 
         int win = odd * bet;
+
+        int count = 0;
+        for (List<String> rawColumn : screen.rawScreen()) {
+            for (String grid : rawColumn) {
+                if (grid.equals("A")) {
+                    count++;
+                }
+            }
+        }
+
+        if (count >= 10) {
+            freeGameCount += 3;
+        }
 
         return new SpinResult(win, screen);
 
