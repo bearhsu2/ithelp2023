@@ -5,7 +5,7 @@ import java.util.List;
 public class SlotScoreCalculator {
     private final PayTable payTable;
     private final Reels reels;
-    private Reels freeGameReels;
+    private final Reels freeGameReels;
     private int freeGameCount;
 
     public SlotScoreCalculator(PayTable payTable, Reels reels, Reels freeGameReels) {
@@ -19,7 +19,6 @@ public class SlotScoreCalculator {
         if (freeGameCount > 0) {
             throw new WrongModeException("wrong mode: FREE_GAME");
         }
-
 
 
         reels.spin();
