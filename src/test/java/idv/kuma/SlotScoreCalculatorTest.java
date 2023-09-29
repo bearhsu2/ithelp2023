@@ -47,7 +47,7 @@ class SlotScoreCalculatorTest {
 
         sut = new SlotScoreCalculator(
                 new Reels(
-                        baseGameRawReels, randomNumberGenerator), new PayTable(),
+                        baseGameRawReels, randomNumberGenerator), new BaseGamePayTable(),
                 new Reels(
                         freeGameRawReels, randomNumberGenerator
                 ), new FreeGamePayTable()

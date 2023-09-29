@@ -1,6 +1,6 @@
 package idv.kuma;
 
-public class FreeGamePayTable {
+public class FreeGamePayTable implements PayTable {
 
     public int getOdd(Screen screen) {
         int odd = 0;
