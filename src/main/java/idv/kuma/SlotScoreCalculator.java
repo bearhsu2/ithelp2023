@@ -76,10 +76,14 @@ public class SlotScoreCalculator {
 
         int win = odd * 10;
 
-        freeGameCount--;
+        tryDeactiveFreegame();
 
         return new SpinResult(win, screen);
 
+    }
+
+    private void tryDeactiveFreegame() {
+        freeGameCount--;
     }
 
     private int getOddFreeGame(Screen screen) {
