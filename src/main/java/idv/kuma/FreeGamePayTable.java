@@ -2,7 +2,7 @@ package idv.kuma;
 
 public class FreeGamePayTable {
 
-    public int getOddFreeGame(Screen screen) {
+    public int getOdd(Screen screen) {
         int odd = 0;
 
         int lines = screen.countStraightLines();
