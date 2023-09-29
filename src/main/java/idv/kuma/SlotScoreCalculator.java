@@ -3,14 +3,15 @@ package idv.kuma;
 import java.util.List;
 
 public class SlotScoreCalculator {
-    private final PayTable payTable;
+    private final PayTable baseGamePayTable;
     private final Reels reels;
     private final Reels freeGameReels;
+    private final FreeGamePayTable freeGamePayTable = new FreeGamePayTable();
     private int freeGameCount;
     private int freeGameBet;
 
-    public SlotScoreCalculator(PayTable payTable, Reels reels, Reels freeGameReels) {
-        this.payTable = payTable;
+    public SlotScoreCalculator(PayTable baseGamePayTable, Reels reels, Reels freeGameReels) {
+        this.baseGamePayTable = baseGamePayTable;
         this.reels = reels;
         this.freeGameReels = freeGameReels;
     }
@@ -26,7 +27,7 @@ public class SlotScoreCalculator {
 
         Screen screen = reels.getScreen();
 
-        int odd = payTable.getOdd(screen);
+        int odd = baseGamePayTable.getOdd(screen);
 
         int win = odd * bet;
 
@@ -74,7 +75,7 @@ public class SlotScoreCalculator {
 
         Screen screen = freeGameReels.getScreen();
 
-        int odd = getOddFreeGame(screen);
+        int odd = freeGamePayTable.getOddFreeGame(screen);
 
         int win = odd * freeGameBet;
 
@@ -88,19 +89,8 @@ public class SlotScoreCalculator {
         freeGameCount--;
     }
 
-    private int getOddFreeGame(Screen screen) {
-        int odd = 0;
-
-        int lines = screen.countStraightLines();
-        if (lines == 3) {
-            odd = 500;
-
-        } else if (lines == 2) {
-            odd = 300;
-        } else if (lines == 1) {
-            odd = 100;
-
-        }
-        return odd;
-    }
+//    private int getOddFreeGame(Screen screen) {
+//
+//        return freeGamePayTable.getOddFreeGame(screen);
+//    }
 }
