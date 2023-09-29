@@ -6,14 +6,15 @@ public class SlotScoreCalculator {
     private final PayTable baseGamePayTable;
     private final Reels reels;
     private final Reels freeGameReels;
-    private final FreeGamePayTable freeGamePayTable = new FreeGamePayTable();
+    private final FreeGamePayTable freeGamePayTable;
     private int freeGameCount;
     private int freeGameBet;
 
-    public SlotScoreCalculator(PayTable baseGamePayTable, Reels reels, Reels freeGameReels) {
+    public SlotScoreCalculator(PayTable baseGamePayTable, Reels reels, Reels freeGameReels, FreeGamePayTable freeGamePayTable) {
         this.baseGamePayTable = baseGamePayTable;
         this.reels = reels;
         this.freeGameReels = freeGameReels;
+        this.freeGamePayTable = freeGamePayTable;
     }
 
     public SpinResult spinBase(int bet) throws WrongModeException {
