@@ -84,24 +84,14 @@ class SlotScoreCalculatorTest {
         when_spin_free();
 
         Assertions.assertThatThrownBy(
-                () ->when_spin_free()
+                () -> when_spin_free()
         ).hasMessageContaining("wrong mode: BASE_GAME");
-
 
 
     }
 
     private void when_spin_free() {
         spinResult = sut.spinFree();
-    }
-
-    private void then_returned_SpinResult_should_be(int win, List<List<String>> rawScreen) {
-        Assertions.assertThat(spinResult.getWin()).isEqualTo(win);
-        Assertions.assertThat(spinResult.getScreen()).isEqualTo(
-                new Screen(
-                        rawScreen
-                )
-        );
     }
 
     @Test
@@ -137,6 +127,55 @@ class SlotScoreCalculatorTest {
                 )
         );
 
+    }
+
+    private void then_returned_SpinResult_should_be(int win, List<List<String>> rawScreen) {
+        Assertions.assertThat(spinResult.getWin()).isEqualTo(win);
+        Assertions.assertThat(spinResult.getScreen()).isEqualTo(
+                new Screen(
+                        rawScreen
+                )
+        );
+    }
+
+    @Test
+    void get_screen_in_free_game() {
+
+
+        assume_RNG_generates(List.of(0));
+
+        given_sut(
+                List.of(
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "4")
+                ), List.of(
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "3", "4")
+                ));
+
+        when_spin_base(10);
+        when_spin_free();
+
+        when_get_screen_then_should_get(
+                List.of(
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "3", "4")
+                )
+        );
+    }
+
+    private void when_get_screen_then_should_get(List<List<String>> rawScreen) {
+        Screen screen = sut.getScreen();
+        Assertions.assertThat(screen).isEqualTo(
+                new Screen(
+                        rawScreen
+                )
+        );
     }
 
     @Test
@@ -378,15 +417,6 @@ class SlotScoreCalculatorTest {
                 )
         );
 
-    }
-
-    private void when_get_screen_then_should_get(List<List<String>> rawScreen) {
-        Screen screen = sut.getScreen();
-        Assertions.assertThat(screen).isEqualTo(
-                new Screen(
-                        rawScreen
-                )
-        );
     }
 
     @Test

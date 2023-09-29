@@ -48,7 +48,12 @@ public class SlotScoreCalculator {
 
 
     public Screen getScreen() {
-        return reels.getScreen();
+
+        if (freeGameCount <= 0) {
+            return reels.getScreen();
+        } else {
+            return freeGameReels.getScreen();
+        }
     }
 
 
