@@ -29,6 +29,13 @@ public class SlotScoreCalculator {
 
         int win = odd * bet;
 
+        tryTriggerFreeGame(screen);
+
+        return new SpinResult(win, screen);
+
+    }
+
+    private void tryTriggerFreeGame(Screen screen) {
         int count = 0;
         for (List<String> rawColumn : screen.rawScreen()) {
             for (String grid : rawColumn) {
@@ -41,9 +48,6 @@ public class SlotScoreCalculator {
         if (count >= 10) {
             freeGameCount += 3;
         }
-
-        return new SpinResult(win, screen);
-
     }
 
 
