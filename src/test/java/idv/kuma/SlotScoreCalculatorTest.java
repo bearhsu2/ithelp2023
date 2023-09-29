@@ -90,7 +90,7 @@ class SlotScoreCalculatorTest {
 
     }
 
-    private void when_spin_free() {
+    private void when_spin_free() throws WrongModeException {
         spinResult = sut.spinFree();
     }
 

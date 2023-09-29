@@ -58,11 +58,11 @@ public class SlotScoreCalculator {
     }
 
 
-    public SpinResult spinFree() {
+    public SpinResult spinFree() throws WrongModeException {
 
 
         if (freeGameCount <= 0) {
-            throw new RuntimeException("wrong mode: BASE_GAME");
+            throw new WrongModeException("wrong mode: BASE_GAME");
         }
 
         freeGameReels.spin();
