@@ -14,11 +14,12 @@ public class SlotScoreCalculator {
         this.freeGameReels = freeGameReels;
     }
 
-    public SpinResult spinBase(int bet) {
+    public SpinResult spinBase(int bet) throws WrongModeException {
 
         if (freeGameCount > 0) {
-            throw new RuntimeException("wrong mode: FREE_GAME");
+            throw new WrongModeException("wrong mode: FREE_GAME");
         }
+
 
 
         reels.spin();
