@@ -21,4 +21,9 @@ public class GameFlow {
 
         return new SpinResult(win, screen);
     }
+
+    Screen getScreen() {
+        return this.reels.getScreen();
+
+    }
 }

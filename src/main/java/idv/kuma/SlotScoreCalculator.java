@@ -51,17 +51,14 @@ public class SlotScoreCalculator {
         }
     }
 
-    private SpinResult runGameFlow(int bet) {
-
-        return baseGameFlow.runGameFlow(bet);
-    }
+  
 
     public Screen getScreen() {
 
         if (freeGameCount <= 0) {
-            return baseGameReels.getScreen();
+            return baseGameFlow.getScreen();
         } else {
-            return freeGameReels.getScreen();
+            return freeGameFlow.getScreen();
         }
     }
 
