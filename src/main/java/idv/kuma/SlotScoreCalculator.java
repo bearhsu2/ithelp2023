@@ -23,6 +23,15 @@ public class SlotScoreCalculator {
             throw new WrongModeException("wrong mode: FREE_GAME");
         }
 
+        SpinResult result = runGameFlow(bet);
+
+        tryTriggerFreeGame(result.getScreen(), bet);
+
+        return result;
+
+    }
+
+    private SpinResult runGameFlow(int bet) {
 
         baseGameReels.spin();
 
@@ -32,10 +41,10 @@ public class SlotScoreCalculator {
 
         int win = odd * bet;
 
-        tryTriggerFreeGame(screen, bet);
-
         return new SpinResult(win, screen);
+    }
 
+    private record Result(Screen screen, int win) {
     }
 
     private void tryTriggerFreeGame(Screen screen, int bet) {
