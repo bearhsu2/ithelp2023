@@ -90,8 +90,4 @@ public class SlotScoreCalculator {
         freeGameCount--;
     }
 
-//    private int getOddFreeGame(Screen screen) {
-//
-//        return freeGamePayTable.getOddFreeGame(screen);
-//    }
 }
