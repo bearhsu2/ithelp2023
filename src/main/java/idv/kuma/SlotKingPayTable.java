@@ -3,7 +3,7 @@ package idv.kuma;
 import java.util.AbstractMap;
 import java.util.Map;
 
-public class BaseGamePayTable implements PayTable {
+public class SlotKingPayTable implements PayTable {
     private final Map<Integer, Integer> odds = Map.ofEntries(
             new AbstractMap.SimpleImmutableEntry<>(0, 0),
             new AbstractMap.SimpleImmutableEntry<>(1, 10),
