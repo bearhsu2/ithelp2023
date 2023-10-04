@@ -43,7 +43,6 @@ public class SlotScoreCalculator {
         }
     }
 
-  
 
     public Screen getScreen() {
 
@@ -74,4 +73,7 @@ public class SlotScoreCalculator {
         freeGameCount--;
     }
 
+    public boolean isFreeGame() {
+        return false;
+    }
 }

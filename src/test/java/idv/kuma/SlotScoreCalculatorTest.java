@@ -141,6 +141,35 @@ class SlotScoreCalculatorTest {
     }
 
     @Test
+    void get_game_status_when_base_game() throws WrongModeException {
+
+
+        assume_RNG_generates(List.of(0));
+
+        given_sut(
+                List.of(
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "4")
+                ), List.of(
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "3", "4")
+                ));
+
+        when_spin_base(10);
+        when_spin_free();
+        when_spin_free();
+        when_spin_free();
+
+        boolean actual = sut.isFreeGame();
+        Assertions.assertThat(actual).isFalse();
+
+    }
+
+    @Test
     void get_screen_in_free_game() throws WrongModeException {
 
 
