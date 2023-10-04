@@ -55,7 +55,6 @@ class SlotScoreCalculatorSimulatorTest {
 
         double rtp = (totalWin + 0D) / totalBet;
         Assertions.assertThat(Math.abs(rtp - 80) < 1).isTrue();
-//        System.out.println(rtp);
 
     }
 }
