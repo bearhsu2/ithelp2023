@@ -16,26 +16,22 @@ class SlotScoreCalculatorSimulatorTest {
 
         RandomNumberGenerator randomNumberGenerator = new NativeRandomNumberGenerator(new Random());
 
-        final Reels baseGameReels = new Reels(
-                List.of(
-                        List.of("A", "A", "3", "A"),
-                        List.of("A", "A", "3", "A"),
-                        List.of("A", "A", "3"),
-                        List.of("A", "A", "3"),
-                        List.of("A", "A", "4")
-                ), randomNumberGenerator);
-        final SlotKingPayTable baseGamePayTable = new SlotKingPayTable();
-        final Reels freeGameReels = new Reels(
-                List.of(
-                        List.of("A", "2", "3", "3", "3"),
-                        List.of("A", "2", "3"),
-                        List.of("A", "3", "4")
-                ), randomNumberGenerator
-        );
-        final MasterpiecePayTable freeGamePayTable = new MasterpiecePayTable();
-
         SlotScoreCalculator sut = new SlotScoreCalculator(
-                new GameFlow(baseGameReels, baseGamePayTable), new GameFlow(freeGameReels, freeGamePayTable)
+                new GameFlow(new Reels(
+                        List.of(
+                                List.of("A", "A", "3", "A"),
+                                List.of("A", "A", "3", "A"),
+                                List.of("A", "A", "3"),
+                                List.of("A", "A", "3"),
+                                List.of("A", "A", "4")
+                        ), randomNumberGenerator), new SlotKingPayTable()),
+                new GameFlow(new Reels(
+                        List.of(
+                                List.of("A", "2", "3", "3", "3"),
+                                List.of("A", "2", "3"),
+                                List.of("A", "3", "4")
+                        ), randomNumberGenerator
+                ), new MasterpiecePayTable())
         );
 
         int totalWin = 0;
