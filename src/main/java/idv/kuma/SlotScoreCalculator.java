@@ -74,6 +74,6 @@ public class SlotScoreCalculator {
     }
 
     public boolean isFreeGame() {
-        return false;
+        return freeGameCount > 0;
     }
 }
