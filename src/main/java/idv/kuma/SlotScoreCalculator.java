@@ -27,6 +27,10 @@ public class SlotScoreCalculator {
 
     }
 
+    public boolean isFreeGame() {
+        return freeGameCount > 0;
+    }
+
     private void tryTriggerFreeGame(Screen screen, int bet) {
         int count = 0;
         for (List<String> rawColumn : screen.rawScreen()) {
@@ -42,7 +46,6 @@ public class SlotScoreCalculator {
             freeGameBet = bet;
         }
     }
-
 
     public Screen getScreen() {
 
@@ -73,7 +76,21 @@ public class SlotScoreCalculator {
         freeGameCount--;
     }
 
-    public boolean isFreeGame() {
-        return freeGameCount > 0;
+    public Memento toMemento() {
+
+        List<Integer> baseGamePositions = baseGameFlow.getPositions();
+
+        return new Memento(
+                baseGamePositions,
+                null,
+                freeGameCount
+
+        );
+    }
+
+    public void restore(Memento memento) {
+        List<Integer> baseGamePositions = memento.getBaseGamePositions();
+
+        baseGameFlow.restore(baseGamePositions);
     }
 }
