@@ -15,7 +15,7 @@ public class SlotScoreCalculator {
 
     public SpinResult spinBase(int bet) throws WrongModeException {
 
-        if (freeGameCount > 0) {
+        if (isFreeGame()) {
             throw new WrongModeException("wrong mode: FREE_GAME");
         }
 
@@ -46,7 +46,7 @@ public class SlotScoreCalculator {
 
     public Screen getScreen() {
 
-        if (freeGameCount <= 0) {
+        if (!isFreeGame()) {
             return baseGameFlow.getScreen();
         } else {
             return freeGameFlow.getScreen();
@@ -56,7 +56,7 @@ public class SlotScoreCalculator {
     public SpinResult spinFree() throws WrongModeException {
 
 
-        if (freeGameCount <= 0) {
+        if (!isFreeGame()) {
             throw new WrongModeException("wrong mode: BASE_GAME");
         }
 
