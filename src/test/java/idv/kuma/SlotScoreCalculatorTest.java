@@ -195,6 +195,64 @@ class SlotScoreCalculatorTest {
     }
 
     @Test
+    void recovery_in_free_game() throws WrongModeException {
+
+
+        assume_RNG_generates(List.of(0, 0, 0, 0, 0, 1, 1, 1));
+
+        given_sut(
+                List.of(
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "4")
+                ), List.of(
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "3", "4")
+                ));
+
+        when_spin_base(10);
+        when_spin_free();
+
+        Memento memento = sut.toMemento();
+
+
+        given_sut(
+                List.of(
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "3"),
+                        List.of("A", "A", "4")
+                ), List.of(
+                        List.of("A", "2", "3"),
+                        List.of("A", "2", "3"),
+                        List.of("A", "3", "4")
+                ));
+
+        sut.restore(memento);
+
+        when_get_screen_then_should_get(
+                List.of(
+                        List.of("2", "3", "A"),
+                        List.of("2", "3", "A"),
+                        List.of("3", "4", "A")
+                )
+        );
+    }
+
+    private void when_get_screen_then_should_get(List<List<String>> rawScreen) {
+        Screen screen = sut.getScreen();
+        Assertions.assertThat(screen).isEqualTo(
+                new Screen(
+                        rawScreen
+                )
+        );
+    }
+
+    @Test
     void get_screen_in_free_game() throws WrongModeException {
 
 
@@ -221,15 +279,6 @@ class SlotScoreCalculatorTest {
                         List.of("A", "2", "3"),
                         List.of("A", "2", "3"),
                         List.of("A", "3", "4")
-                )
-        );
-    }
-
-    private void when_get_screen_then_should_get(List<List<String>> rawScreen) {
-        Screen screen = sut.getScreen();
-        Assertions.assertThat(screen).isEqualTo(
-                new Screen(
-                        rawScreen
                 )
         );
     }
@@ -479,6 +528,7 @@ class SlotScoreCalculatorTest {
         );
 
     }
+
     @Test
     void spin_and_lose() throws WrongModeException {
 
