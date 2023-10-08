@@ -53,7 +53,7 @@ class SlotScoreCalculatorTest {
         );
         final MasterpiecePayTable freeGamePayTable = new MasterpiecePayTable();
         sut = new SlotScoreCalculator(
-                new GameFlow(baseGameReels, baseGamePayTable), new GameFlow(freeGameReels, freeGamePayTable)
+                new GameFlow(baseGameReels, baseGamePayTable), new GameFlow(freeGameReels, freeGamePayTable), new FreeGameTriggerringRules()
         );
     }
 

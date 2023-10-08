@@ -31,7 +31,7 @@ class SlotScoreCalculatorSimulatorTest {
                                 List.of("A", "2", "3", "A", "A", "A", "A"),
                                 List.of("A", "3", "4", "A", "A", "A", "A")
                         ), randomNumberGenerator
-                ), new MasterpiecePayTable())
+                ), new MasterpiecePayTable()), new FreeGameTriggerringRules()
         );
 
         int totalWin = 0;

@@ -3,13 +3,14 @@ package idv.kuma;
 public class SlotScoreCalculator {
     private final GameFlow baseGameFlow;
     private final GameFlow freeGameFlow;
-    private final FreeGameTriggerringRules freeGameTriggerringRules = new FreeGameTriggerringRules();
+    private final FreeGameTriggerringRules freeGameTriggerringRules;
     private int freeGameCount;
     private int freeGameBet;
 
-    public SlotScoreCalculator(GameFlow baseGameFlow, GameFlow freeGameFlow) {
+    public SlotScoreCalculator(GameFlow baseGameFlow, GameFlow freeGameFlow, FreeGameTriggerringRules freeGameTriggerringRules) {
         this.baseGameFlow = baseGameFlow;
         this.freeGameFlow = freeGameFlow;
+        this.freeGameTriggerringRules = freeGameTriggerringRules;
     }
 
     public SpinResult spinBase(int bet) throws WrongModeException {
@@ -39,14 +40,6 @@ public class SlotScoreCalculator {
         }
     }
 
-    private int getFreeGameCount() {
-        return freeGameTriggerringRules.getFreeGameCount();
-    }
-
-    private boolean checkTriggeringRules(Screen screen) {
-
-        return freeGameTriggerringRules.checkTriggeringRules(screen);
-    }
 
     public Screen getScreen() {
 
