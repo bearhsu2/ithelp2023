@@ -32,10 +32,10 @@ public class SlotScoreCalculator {
     }
 
     private void tryTriggerFreeGame(Screen screen, int bet) {
-        boolean shouldTriggerFreeGame = freeGameTriggerringRules.checkTriggeringRules(screen);
+        boolean shouldTriggerFreeGame = freeGameTriggerringRules.check(screen);
 
         if (shouldTriggerFreeGame) {
-            freeGameCount += freeGameTriggerringRules.getFreeGameCount();
+            freeGameCount += freeGameTriggerringRules.getCount();
             freeGameBet = bet;
         }
     }
