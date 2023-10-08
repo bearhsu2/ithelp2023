@@ -1,10 +1,9 @@
 package idv.kuma;
 
-import java.util.List;
-
 public class SlotScoreCalculator {
     private final GameFlow baseGameFlow;
     private final GameFlow freeGameFlow;
+    private final FreeGameTriggerringRules freeGameTriggerringRules = new FreeGameTriggerringRules();
     private int freeGameCount;
     private int freeGameBet;
 
@@ -32,30 +31,21 @@ public class SlotScoreCalculator {
     }
 
     private void tryTriggerFreeGame(Screen screen, int bet) {
-        boolean shouldTriggerFreeGame = checkTriggeringRules(screen);
+        boolean shouldTriggerFreeGame = freeGameTriggerringRules.checkTriggeringRules(screen);
 
         if (shouldTriggerFreeGame) {
-            freeGameCount += getFreeGameCount();
+            freeGameCount += freeGameTriggerringRules.getFreeGameCount();
             freeGameBet = bet;
         }
     }
 
     private int getFreeGameCount() {
-        return 3;
+        return freeGameTriggerringRules.getFreeGameCount();
     }
 
     private boolean checkTriggeringRules(Screen screen) {
-        int count = 0;
-        for (List<String> rawColumn : screen.rawScreen()) {
-            for (String grid : rawColumn) {
-                if (grid.equals("A")) {
-                    count++;
-                }
-            }
-        }
 
-        boolean shouldTriggerFreeGame = count >= 10;
-        return shouldTriggerFreeGame;
+        return freeGameTriggerringRules.checkTriggeringRules(screen);
     }
 
     public Screen getScreen() {
