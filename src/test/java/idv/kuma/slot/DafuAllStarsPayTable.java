@@ -1,4 +1,7 @@
-package idv.kuma;
+package idv.kuma.slot;
+
+import idv.kuma.slot.PayTable;
+import idv.kuma.slot.Screen;
 
 import java.util.List;
 

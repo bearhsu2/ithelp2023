@@ -1,4 +1,4 @@
-package idv.kuma;
+package idv.kuma.slot;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

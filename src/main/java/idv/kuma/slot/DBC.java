@@ -1,7 +1,6 @@
-package idv.kuma;
+package idv.kuma.slot;
 
 import java.util.function.BooleanSupplier;
-import java.util.function.Supplier;
 
 public class DBC {
 

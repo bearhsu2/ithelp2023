@@ -1,4 +1,4 @@
-package idv.kuma;
+package idv.kuma.slot;
 
 import java.util.Random;
 

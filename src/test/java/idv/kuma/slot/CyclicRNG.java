@@ -1,4 +1,6 @@
-package idv.kuma;
+package idv.kuma.slot;
+
+import idv.kuma.slot.RandomNumberGenerator;
 
 import java.util.ArrayDeque;
 import java.util.List;

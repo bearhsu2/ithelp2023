@@ -1,4 +1,4 @@
-package idv.kuma;
+package idv.kuma.slot;
 
 public interface FreeGameTriggerringRules {
     int getCount();
