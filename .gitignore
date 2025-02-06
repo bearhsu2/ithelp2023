@@ -1,6 +1,7 @@
-.idea
+java/.idea
 java/target
 java/*.iws
 java/*.iml
 java/*.ipr
+javascript/.idea
 javascript/node_modules
