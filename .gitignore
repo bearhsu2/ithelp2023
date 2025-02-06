@@ -1,5 +1,6 @@
 .idea
-target
-*.iws
-*.iml
-*.ipr
+java/target
+java/*.iws
+java/*.iml
+java/*.ipr
+javascript/node_modules
