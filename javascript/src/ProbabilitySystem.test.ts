@@ -1,16 +1,14 @@
-class Sut {
-    getValue() {
-        return "hello ts";
+class ProbabilitySystem {
+    spin() {
+        return 0;
     }
 }
 
+describe('probability system', () => {
 
-
-describe('abc', () => {
-
-    test('abc', () => {
-        const sut = new Sut();
-        expect(sut.getValue()).toBe("hello ts");
+    test('lose', () => {
+        const sut = new ProbabilitySystem();
+        expect(sut.spin()).toBe(0);
     });
 
 });
