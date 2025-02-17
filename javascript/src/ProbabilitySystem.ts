@@ -2,6 +2,11 @@ import {Reels} from "./Reels";
 
 export class ProbabilitySystem {
 
+
+    constructor(reels: Reels) {
+        this.reels = reels;
+    }
+
     reels: Reels = new Reels(
         [
             ['A', 'Q', 'K'],
