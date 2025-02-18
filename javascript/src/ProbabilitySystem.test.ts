@@ -29,18 +29,18 @@ describe('probability system', () => {
         expect(sut.spin('L1')).toBe(20);
     });
 
-    // test('Row2 hit, bet L2 -> 20', () => {
-    //     const sut = new ProbabilitySystem(new Reels(
-    //         [
-    //             ['A', 'Q', 'K'],
-    //             ['A', 'Q', 'K'],
-    //             ['A', 'Q', 'K'],
-    //             ['A', 'Q', 'K'],
-    //             ['10', 'Q', 'J'],
-    //         ]
-    //     ));
-    //     expect(sut.spin('L2')).toBe(20);
-    // });
+    test('Row2 hit, bet L2 -> 20', () => {
+        const sut = new ProbabilitySystem(new Reels(
+            [
+                ['A', 'Q', 'K'],
+                ['A', 'Q', 'K'],
+                ['A', 'Q', 'K'],
+                ['A', 'Q', 'K'],
+                ['10', 'Q', 'J'],
+            ]
+        ));
+        expect(sut.spin('L2')).toBe(20);
+    });
 
 
 });
