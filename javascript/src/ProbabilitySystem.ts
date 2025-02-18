@@ -14,7 +14,7 @@ export class ProbabilitySystem {
         if (this.reels.isRow1Hit() && betLine === 'L1') {
             return 20;
         }
-        if (this.isRow2Hit() && betLine === 'L2') {
+        if (this.reels.isRow2Hit() && betLine === 'L2') {
             return 20;
         }
 
@@ -22,13 +22,5 @@ export class ProbabilitySystem {
 
     }
 
-    private isRow2Hit() {
-        const secondElementsSet = new Set<string>();
-        for (let i = 0; i < this.reels.reels.length; i++) {
-            const reel = this.reels.reels[i];
-            secondElementsSet.add(reel[1]);
-        }
-        const isRow2Hit = secondElementsSet.size === 1;
-        return isRow2Hit;
-    }
+
 }
