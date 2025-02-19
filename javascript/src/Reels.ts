@@ -1,7 +1,7 @@
 export class Reels {
     reels: Array<Array<string>>;
 
-    constructor(reels: Array<Array<string>>) {
+    private constructor(reels: Array<Array<string>>) {
         this.reels = reels;
     }
 
@@ -15,4 +15,7 @@ export class Reels {
         return uniqueElements.size === 1;
     }
 
+    static create(rawReels: Array<Array<string>>) {
+        return new Reels(rawReels);
+    }
 }

@@ -4,7 +4,7 @@ export class ProbabilitySystem {
 
     private reels: Reels;
 
-    constructor(reels: Reels) {
+    private constructor(reels: Reels) {
         this.reels = reels;
     }
 
@@ -22,4 +22,7 @@ export class ProbabilitySystem {
     }
 
 
+    static create(reels: Reels) {
+        return new ProbabilitySystem(reels);
+    }
 }

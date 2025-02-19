@@ -4,7 +4,7 @@ import {Reels} from "./Reels";
 describe('probability system', () => {
 
     test('Row1 hit, bet L2 -> 0', () => {
-        const sut = new ProbabilitySystem(new Reels(
+        const sut = ProbabilitySystem.create(Reels.create(
             [
                 ['A', 'Q', 'K'],
                 ['A', 'Q', 'K'],
@@ -17,7 +17,7 @@ describe('probability system', () => {
     });
 
     test('Row1 hit, bet L1 -> 20', () => {
-        const sut = new ProbabilitySystem(new Reels(
+        const sut = ProbabilitySystem.create(Reels.create(
             [
                 ['A', 'Q', 'K'],
                 ['A', 'Q', 'K'],
@@ -30,7 +30,7 @@ describe('probability system', () => {
     });
 
     test('Row2 hit, bet L2 -> 20', () => {
-        const sut = new ProbabilitySystem(new Reels(
+        const sut = ProbabilitySystem.create(Reels.create(
             [
                 ['A', 'Q', 'K'],
                 ['A', 'Q', 'K'],
