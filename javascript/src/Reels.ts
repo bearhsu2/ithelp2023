@@ -15,7 +15,7 @@ export class Reels {
         return uniqueElements.size === 1;
     }
 
-    static create(rawReels: Array<Array<string>>) {
+    static create(rawReels: Array<Array<string>>): Reels {
         return new Reels(rawReels);
     }
 }

@@ -22,7 +22,7 @@ export class ProbabilitySystem {
     }
 
 
-    static create(reels: Reels) {
+    static create(reels: Reels): ProbabilitySystem {
         return new ProbabilitySystem(reels);
     }
 }
