@@ -17,6 +17,10 @@ export class ProbabilitySystem {
         if (this.reels.isRowHit(1) && betLine === 'L2') {
             return 20;
         }
+
+        if (this.reels.isRowHit(2) && betLine === 'L3') {
+            return 20;
+        }
         return 0;
 
     }
