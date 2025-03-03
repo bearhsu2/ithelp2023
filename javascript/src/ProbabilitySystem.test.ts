@@ -55,4 +55,17 @@ describe('probability system', () => {
     });
 
 
+    // test('Roll then Row3 hit, bet L3 -> 20', () => {
+    //     const sut = ProbabilitySystem.create(Reels.create(
+    //         [
+    //             ['A', 'Q', 'K'],
+    //             ['A', 'Q', 'K'],
+    //             ['A', 'Q', 'K'],
+    //             ['A', 'Q', 'K'],
+    //             ['10', 'J', '9', 'K'],
+    //         ]
+    //     ));
+    //     expect(sut.spin('L3')).toBe(20);
+    // });
+
 });
