@@ -11,6 +11,8 @@ export class ProbabilitySystem {
 
     spin(betLine: string): number {
 
+        this.reels.spin();
+
         if (this.reels.isRowHit(0) && betLine === 'L1') {
             return 20;
         }
