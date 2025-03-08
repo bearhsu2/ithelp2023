@@ -18,7 +18,7 @@ export class Reels {
 
         const screen: Array<Array<string>> = [];
         for (let i: number = 0; i < this.reels.length; i++) {
-            screen.push(this.reels[i].slice(this.nextIndex, this.nextIndex + 3));
+            screen.push(this.reels[i].slice(this.index, this.index + 3));
         }
 
         const uniqueElements = new Set<string>();
