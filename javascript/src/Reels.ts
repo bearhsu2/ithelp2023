@@ -16,12 +16,15 @@ export class Reels {
 
     isRowHit(row: number): boolean {
 
-        const localRow: number = this.nextIndex + row;
+        const screen: Array<Array<string>> = [];
+        for (let i: number = 0; i < this.reels.length; i++) {
+            screen.push(this.reels[i].slice(this.nextIndex, this.nextIndex + 3));
+        }
 
         const uniqueElements = new Set<string>();
-        for (let i: number = 0; i < this.reels.length; i++) {
-            const reel: string[] = this.reels[i];
-            uniqueElements.add(reel[localRow]);
+        for (let i: number = 0; i < screen.length; i++) {
+            const screenReel: string[] = screen[i];
+            uniqueElements.add(screenReel[row]);
         }
         return uniqueElements.size === 1;
     }
