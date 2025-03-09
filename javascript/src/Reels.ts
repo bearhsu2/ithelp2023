@@ -1,12 +1,26 @@
 import {Screen} from "./Screen";
 
+class Reel {
+    symbols: Array<string>;
+
+    constructor(symbols: Array<string>) {
+        this.symbols = symbols;
+    }
+
+    getScreenColumn(index: number): string[] {
+        return this.symbols.slice(index, index + 3);
+    }
+}
+
 export class Reels {
-    reels: Array<Array<string>>;
+    reels: Array<Reel>;
     private index: number;
     private nextIndex: number;
 
     private constructor(reels: Array<Array<string>>, nextIndex: number) {
-        this.reels = reels;
+
+        this.reels = reels.map((reel: Array<string>) => new Reel(reel));
+
         this.index = 0;
         this.nextIndex = nextIndex;
     }
@@ -21,11 +35,9 @@ export class Reels {
     }
 
     private getScreen(): Screen {
-        const rawScreen: Array<Array<string>> = [];
-        for (let i: number = 0; i < this.reels.length; i++) {
-            rawScreen.push(this.reels[i].slice(this.index, this.index + 3));
-        }
-        return new Screen(rawScreen);
+        return new Screen(
+            this.reels.map((reel: Reel): Array<string> => reel.getScreenColumn(this.index))
+        );
     }
 
     static create(nextIndex: number, rawReels: Array<Array<string>>): Reels {
