@@ -1,19 +1,4 @@
-class Screen {
-    private readonly rawScreen: Array<Array<string>>;
-
-    constructor(rawScreen: Array<Array<string>>) {
-        this.rawScreen = rawScreen;
-    }
-
-    isScreenRowHit(row: number) {
-        const uniqueElements = new Set<string>();
-        for (let i: number = 0; i < this.rawScreen.length; i++) {
-            const screenReel: string[] = this.rawScreen[i];
-            uniqueElements.add(screenReel[row]);
-        }
-        return uniqueElements.size === 1;
-    }
-}
+import {Screen} from "./Screen";
 
 export class Reels {
     reels: Array<Array<string>>;
@@ -27,6 +12,7 @@ export class Reels {
     }
 
 
+    // 中略…
     spin() {
         this.index = this.nextIndex;
     }
@@ -44,6 +30,7 @@ export class Reels {
         return new Screen(rawScreen);
     }
 
+    // 中略…
     static create(nextIndex: number, rawReels: Array<Array<string>>): Reels {
         return new Reels(rawReels, nextIndex);
     }
