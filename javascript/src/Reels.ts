@@ -11,8 +11,6 @@ export class Reels {
         this.nextIndex = nextIndex;
     }
 
-
-    // 中略…
     spin() {
         this.index = this.nextIndex;
     }
@@ -30,7 +28,6 @@ export class Reels {
         return new Screen(rawScreen);
     }
 
-    // 中略…
     static create(nextIndex: number, rawReels: Array<Array<string>>): Reels {
         return new Reels(rawReels, nextIndex);
     }
