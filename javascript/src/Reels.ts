@@ -10,6 +10,10 @@ class Reel {
     getScreenColumn(index: number): string[] {
         return this.symbols.slice(index, index + 3);
     }
+
+    static from(reel: Array<string>) {
+        return new Reel(reel);
+    }
 }
 
 export class Reels {
@@ -19,13 +23,14 @@ export class Reels {
 
     private constructor(reels: Array<Array<string>>, nextIndex: number) {
 
-        this.reels = reels.map((reel: Array<string>) => new Reel(reel));
+        this.reels = reels.map((reel: Array<string>): Reel => Reel.from(reel));
 
         this.index = 0;
         this.nextIndex = nextIndex;
     }
 
-    spin() {
+
+    spin(): void {
         this.index = this.nextIndex;
     }
 
@@ -35,10 +40,11 @@ export class Reels {
     }
 
     private getScreen(): Screen {
-        return new Screen(
+        return Screen.from(
             this.reels.map((reel: Reel): Array<string> => reel.getScreenColumn(this.index))
         );
     }
+
 
     static create(nextIndex: number, rawReels: Array<Array<string>>): Reels {
         return new Reels(rawReels, nextIndex);
