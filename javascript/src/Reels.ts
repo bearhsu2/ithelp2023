@@ -20,8 +20,7 @@ export class Reels {
     }
 
     isRowHit(row: number): boolean {
-        const screen: Screen = this.getScreen();
-        return screen.isScreenRowHit(row);
+        return this.getScreen().isScreenRowHit(row);
     }
 
     private getScreen(): Screen {
