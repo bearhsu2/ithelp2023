@@ -1,17 +1,18 @@
 import {Screen} from "./Screen";
 import {Reel} from "./Reel";
+import {RandomNumberGenerator} from "./RandomNumberGenerator";
 
 export class Reels {
     reels: Array<Reel>;
     private index: number;
     private nextIndex: number;
 
-    private constructor(reels: Array<Array<string>>, nextIndex: number) {
+    private constructor(reels: Array<Array<string>>, randomNumberGenerator: RandomNumberGenerator) {
 
         this.reels = reels.map((reel: Array<string>): Reel => Reel.from(reel));
 
         this.index = 0;
-        this.nextIndex = nextIndex;
+        this.nextIndex = randomNumberGenerator.nextInteger();
     }
 
 
@@ -30,7 +31,8 @@ export class Reels {
     }
 
 
-    static create(nextIndex: number, rawReels: Array<Array<string>>): Reels {
-        return new Reels(rawReels, nextIndex);
+    static create(randomNumberGenerator: RandomNumberGenerator, rawReels: Array<Array<string>>): Reels {
+
+        return new Reels(rawReels, randomNumberGenerator);
     }
 }
