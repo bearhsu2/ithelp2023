@@ -1,11 +1,14 @@
 export class RandomNumberGenerator {
-    private _nextInteger: number;
+    private _integers: number[];
+    private _nextIndex: number = 0;
 
-    constructor(nextInteger: number) {
-        this._nextInteger = nextInteger;
+    constructor(...numbers: number[]) {
+        this._integers = numbers;
     }
 
     nextInteger(): number {
-        return this._nextInteger;
+        const integer = this._integers[this._nextIndex];
+        this._nextIndex++;
+        return integer;
     }
 }

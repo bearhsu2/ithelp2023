@@ -4,35 +4,40 @@ import {RandomNumberGenerator} from "./RandomNumberGenerator";
 
 export class Reels {
     reels: Array<Reel>;
-    private index: number;
-    private nextIndex: number;
+    private indices: number[];
+    private randomNumberGenerator: RandomNumberGenerator;
 
     private constructor(reels: Array<Array<string>>, randomNumberGenerator: RandomNumberGenerator) {
+        this.randomNumberGenerator = randomNumberGenerator;
 
         this.reels = reels.map((reel: Array<string>): Reel => Reel.from(reel));
 
-        this.index = 0;
-        this.nextIndex = randomNumberGenerator.nextInteger();
+        this.indices = [0, 0, 0, 0, 0];
     }
 
 
     spin(): void {
-        this.index = this.nextIndex;
+
+        for (let i: number = 0; i < this.indices.length; ++i) {
+            this.indices[i] = this.randomNumberGenerator.nextInteger();
+        }
     }
 
     isRowHit(row: number): boolean {
         return this.getScreen().isScreenRowHit(row);
     }
 
-    private getScreen(): Screen {
-        return Screen.from(
-            this.reels.map((reel: Reel): Array<string> => reel.getScreenColumn(this.index))
-        );
+
+    getScreen(): Screen {
+        const rawScreen: Array<Array<string>> = [];
+        for (let i: number = 0; i < this.reels.length; i++) {
+            rawScreen.push(this.reels[i].getScreenColumn(this.indices[i]));
+        }
+        return Screen.from(rawScreen);
     }
 
 
     static create(randomNumberGenerator: RandomNumberGenerator, rawReels: Array<Array<string>>): Reels {
-
         return new Reels(rawReels, randomNumberGenerator);
     }
 }
