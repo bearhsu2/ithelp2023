@@ -1,11 +1,11 @@
 export class RandomNumberGenerator {
-    private _integers: number[];
+    private integers: number[];
 
     constructor(...numbers: number[]) {
-        this._integers = numbers;
+        this.integers = numbers;
     }
 
     nextInteger(): number {
-        return <number>this._integers.shift();
+        return <number>this.integers.shift();
     }
 }
