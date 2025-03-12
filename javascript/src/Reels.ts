@@ -8,10 +8,8 @@ export class Reels {
     private randomNumberGenerator: RandomNumberGenerator;
 
     private constructor(reels: Array<Array<string>>, randomNumberGenerator: RandomNumberGenerator) {
-        this.randomNumberGenerator = randomNumberGenerator;
-
         this.reels = reels.map((reel: Array<string>): Reel => Reel.from(reel));
-
+        this.randomNumberGenerator = randomNumberGenerator;
         this.indices = [0, 0, 0, 0, 0];
     }
 
