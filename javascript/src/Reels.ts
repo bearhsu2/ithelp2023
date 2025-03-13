@@ -4,22 +4,19 @@ import {RandomNumberGenerator} from "./RandomNumberGenerator";
 
 export class Reels {
     reels: Array<Reel>;
-    private indices: number[];
 
     private constructor(reels: Array<Array<string>>, randomNumberGenerator: RandomNumberGenerator) {
-
         this.reels = reels.map((reel: Array<string>): Reel => Reel.from(reel, randomNumberGenerator));
-
-        this.indices = [0, 0, 0, 0, 0];
     }
 
 
     spin(): void {
-        for (let i: number = 0; i < this.indices.length; ++i) {
+        for (let i: number = 0; i < this.reels.length; ++i) {
             this.reels[i].spin();
         }
     }
 
+    // 中略…
     isRowHit(row: number): boolean {
         return this.getScreen().isScreenRowHit(row);
     }
@@ -32,7 +29,7 @@ export class Reels {
         return Screen.from(rawScreen);
     }
 
-
+    // 中略…
     static create(randomNumberGenerator: RandomNumberGenerator, rawReels: Array<Array<string>>): Reels {
         return new Reels(rawReels, randomNumberGenerator);
     }
