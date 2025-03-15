@@ -1,6 +1,12 @@
 export class Screen {
     private readonly rawScreen: Array<Array<string>>;
 
+    static from(rawScreen: Array<Array<string>>): Screen {
+        return new Screen(
+            rawScreen
+        );
+    }
+
     constructor(rawScreen: Array<Array<string>>) {
         this.rawScreen = rawScreen;
     }
@@ -12,11 +18,5 @@ export class Screen {
             uniqueElements.add(screenReel[row]);
         }
         return uniqueElements.size === 1;
-    }
-
-    static from(rawScreen: Array<Array<string>>) {
-        return new Screen(
-            rawScreen
-        );
     }
 }

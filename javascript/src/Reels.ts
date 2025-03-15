@@ -21,7 +21,7 @@ export class Reels {
         return this.getScreen().isScreenRowHit(row);
     }
 
-    getScreen(): Screen {
+    private getScreen(): Screen {
         const rawScreen: Array<Array<string>> = [];
         for (let i: number = 0; i < this.reels.length; i++) {
             rawScreen.push(this.reels[i].getScreenColumn());
