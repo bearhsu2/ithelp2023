@@ -1,11 +1,11 @@
 import {Screen} from "./Screen";
 import {Reel} from "./Reel";
-import {RandomNumberGenerator} from "./RandomNumberGenerator";
+import {DesignatedNumberGenerator} from "./DesignatedNumberGenerator";
 
 export class Reels {
     reels: Array<Reel>;
 
-    private constructor(reels: Array<Array<string>>, randomNumberGenerator: RandomNumberGenerator) {
+    private constructor(reels: Array<Array<string>>, randomNumberGenerator: DesignatedNumberGenerator) {
         this.reels = reels.map((reel: Array<string>): Reel => Reel.from(reel, randomNumberGenerator));
     }
 
@@ -30,7 +30,7 @@ export class Reels {
     }
 
     // 中略…
-    static create(randomNumberGenerator: RandomNumberGenerator, rawReels: Array<Array<string>>): Reels {
+    static create(randomNumberGenerator: DesignatedNumberGenerator, rawReels: Array<Array<string>>): Reels {
         return new Reels(rawReels, randomNumberGenerator);
     }
 }

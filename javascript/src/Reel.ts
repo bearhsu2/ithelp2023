@@ -1,11 +1,11 @@
-import {RandomNumberGenerator} from "./RandomNumberGenerator";
+import {DesignatedNumberGenerator} from "./DesignatedNumberGenerator";
 
 export class Reel {
     symbols: Array<string>;
-    private randomNumberGenerator: RandomNumberGenerator;
+    private randomNumberGenerator: DesignatedNumberGenerator;
     private index: number;
 
-    constructor(symbols: Array<string>, randomNumberGenerator: RandomNumberGenerator) {
+    constructor(symbols: Array<string>, randomNumberGenerator: DesignatedNumberGenerator) {
         this.symbols = symbols;
         this.randomNumberGenerator = randomNumberGenerator;
         this.index = 0;
@@ -25,7 +25,7 @@ export class Reel {
         return screenColumn
     }
 
-    static from(reel: Array<string>, randomNumberGenerator: RandomNumberGenerator) {
+    static from(reel: Array<string>, randomNumberGenerator: DesignatedNumberGenerator) {
         return new Reel(reel, randomNumberGenerator);
     }
 

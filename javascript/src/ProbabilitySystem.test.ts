@@ -1,12 +1,12 @@
 import {ProbabilitySystem} from "./ProbabilitySystem";
 import {Reels} from "./Reels";
-import {RandomNumberGenerator} from "./RandomNumberGenerator";
+import {DesignatedNumberGenerator} from "./DesignatedNumberGenerator";
 
 describe('probability system', () => {
 
     test('Row1 hit, bet L2 -> 0', () => {
         const sut = ProbabilitySystem.create(Reels.create(
-            new RandomNumberGenerator(0, 0, 0, 0, 0), [
+            new DesignatedNumberGenerator(0, 0, 0, 0, 0), [
                 ['A', 'Q', 'K'],
                 ['A', 'Q', 'K'],
                 ['A', 'Q', 'K'],
@@ -18,7 +18,7 @@ describe('probability system', () => {
 
     test('Row1 hit, bet L1 -> 20', () => {
         const sut = ProbabilitySystem.create(Reels.create(
-            new RandomNumberGenerator(0, 0, 0, 0, 0), [
+            new DesignatedNumberGenerator(0, 0, 0, 0, 0), [
                 ['A', 'Q', 'K'],
                 ['A', 'Q', 'K'],
                 ['A', 'Q', 'K'],
@@ -30,7 +30,7 @@ describe('probability system', () => {
 
     test('Row2 hit, bet L2 -> 20', () => {
         const sut = ProbabilitySystem.create(Reels.create(
-            new RandomNumberGenerator(0, 0, 0, 0, 0), [
+            new DesignatedNumberGenerator(0, 0, 0, 0, 0), [
                 ['A', 'Q', 'K'],
                 ['A', 'Q', 'K'],
                 ['A', 'Q', 'K'],
@@ -41,7 +41,7 @@ describe('probability system', () => {
     });
     test('Row3 hit, bet L3 -> 20', () => {
         const sut = ProbabilitySystem.create(Reels.create(
-            new RandomNumberGenerator(0, 0, 0, 0, 0), [
+            new DesignatedNumberGenerator(0, 0, 0, 0, 0), [
                 ['A', 'Q', 'K'],
                 ['A', 'Q', 'K'],
                 ['A', 'Q', 'K'],
@@ -54,7 +54,7 @@ describe('probability system', () => {
 
     test('Roll then Row3 hit, bet L3 -> 20', () => {
         const sut = ProbabilitySystem.create(Reels.create(
-            new RandomNumberGenerator(1, 1, 1, 1, 1), [
+            new DesignatedNumberGenerator(1, 1, 1, 1, 1), [
                 ['9', 'A', 'Q', 'K'],
                 ['9', 'A', 'Q', 'K'],
                 ['9', 'A', 'Q', 'K'],
@@ -66,7 +66,7 @@ describe('probability system', () => {
 
     test('Cyclic Rolling', () => {
         const sut = ProbabilitySystem.create(Reels.create(
-            new RandomNumberGenerator(1, 1, 1, 1, 1), [
+            new DesignatedNumberGenerator(1, 1, 1, 1, 1), [
                 ['K', 'A', 'Q'],
                 ['K', 'A', 'Q'],
                 ['K', 'A', 'Q'],
@@ -78,7 +78,7 @@ describe('probability system', () => {
 
     test('Each Reel spins independently', () => {
         const sut = ProbabilitySystem.create(Reels.create(
-            new RandomNumberGenerator(0, 1, 2, 3, 4), [
+            new DesignatedNumberGenerator(0, 1, 2, 3, 4), [
                 ['A', 'Q', 'K'],
                 ['9', 'A', 'Q', 'K'],
                 ['8', '9', 'A', 'Q', 'K'],
