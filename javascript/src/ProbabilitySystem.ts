@@ -13,7 +13,6 @@ export class ProbabilitySystem {
 
 
     spin(...betLines: string[]): number {
-
         this.reels.spin();
         return this.payTable.getOdd(betLines, this.reels);
     }
