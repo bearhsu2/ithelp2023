@@ -1,5 +1,13 @@
 import {Reels} from "./Reels";
 
+class Bet {
+    betLines: string[];
+
+    constructor(betLines: string[]) {
+        this.betLines = betLines;
+    }
+}
+
 export class PayTable {
 
     getOdd(betLines: string[], reels: Reels): number {
@@ -17,7 +25,10 @@ export class PayTable {
     }
 
 
-    private isHit(betLines: string[], line: string) {
-        return betLines.filter(betLine => betLine === line).length > 0;
+    private isHit(betLines: string[], line: string): boolean {
+
+        const bet: Bet = new Bet(betLines);
+
+        return bet.betLines.filter(betLine => betLine === line).length > 0;
     }
 }
