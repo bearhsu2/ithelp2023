@@ -11,7 +11,8 @@ export class Screen {
         this.rawScreen = rawScreen;
     }
 
-    isScreenRowHit(row: number) {
+    // Screen
+    isScreenRowHit(row: number): boolean {
         const uniqueElements = new Set<string>();
         for (let i: number = 0; i < this.rawScreen.length; i++) {
             const screenReel: string[] = this.rawScreen[i];

@@ -16,12 +16,7 @@ export class Reels {
         }
     }
 
-    // 中略…
-    isRowHit(row: number): boolean {
-        return this.getScreen().isScreenRowHit(row);
-    }
-
-    private getScreen(): Screen {
+    getScreen(): Screen {
         const rawScreen: Array<Array<string>> = [];
         for (let i: number = 0; i < this.reels.length; i++) {
             rawScreen.push(this.reels[i].getScreenColumn());
@@ -29,7 +24,6 @@ export class Reels {
         return Screen.from(rawScreen);
     }
 
-    // 中略…
     static create(randomNumberGenerator: DesignatedNumberGenerator, rawReels: Array<Array<string>>): Reels {
         return new Reels(rawReels, randomNumberGenerator);
     }
