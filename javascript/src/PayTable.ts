@@ -1,10 +1,14 @@
 import {Reels} from "./Reels";
 
 class Bet {
-    betLines: string[];
+    lines: string[];
 
-    constructor(betLines: string[]) {
-        this.betLines = betLines;
+    constructor(lines: string[]) {
+        this.lines = lines;
+    }
+
+    includes(line: string): boolean {
+        return this.lines.filter(betLine => betLine === line).length > 0;
     }
 }
 
@@ -20,15 +24,13 @@ export class PayTable {
         if (reels.isRowHit(2) && this.isHit(betLines, 'L3')) {
             return 20;
         }
-
         return 0;
     }
 
 
     private isHit(betLines: string[], line: string): boolean {
-
         const bet: Bet = new Bet(betLines);
-
-        return bet.betLines.filter(betLine => betLine === line).length > 0;
+        return bet.includes(line);
     }
+
 }
