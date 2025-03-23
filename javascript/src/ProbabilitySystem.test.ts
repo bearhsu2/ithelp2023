@@ -90,7 +90,7 @@ describe('probability system', () => {
         expect(sut.spin(new Bet('L1'))).toBe(20);
     });
 
-    test('Roll then Row3 hit, bet L1L2L3 -> 20', () => {
+    test('Roll then Row2 hit, bet L1L2L3 -> 20', () => {
         const sut = ProbabilitySystem.create(Reels.create(
             new DesignatedNumberGenerator(1, 1, 1, 1, 1), [
                 ['A', 'Q', 'K'],
@@ -100,6 +100,18 @@ describe('probability system', () => {
                 ['10', 'J', 'K'],
             ]), new PayTable());
         expect(sut.spin(new Bet('L1', 'L2', 'L3'))).toBe(20);
+    });
+
+    test('Roll then Row1 Row3 hit, bet L1L2L3 -> 40', () => {
+        const sut = ProbabilitySystem.create(Reels.create(
+            new DesignatedNumberGenerator(0, 0, 0, 0, 0), [
+                ['A', 'Q', 'K'],
+                ['A', 'Q', 'K'],
+                ['A', 'Q', 'K'],
+                ['A', 'Q', 'K'],
+                ['A', '10', 'K'],
+            ]), new PayTable());
+        expect(sut.spin(new Bet('L1', 'L2', 'L3'))).toBe(40);
     });
 
 });
