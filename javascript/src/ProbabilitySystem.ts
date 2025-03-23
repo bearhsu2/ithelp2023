@@ -1,5 +1,6 @@
 import {Reels} from "./Reels";
 import {PayTable} from "./PayTable";
+import {Bet} from "./Bet";
 
 export class ProbabilitySystem {
 
@@ -12,9 +13,9 @@ export class ProbabilitySystem {
     }
 
 
-    spin(...betLines: string[]): number {
+    spin(bet: Bet): number {
         this.reels.spin();
-        return this.payTable.getOdd(betLines, this.reels);
+        return this.payTable.getOdd(bet, this.reels);
     }
 
 
