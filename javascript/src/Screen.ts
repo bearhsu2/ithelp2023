@@ -1,3 +1,4 @@
+
 export class Screen {
     private readonly rawScreen: Array<Array<string>>;
 
@@ -11,7 +12,7 @@ export class Screen {
         this.rawScreen = rawScreen;
     }
 
-    // Screen
+    // 每一 Column 同一 Row 的 Symbol 都相同
     isScreenRowHit(row: number): boolean {
         const uniqueElements = new Set<string>();
         for (let i: number = 0; i < this.rawScreen.length; i++) {
@@ -21,7 +22,12 @@ export class Screen {
         return uniqueElements.size === 1;
     }
 
-    getRawScreen(): Array<Array<string>> {
-        return this.rawScreen;
+    // 每一 Column 指定 Row 的 Symbol 都相同
+    isHit() {
+        return this.rawScreen[0][0] === this.rawScreen[1][1]
+            && this.rawScreen[1][1] === this.rawScreen[2][2]
+            && this.rawScreen[2][2] === this.rawScreen[3][1]
+            && this.rawScreen[3][1] === this.rawScreen[4][0];
     }
+
 }
