@@ -20,4 +20,8 @@ export class Screen {
         }
         return uniqueElements.size === 1;
     }
+
+    getRawScreen(): Array<Array<string>> {
+        return this.rawScreen;
+    }
 }
