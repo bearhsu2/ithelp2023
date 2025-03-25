@@ -28,13 +28,8 @@ export class PayTable {
     ];
 
     getOdd(screen: Screen, bet: Bet): number {
-
-        let odd: number = 0;
-        this.payLines.forEach((payLine: PayLine) => {
-            odd += payLine.getOdd(screen, bet);
-        });
-        return odd;
-
+        return this.payLines
+            .reduce((odd, payLine) => odd + payLine.getOdd(screen, bet), 0);
     }
 
 }
