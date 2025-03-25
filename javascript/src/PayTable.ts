@@ -2,21 +2,13 @@ import {Bet} from "./Bet";
 import {Screen} from "./Screen";
 
 class PayLine {
-    get rows(): number[] {
-        return this._rows;
-    }
 
-    get name(): string {
-        return this._name;
-    }
-
-    private _name: string;
-    private _rows: number[];
+    private name: string;
+    private rows: number[];
 
     constructor(name: string, rows: number[]) {
-        this._name = name;
-        this._rows = rows;
-
+        this.name = name;
+        this.rows = rows;
     }
 
     getOdd(screen: Screen, bet: Bet): number {
