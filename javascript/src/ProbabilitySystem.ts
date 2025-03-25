@@ -14,7 +14,6 @@ export class ProbabilitySystem {
     }
 
 
-    // ProbabilitySystem
     spin(bet: Bet): number {
         this.reels.spin();
         const screen: Screen = this.reels.getScreen();
