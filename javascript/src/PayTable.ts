@@ -23,7 +23,6 @@ class PayLine {
 
 export class PayTable {
 
-    // 程式
     getOdd(screen: Screen, bet: Bet): number {
 
         let odd: number = 0;
