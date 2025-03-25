@@ -12,7 +12,7 @@ export class Screen {
     }
 
     // 每一 Column 指定 Row 的 Symbol 都相同
-    isHit(...rows: number[]) {
+    isHit(rows: number[]) {
 
 
         if (rows.length != this.rawScreen.length) {
