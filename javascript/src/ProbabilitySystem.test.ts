@@ -155,7 +155,6 @@ describe('probability system', () => {
         expect(sut.spin(new Bet('L1', 'L2', 'L3'))).toBe(40);
     });
 
-    // 測試
     test('L4 hit, bet L4 -> 20', () => {
         const sut = ProbabilitySystem.create(Reels.create(
             new DesignatedNumberGenerator(0, 0, 0, 0, 0), [
