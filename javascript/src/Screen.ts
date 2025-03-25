@@ -14,6 +14,11 @@ export class Screen {
     // 每一 Column 指定 Row 的 Symbol 都相同
     isHit(...rows: number[]) {
 
+
+        if (rows.length != this.rawScreen.length) {
+            throw new Error("Invalid row number");
+        }
+
         const uniqueElements = new Set<string>();
         for (let i: number = 0; i < rows.length; i++) {
             const column: string[] = this.rawScreen[i];
