@@ -61,11 +61,11 @@ describe('probability system', () => {
     test('Row3 hit, bet L3 -> 20', () => {
         const sut = ProbabilitySystem.create(Reels.create(
             new DesignatedNumberGenerator(0, 0, 0, 0, 0), [
-                ['A', 'Q', 'K'],
-                ['10', 'J', 'K'],
-                ['A', 'Q', 'K'],
-                ['A', 'Q', 'K'],
-                ['10', 'J', 'K'],
+                ['A', 'Q', 'A'],
+                ['10', 'J', 'A'],
+                ['A', 'Q', 'A'],
+                ['A', 'Q', 'A'],
+                ['10', 'J', 'A'],
             ]), new PayTable([
             PayLine.from('L1', [0, 0, 0, 0, 0]),
             PayLine.from('L2', [1, 1, 1, 1, 1]),
@@ -78,11 +78,11 @@ describe('probability system', () => {
     test('Roll then Row3 hit, bet L3 -> 20', () => {
         const sut = ProbabilitySystem.create(Reels.create(
             new DesignatedNumberGenerator(1, 1, 1, 1, 1), [
-                ['9', 'A', 'Q', 'K'],
-                ['10', '10', 'J', 'K'],
-                ['9', 'A', 'Q', 'K'],
-                ['9', 'A', 'Q', 'K'],
-                ['10', '10', 'J', 'K'],
+                ['9', 'K', 'Q', 'A'],
+                ['10', '10', 'J', 'A'],
+                ['9', 'K', 'Q', 'A'],
+                ['9', 'K', 'Q', 'A'],
+                ['10', '10', 'J', 'A'],
             ]), new PayTable([
             PayLine.from('L1', [0, 0, 0, 0, 0]),
             PayLine.from('L2', [1, 1, 1, 1, 1]),
@@ -94,11 +94,11 @@ describe('probability system', () => {
     test('Cyclic Rolling', () => {
         const sut = ProbabilitySystem.create(Reels.create(
             new DesignatedNumberGenerator(1, 1, 1, 1, 1), [
-                ['K', 'A', 'Q'],
-                ['K', '10', 'J'],
-                ['K', 'A', 'Q'],
-                ['K', 'A', 'Q'],
-                ['K', '10', 'J'],
+                ['A', 'K', 'Q'],
+                ['A', '10', 'J'],
+                ['A', 'K', 'Q'],
+                ['A', 'K', 'Q'],
+                ['A', '10', 'J'],
             ]), new PayTable([
             PayLine.from('L1', [0, 0, 0, 0, 0]),
             PayLine.from('L2', [1, 1, 1, 1, 1]),
@@ -126,11 +126,11 @@ describe('probability system', () => {
     test('Roll then Row2 hit, bet L1L2L3 -> 20', () => {
         const sut = ProbabilitySystem.create(Reels.create(
             new DesignatedNumberGenerator(1, 1, 1, 1, 1), [
-                ['A', 'Q', 'K'],
-                ['10', 'J', 'K'],
-                ['A', 'Q', 'K'],
-                ['A', 'Q', 'K'],
-                ['10', 'J', 'K'],
+                ['K', 'Q', 'A'],
+                ['10', 'J', 'A'],
+                ['K', 'Q', 'A'],
+                ['K', 'Q', 'A'],
+                ['10', 'J', 'A'],
             ]), new PayTable([
             PayLine.from('L1', [0, 0, 0, 0, 0]),
             PayLine.from('L2', [1, 1, 1, 1, 1]),
@@ -142,11 +142,11 @@ describe('probability system', () => {
     test('Roll then Row1 Row3 hit, bet L1L2L3 -> 40', () => {
         const sut = ProbabilitySystem.create(Reels.create(
             new DesignatedNumberGenerator(0, 0, 0, 0, 0), [
-                ['A', 'Q', 'K'],
-                ['A', '10', 'K'],
-                ['A', 'Q', 'K'],
-                ['A', 'Q', 'K'],
-                ['A', '10', 'K'],
+                ['A', 'Q', 'A'],
+                ['A', '10', 'A'],
+                ['A', 'Q', 'A'],
+                ['A', 'Q', 'A'],
+                ['A', '10', 'A'],
             ]), new PayTable([
             PayLine.from('L1', [0, 0, 0, 0, 0]),
             PayLine.from('L2', [1, 1, 1, 1, 1]),
