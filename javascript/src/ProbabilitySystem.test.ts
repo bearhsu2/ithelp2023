@@ -175,11 +175,11 @@ describe('probability system', () => {
         const sut = ProbabilitySystem.create(
             Reels.create(
                 new DesignatedNumberGenerator(0, 0, 0, 0, 0), [
-                    ['K', 'Q', 'A'],
+                    ['A', 'Q', 'K'],
+                    ['A', '10', 'J'],
+                    ['A', 'Q', 'K'],
+                    ['A', 'Q', 'K'],
                     ['K', '10', 'J'],
-                    ['K', 'Q', 'A'],
-                    ['K', 'Q', 'A'],
-                    ['J', '10', 'J'],
                 ]),
             new PayTable([
                 PayLine.from('L1', [0, 0, 0, 0, 0]),
