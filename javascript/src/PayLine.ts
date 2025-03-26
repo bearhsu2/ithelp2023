@@ -12,9 +12,15 @@ export class PayLine {
     }
 
     getOdd(screen: Screen, bet: Bet): number {
-        return screen.isHit(this.rows) && bet.includes(this.name)
-            ? 20
-            : 0;
+        if (bet.includes(this.name)) {
+            if (screen.getHitLine(this.rows) == 5) {
+                return 20;
+            } else {
+                return 15;
+            }
+        } else {
+            return 0;
+        }
     }
 
     static from(name: string, rows: number[]): PayLine {
