@@ -179,7 +179,7 @@ describe('probability system', () => {
                     ['K', '10', 'J'],
                     ['K', 'Q', 'A'],
                     ['K', 'Q', 'A'],
-                    ['K', '10', 'J'],
+                    ['J', '10', 'J'],
                 ]),
             new PayTable([
                 PayLine.from('L1', [0, 0, 0, 0, 0]),
