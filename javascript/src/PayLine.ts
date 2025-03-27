@@ -1,6 +1,16 @@
 import {Screen} from "./Screen";
 import {Bet} from "./Bet";
 
+class Odd {
+    hitLength: number;
+    odd: number;
+
+    constructor(hitLength: number, odd: number) {
+        this.hitLength = hitLength;
+        this.odd = odd;
+    }
+}
+
 export class PayLine {
 
     private name: string;
@@ -12,15 +22,17 @@ export class PayLine {
     }
 
     getOdd(screen: Screen, bet: Bet): number {
-        if (bet.includes(this.name)) {
-            if (screen.getHitLength(this.rows) == 5) {
-                return 20;
-            } else {
-                return 15;
-            }
-        } else {
+        const odds: Array<Odd> = [
+            new Odd(5, 20),
+            new Odd(4, 15)
+        ];
+
+        if (!bet.includes(this.name)) {
             return 0;
         }
+
+        return odds.find(odd => odd.hitLength === screen.getHitLength(this.rows))?.odd ?? 0;
+
     }
 
     static from(name: string, rows: number[]): PayLine {
