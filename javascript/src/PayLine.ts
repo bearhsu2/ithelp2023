@@ -24,7 +24,8 @@ export class PayLine {
     getOdd(screen: Screen, bet: Bet): number {
         const odds: Array<Odd> = [
             new Odd(5, 20),
-            new Odd(4, 15)
+            new Odd(4, 15),
+            new Odd(3, 10)
         ];
 
         if (!bet.includes(this.name)) {
