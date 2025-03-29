@@ -4,6 +4,8 @@ import {DesignatedNumberGenerator} from "./DesignatedNumberGenerator";
 import {PayTable} from "./PayTable";
 import {Bet} from "./Bet";
 import {PayLine} from "./PayLine";
+import {Odds} from "./Odds";
+import {Odd} from "./Odd";
 
 describe('probability system', () => {
 
@@ -21,8 +23,14 @@ describe('probability system', () => {
                 PayLine.from('L1', [0, 0, 0, 0, 0]),
                 PayLine.from('L2', [1, 1, 1, 1, 1]),
                 PayLine.from('L3', [2, 2, 2, 2, 2]),
-                PayLine.from('L4', [0, 1, 2, 1, 0])]
-            )
+                PayLine.from('L4', [0, 1, 2, 1, 0])], new Odds([
+                new Odd('A', 5, 20),
+                new Odd('A', 4, 15),
+                new Odd('A', 3, 10),
+                new Odd('K', 5, 15),
+                new Odd('K', 4, 10),
+                new Odd('K', 3, 8)
+            ]))
         );
         expect(sut.spin(new Bet('L2'))).toBe(0);
     });
@@ -39,7 +47,14 @@ describe('probability system', () => {
             PayLine.from('L1', [0, 0, 0, 0, 0]),
             PayLine.from('L2', [1, 1, 1, 1, 1]),
             PayLine.from('L3', [2, 2, 2, 2, 2]),
-            PayLine.from('L4', [0, 1, 2, 1, 0])]));
+            PayLine.from('L4', [0, 1, 2, 1, 0])], new Odds([
+            new Odd('A', 5, 20),
+            new Odd('A', 4, 15),
+            new Odd('A', 3, 10),
+            new Odd('K', 5, 15),
+            new Odd('K', 4, 10),
+            new Odd('K', 3, 8)
+        ])));
         expect(sut.spin(new Bet('L1'))).toBe(20);
     });
 
@@ -55,7 +70,14 @@ describe('probability system', () => {
             PayLine.from('L1', [0, 0, 0, 0, 0]),
             PayLine.from('L2', [1, 1, 1, 1, 1]),
             PayLine.from('L3', [2, 2, 2, 2, 2]),
-            PayLine.from('L4', [0, 1, 2, 1, 0])]));
+            PayLine.from('L4', [0, 1, 2, 1, 0])], new Odds([
+            new Odd('A', 5, 20),
+            new Odd('A', 4, 15),
+            new Odd('A', 3, 10),
+            new Odd('K', 5, 15),
+            new Odd('K', 4, 10),
+            new Odd('K', 3, 8)
+        ])));
         expect(sut.spin(new Bet('L2'))).toBe(20);
     });
     test('Row3 hit, bet L3 -> 20', () => {
@@ -70,7 +92,14 @@ describe('probability system', () => {
             PayLine.from('L1', [0, 0, 0, 0, 0]),
             PayLine.from('L2', [1, 1, 1, 1, 1]),
             PayLine.from('L3', [2, 2, 2, 2, 2]),
-            PayLine.from('L4', [0, 1, 2, 1, 0])]));
+            PayLine.from('L4', [0, 1, 2, 1, 0])], new Odds([
+            new Odd('A', 5, 20),
+            new Odd('A', 4, 15),
+            new Odd('A', 3, 10),
+            new Odd('K', 5, 15),
+            new Odd('K', 4, 10),
+            new Odd('K', 3, 8)
+        ])));
         expect(sut.spin(new Bet('L3'))).toBe(20);
     });
 
@@ -87,7 +116,14 @@ describe('probability system', () => {
             PayLine.from('L1', [0, 0, 0, 0, 0]),
             PayLine.from('L2', [1, 1, 1, 1, 1]),
             PayLine.from('L3', [2, 2, 2, 2, 2]),
-            PayLine.from('L4', [0, 1, 2, 1, 0])]));
+            PayLine.from('L4', [0, 1, 2, 1, 0])], new Odds([
+            new Odd('A', 5, 20),
+            new Odd('A', 4, 15),
+            new Odd('A', 3, 10),
+            new Odd('K', 5, 15),
+            new Odd('K', 4, 10),
+            new Odd('K', 3, 8)
+        ])));
         expect(sut.spin(new Bet('L3'))).toBe(20);
     });
 
@@ -103,7 +139,14 @@ describe('probability system', () => {
             PayLine.from('L1', [0, 0, 0, 0, 0]),
             PayLine.from('L2', [1, 1, 1, 1, 1]),
             PayLine.from('L3', [2, 2, 2, 2, 2]),
-            PayLine.from('L4', [0, 1, 2, 1, 0])]));
+            PayLine.from('L4', [0, 1, 2, 1, 0])], new Odds([
+            new Odd('A', 5, 20),
+            new Odd('A', 4, 15),
+            new Odd('A', 3, 10),
+            new Odd('K', 5, 15),
+            new Odd('K', 4, 10),
+            new Odd('K', 3, 8)
+        ])));
         expect(sut.spin(new Bet('L3'))).toBe(20);
     });
 
@@ -119,7 +162,14 @@ describe('probability system', () => {
             PayLine.from('L1', [0, 0, 0, 0, 0]),
             PayLine.from('L2', [1, 1, 1, 1, 1]),
             PayLine.from('L3', [2, 2, 2, 2, 2]),
-            PayLine.from('L4', [0, 1, 2, 1, 0])]));
+            PayLine.from('L4', [0, 1, 2, 1, 0])], new Odds([
+            new Odd('A', 5, 20),
+            new Odd('A', 4, 15),
+            new Odd('A', 3, 10),
+            new Odd('K', 5, 15),
+            new Odd('K', 4, 10),
+            new Odd('K', 3, 8)
+        ])));
         expect(sut.spin(new Bet('L1'))).toBe(20);
     });
 
@@ -135,7 +185,14 @@ describe('probability system', () => {
             PayLine.from('L1', [0, 0, 0, 0, 0]),
             PayLine.from('L2', [1, 1, 1, 1, 1]),
             PayLine.from('L3', [2, 2, 2, 2, 2]),
-            PayLine.from('L4', [0, 1, 2, 1, 0])]));
+            PayLine.from('L4', [0, 1, 2, 1, 0])], new Odds([
+            new Odd('A', 5, 20),
+            new Odd('A', 4, 15),
+            new Odd('A', 3, 10),
+            new Odd('K', 5, 15),
+            new Odd('K', 4, 10),
+            new Odd('K', 3, 8)
+        ])));
         expect(sut.spin(new Bet('L1', 'L2', 'L3'))).toBe(20);
     });
 
@@ -151,7 +208,14 @@ describe('probability system', () => {
             PayLine.from('L1', [0, 0, 0, 0, 0]),
             PayLine.from('L2', [1, 1, 1, 1, 1]),
             PayLine.from('L3', [2, 2, 2, 2, 2]),
-            PayLine.from('L4', [0, 1, 2, 1, 0])]));
+            PayLine.from('L4', [0, 1, 2, 1, 0])], new Odds([
+            new Odd('A', 5, 20),
+            new Odd('A', 4, 15),
+            new Odd('A', 3, 10),
+            new Odd('K', 5, 15),
+            new Odd('K', 4, 10),
+            new Odd('K', 3, 8)
+        ])));
         expect(sut.spin(new Bet('L1', 'L2', 'L3'))).toBe(40);
     });
 
@@ -167,7 +231,14 @@ describe('probability system', () => {
             PayLine.from('L1', [0, 0, 0, 0, 0]),
             PayLine.from('L2', [1, 1, 1, 1, 1]),
             PayLine.from('L3', [2, 2, 2, 2, 2]),
-            PayLine.from('L4', [0, 1, 2, 1, 0])]));
+            PayLine.from('L4', [0, 1, 2, 1, 0])], new Odds([
+            new Odd('A', 5, 20),
+            new Odd('A', 4, 15),
+            new Odd('A', 3, 10),
+            new Odd('K', 5, 15),
+            new Odd('K', 4, 10),
+            new Odd('K', 3, 8)
+        ])));
         expect(sut.spin(new Bet('L4'))).toBe(20);
     });
 
@@ -185,8 +256,14 @@ describe('probability system', () => {
                 PayLine.from('L1', [0, 0, 0, 0, 0]),
                 PayLine.from('L2', [1, 1, 1, 1, 1]),
                 PayLine.from('L3', [2, 2, 2, 2, 2]),
-                PayLine.from('L4', [0, 1, 2, 1, 0])]
-            )
+                PayLine.from('L4', [0, 1, 2, 1, 0])], new Odds([
+                new Odd('A', 5, 20),
+                new Odd('A', 4, 15),
+                new Odd('A', 3, 10),
+                new Odd('K', 5, 15),
+                new Odd('K', 4, 10),
+                new Odd('K', 3, 8)
+            ]))
         );
         expect(sut.spin(new Bet('L1'))).toBe(15);
     });
@@ -205,8 +282,14 @@ describe('probability system', () => {
                 PayLine.from('L1', [0, 0, 0, 0, 0]),
                 PayLine.from('L2', [1, 1, 1, 1, 1]),
                 PayLine.from('L3', [2, 2, 2, 2, 2]),
-                PayLine.from('L4', [0, 1, 2, 1, 0])]
-            )
+                PayLine.from('L4', [0, 1, 2, 1, 0])], new Odds([
+                new Odd('A', 5, 20),
+                new Odd('A', 4, 15),
+                new Odd('A', 3, 10),
+                new Odd('K', 5, 15),
+                new Odd('K', 4, 10),
+                new Odd('K', 3, 8)
+            ]))
         );
         expect(sut.spin(new Bet('L1'))).toBe(10);
     });
@@ -225,8 +308,15 @@ describe('probability system', () => {
                 PayLine.from('L1', [0, 0, 0, 0, 0]),
                 PayLine.from('L2', [1, 1, 1, 1, 1]),
                 PayLine.from('L3', [2, 2, 2, 2, 2]),
-                PayLine.from('L4', [0, 1, 2, 1, 0])]
-            )
+                PayLine.from('L4', [0, 1, 2, 1, 0])
+            ], new Odds([
+                new Odd('A', 5, 20),
+                new Odd('A', 4, 15),
+                new Odd('A', 3, 10),
+                new Odd('K', 5, 15),
+                new Odd('K', 4, 10),
+                new Odd('K', 3, 8)
+            ]))
         );
         expect(sut.spin(new Bet('L1'))).toBe(15);
     });

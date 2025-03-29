@@ -1,6 +1,6 @@
 import {Screen} from "./Screen";
 import {Bet} from "./Bet";
-import {Odd} from "./Odd";
+import {Odds} from "./Odds";
 
 export class PayLine {
 
@@ -14,22 +14,14 @@ export class PayLine {
     }
 
     // PayLine
-    getOdd(screen: Screen, bet: Bet): number {
-        const odds: Array<Odd> = [
-            new Odd('A', 5, 20),
-            new Odd('A', 4, 15),
-            new Odd('A', 3, 10),
-            new Odd('K', 5, 15),
-            new Odd('K', 4, 10),
-            new Odd('K', 3, 8)
-        ];
+    getOdd(screen: Screen, bet: Bet, odds: Odds): number {
 
         if (!bet.includes(this.name)) {
             return 0;
         }
 
         const hit = screen.getHit(this.rows);
-        return odds.find(odd => odd.matches(hit))?.odd ?? 0;
+        return odds.rawOdds.find(odd => odd.matches(hit))?.odd ?? 0;
 
     }
 
