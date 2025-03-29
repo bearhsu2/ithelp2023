@@ -7,14 +7,6 @@ export class PayLine {
     private name: string;
     private rows: number[];
 
-    private odds: Array<Odd> = [
-        new Odd('A', 5, 20),
-        new Odd('A', 4, 15),
-        new Odd('A', 3, 10),
-        new Odd('K', 5, 15),
-        new Odd('K', 4, 10),
-        new Odd('K', 3, 8)
-    ];
 
     constructor(name: string, rows: number[]) {
         this.name = name;
@@ -23,13 +15,21 @@ export class PayLine {
 
     // PayLine
     getOdd(screen: Screen, bet: Bet): number {
+        const odds: Array<Odd> = [
+            new Odd('A', 5, 20),
+            new Odd('A', 4, 15),
+            new Odd('A', 3, 10),
+            new Odd('K', 5, 15),
+            new Odd('K', 4, 10),
+            new Odd('K', 3, 8)
+        ];
 
         if (!bet.includes(this.name)) {
             return 0;
         }
 
         const hit = screen.getHit(this.rows);
-        return this.odds.find(odd => odd.matches(hit))?.odd ?? 0;
+        return odds.find(odd => odd.matches(hit))?.odd ?? 0;
 
     }
 
