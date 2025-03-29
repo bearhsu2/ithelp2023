@@ -32,7 +32,7 @@ export class PayLine {
             return 0;
         }
 
-        return odds.find(odd => odd.hitLength === screen.getHitLength(this.rows))?.odd ?? 0;
+        return odds.find(odd => odd.hitLength === screen.getHit(this.rows).length)?.odd ?? 0;
 
     }
 

@@ -1,3 +1,14 @@
+class Hit {
+    symbol: string;
+    length: number;
+
+    constructor(symbol: string, length: number) {
+        this.symbol = symbol;
+        this.length = length;
+    }
+
+}
+
 export class Screen {
     private readonly rawScreen: Array<Array<string>>;
 
@@ -11,7 +22,7 @@ export class Screen {
         this.rawScreen = rawScreen;
     }
 
-    getHitLength(rows: number[]): number {
+    getHit(rows: number[]): Hit {
         if (rows.length !== this.rawScreen.length) {
             throw new Error("Invalid row number");
         }
@@ -26,7 +37,7 @@ export class Screen {
             longestHit++;
         }
 
-        return longestHit;
+        return new Hit(firstSymbol, longestHit);
     }
 
 
