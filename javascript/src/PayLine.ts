@@ -1,25 +1,6 @@
 import {Screen} from "./Screen";
 import {Bet} from "./Bet";
-import {Hit} from "./Hit";
-
-class Odd {
-    symbol: string;
-    hitLength: number;
-    odd: number;
-
-    constructor(symbol: string, hitLength: number, odd: number) {
-        this.symbol = symbol;
-        this.hitLength = hitLength;
-        this.odd = odd;
-    }
-
-
-    // Odd
-    matches(hit: Hit) {
-        return this.symbol === hit.symbol && this.hitLength === hit.length;
-    }
-
-}
+import {Odd} from "./Odd";
 
 export class PayLine {
 
