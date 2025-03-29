@@ -1,11 +1,16 @@
 import {Odd} from "./Odd";
+import {Hit} from "./Hit";
 
-// Odds.ts
+
 export class Odds {
-    rawOdds: Array<Odd>;
+    private rawOdds: Array<Odd>;
 
     constructor(rawOdds: Array<Odd>) {
         this.rawOdds = rawOdds;
     }
 
+    // Odds
+    getOdd(hit: Hit): number {
+        return this.rawOdds.find(odd => odd.matches(hit))?.odd ?? 0;
+    }
 }

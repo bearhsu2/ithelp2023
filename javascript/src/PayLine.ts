@@ -16,12 +16,9 @@ export class PayLine {
     // PayLine
     getOdd(screen: Screen, bet: Bet, odds: Odds): number {
 
-        if (!bet.includes(this.name)) {
-            return 0;
-        }
-
-        const hit = screen.getHit(this.rows);
-        return odds.rawOdds.find(odd => odd.matches(hit))?.odd ?? 0;
+        return bet.includes(this.name)
+            ? odds.getOdd(screen.getHit(this.rows))
+            : 0;
 
     }
 
