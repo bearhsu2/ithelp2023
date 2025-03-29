@@ -1,5 +1,6 @@
 import {Screen} from "./Screen";
 import {Bet} from "./Bet";
+import {Hit} from "./Hit";
 
 class Odd {
     symbol: string;
@@ -13,6 +14,11 @@ class Odd {
     }
 
 
+    // Odd
+    matches(hit: Hit) {
+        return this.symbol === hit.symbol && this.hitLength === hit.length;
+    }
+
 }
 
 export class PayLine {
@@ -25,6 +31,7 @@ export class PayLine {
         this.rows = rows;
     }
 
+    // PayLine
     getOdd(screen: Screen, bet: Bet): number {
         const odds: Array<Odd> = [
             new Odd('A', 5, 20),
@@ -39,12 +46,11 @@ export class PayLine {
             return 0;
         }
 
-        return odds.find(odd => {
-            const hit = screen.getHit(this.rows);
-            return odd.symbol === hit.symbol && odd.hitLength === hit.length;
-        })?.odd ?? 0;
+        const hit = screen.getHit(this.rows);
+        return odds.find(odd => odd.matches(hit))?.odd ?? 0;
 
     }
+
 
     static from(name: string, rows: number[]): PayLine {
         return new PayLine(name, rows);
