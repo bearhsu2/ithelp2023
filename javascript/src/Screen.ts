@@ -32,4 +32,9 @@ export class Screen {
     }
 
 
+    // Screen
+    getRawScreenClone(): Array<Array<string>> {
+        return this.rawScreen.map(row => [...row]);
+    }
+
 }

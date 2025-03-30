@@ -2,6 +2,7 @@ import {Reels} from "./Reels";
 import {PayTable} from "./PayTable";
 import {Bet} from "./Bet";
 import {Screen} from "./Screen";
+import {SpinResult} from "./SpinResult";
 
 export class ProbabilitySystem {
 
@@ -14,10 +15,10 @@ export class ProbabilitySystem {
     }
 
 
-    spin(bet: Bet): number {
+    spin(bet: Bet): SpinResult {
         this.reels.spin();
         const screen: Screen = this.reels.getScreen();
-        return this.payTable.getOdd(screen, bet);
+        return SpinResult.of(this.payTable.getOdd(screen, bet), screen.getRawScreenClone());
     }
 
 
