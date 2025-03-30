@@ -7,6 +7,17 @@ import {PayLine} from "./PayLine";
 import {Odds} from "./Odds";
 import {Odd} from "./Odd";
 
+class SpinResult {
+    odd: number;
+    screen: string[][];
+
+    constructor(odd: number, screen: string[][]) {
+        this.odd = odd;
+        this.screen = screen;
+    }
+
+}
+
 describe('probability system', () => {
 
     test('Row1 hit, bet L2 -> 0', () => {
@@ -318,6 +329,13 @@ describe('probability system', () => {
                 new Odd('K', 3, 8)
             ]))
         );
-        expect(sut.spin(new Bet('L1'))).toBe(15);
+        expect(sut.spin(new Bet('L1'))).toBe(new SpinResult(15, [
+            ['K', 'Q', 'A'],
+            ['K', '10', 'J'],
+            ['K', 'Q', 'A'],
+            ['K', 'Q', 'A'],
+            ['K', '10', 'J']
+        ]));
+
     });
 });
