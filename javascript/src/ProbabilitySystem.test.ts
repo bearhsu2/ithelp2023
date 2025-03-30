@@ -16,6 +16,9 @@ class SpinResult {
         this.screen = screen;
     }
 
+    static of(odd: number, screen: string[][]) {
+        return new SpinResult(odd, screen);
+    }
 }
 
 describe('probability system', () => {
@@ -329,7 +332,7 @@ describe('probability system', () => {
                 new Odd('K', 3, 8)
             ]))
         );
-        expect(sut.spin(new Bet('L1'))).toBe(new SpinResult(15, [
+        expect(sut.spin(new Bet('L1'))).toBe(SpinResult.of(15, [
             ['K', 'Q', 'A'],
             ['K', '10', 'J'],
             ['K', 'Q', 'A'],
