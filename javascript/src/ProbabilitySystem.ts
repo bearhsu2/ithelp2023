@@ -15,10 +15,21 @@ export class ProbabilitySystem {
     }
 
 
+    // ProbabilitySystem
     spin(bet: Bet): SpinResult {
         this.reels.spin();
         const screen: Screen = this.reels.getScreen();
-        return SpinResult.of(this.payTable.getOdd(screen, bet), screen.getRawScreenClone(), "BASE_GAME");
+
+        let count: number = 0;
+        screen.rawScreen.forEach((row: string[]) => {
+            row.forEach((symbol: string) => {
+                if (symbol === 'A') {
+                    count++;
+                }
+            });
+        });
+
+        return SpinResult.of(this.payTable.getOdd(screen, bet), screen.getRawScreenClone(), count >= 10 ? "FREE_GAME" : "BASE_GAME");
     }
 
 
