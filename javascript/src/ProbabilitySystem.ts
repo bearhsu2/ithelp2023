@@ -18,7 +18,7 @@ export class ProbabilitySystem {
     spin(bet: Bet): SpinResult {
         this.reels.spin();
         const screen: Screen = this.reels.getScreen();
-        return SpinResult.of(this.payTable.getOdd(screen, bet), screen.getRawScreenClone());
+        return SpinResult.of(this.payTable.getOdd(screen, bet), screen.getRawScreenClone(), "BASE_GAME");
     }
 
 

@@ -39,7 +39,7 @@ describe('probability system', () => {
             ['A', 'Q', 'K'],
             ['A', 'Q', 'K'],
             ['A', '10', 'J']
-        ]));
+        ], "BASE_GAME"));
     });
 
     test('Row1 hit, bet L1 -> 20', () => {
@@ -68,7 +68,7 @@ describe('probability system', () => {
             ['A', 'Q', 'K'],
             ['A', 'Q', 'K'],
             ['A', '10', 'J']
-        ]));
+        ], "BASE_GAME"));
     });
 
     test('Row2 hit, bet L2 -> 20', () => {
@@ -97,7 +97,7 @@ describe('probability system', () => {
             ['Q', 'A', 'K'],
             ['A', 'A', 'K'],
             ['10', 'A', 'J']
-        ]));
+        ], "BASE_GAME"));
     });
     test('Row3 hit, bet L3 -> 20', () => {
         const sut = ProbabilitySystem.create(Reels.create(
@@ -125,7 +125,7 @@ describe('probability system', () => {
             ['A', 'Q', 'A'],
             ['A', 'Q', 'A'],
             ['10', 'J', 'A']
-        ]));
+        ], "BASE_GAME"));
     });
 
 
@@ -155,7 +155,7 @@ describe('probability system', () => {
             ['K', 'Q', 'A'],
             ['K', 'Q', 'A'],
             ['10', 'J', 'A']
-        ]));
+        ], "BASE_GAME"));
     });
 
     test('Cyclic Rolling', () => {
@@ -184,7 +184,7 @@ describe('probability system', () => {
             ['K', 'Q', 'A'],
             ['K', 'Q', 'A'],
             ['10', 'J', 'A']
-        ]));
+        ], "BASE_GAME"));
     });
 
     test('Each Reel spins independently', () => {
@@ -213,7 +213,7 @@ describe('probability system', () => {
             ['A', 'Q', 'K'],
             ['A', 'Q', 'K'],
             ['A', '10', 'J']
-        ]));
+        ], "BASE_GAME"));
     });
 
     test('Roll then Row2 hit, bet L1L2L3 -> 20', () => {
@@ -242,7 +242,7 @@ describe('probability system', () => {
             ['Q', 'A', 'K'],
             ['Q', 'A', 'K'],
             ['J', 'A', '10']
-        ]));
+        ], "BASE_GAME"));
     });
 
     test('Roll then Row1 Row3 hit, bet L1L2L3 -> 40', () => {
@@ -271,7 +271,7 @@ describe('probability system', () => {
             ['A', 'Q', 'A'],
             ['A', 'Q', 'A'],
             ['A', '10', 'A']
-        ]));
+        ], "BASE_GAME"));
     });
 
     test('L4 hit, bet L4 -> 20', () => {
@@ -300,7 +300,7 @@ describe('probability system', () => {
             ['Q', 'Q', 'A'],
             ['K', 'A', 'K'],
             ['A', 'K', 'J']
-        ]));
+        ], "BASE_GAME"));
     });
 
     test('Row1 hit 4 Symbols, bet L1 => 15', () => {
@@ -332,7 +332,7 @@ describe('probability system', () => {
             ['A', 'Q', 'K'],
             ['A', 'Q', 'K'],
             ['K', '10', 'J']
-        ]));
+        ], "BASE_GAME"));
     });
 
     test('Row1 hit 3 Symbols, bet L1 => 10', () => {
@@ -364,7 +364,7 @@ describe('probability system', () => {
             ['A', 'Q', 'K'],
             ['J', 'Q', 'K'],
             ['K', '10', 'J']
-        ]));
+        ], "BASE_GAME"));
     });
 
     test('Row1 hit as K, bet L1 => 15', () => {
@@ -397,7 +397,7 @@ describe('probability system', () => {
             ['K', 'Q', 'A'],
             ['K', 'Q', 'A'],
             ['K', '10', 'J']
-        ]));
+        ], "BASE_GAME"));
 
     });
 });
