@@ -17,6 +17,12 @@ export class Screen {
         this._rawScreen = rawScreen;
     }
 
+    // Screen
+    countSymbol(target: string) {
+        return this.rawScreen
+            .reduce((count, row) => count + row.filter(symbol => symbol === target).length, 0);
+    }
+
     getHit(rows: number[]): Hit {
         if (rows.length !== this._rawScreen.length) {
             throw new Error("Invalid row number");
