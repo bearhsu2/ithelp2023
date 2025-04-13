@@ -21,12 +21,7 @@ export class ProbabilitySystem {
 
         const screen: Screen = this.reels.getScreen();
 
-        let count = 0;
-        screen.rawScreen.forEach(
-            (row: string[]) => row.filter(symbol => symbol === 'S').length > 0
-                ? count++
-                : count = count
-        )
+        let count = screen.countSymbol('S');
 
         return SpinResult.of(this.payTable.getOdd(screen, bet), screen.getRawScreenClone(), count >= 3 ? "FREE_GAME" : "BASE_GAME");
     }
