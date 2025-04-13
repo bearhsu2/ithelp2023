@@ -18,11 +18,17 @@ export class ProbabilitySystem {
     // ProbabilitySystem
     spin(bet: Bet): SpinResult {
         this.reels.spin();
+
         const screen: Screen = this.reels.getScreen();
 
-        let count = screen.countSymbol('A');
+        let count = 0;
+        screen.rawScreen.forEach(
+            (row: string[]) => row.filter(symbol => symbol === 'S').length > 0
+                ? count++
+                : count = count
+        )
 
-        return SpinResult.of(this.payTable.getOdd(screen, bet), screen.getRawScreenClone(), count >= 10 ? "FREE_GAME" : "BASE_GAME");
+        return SpinResult.of(this.payTable.getOdd(screen, bet), screen.getRawScreenClone(), count >= 3 ? "FREE_GAME" : "BASE_GAME");
     }
 
 

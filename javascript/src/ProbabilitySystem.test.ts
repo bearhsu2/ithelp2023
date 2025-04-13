@@ -271,7 +271,7 @@ describe('probability system', () => {
             ['A', 'Q', 'A'],
             ['A', 'Q', 'A'],
             ['A', '10', 'A']
-        ], "FREE_GAME"));
+        ], "BASE_GAME"));
     });
 
     test('L4 hit, bet L4 -> 20', () => {
@@ -405,10 +405,10 @@ describe('probability system', () => {
         const sut = ProbabilitySystem.create(
             Reels.create(
                 new DesignatedNumberGenerator(0, 0, 0, 0, 0), [
-                    ['A', 'A', 'A', '10', 'J', 'Q'],
-                    ['A', 'A', 'Q', 'J', 'Q', 'K'],
-                    ['A', 'Q', 'A', 'Q', 'K', '10'],
-                    ['A', 'Q', 'A', '10', 'J', 'Q'],
+                    ['A', 'K', 'A', '10', 'J', 'Q'],
+                    ['A', 'K', 'S', 'J', 'Q', 'K'],
+                    ['A', 'S', 'A', 'Q', 'K', '10'],
+                    ['A', 'S', 'K', '10', 'J', 'Q'],
                     ['A', '10', 'J', 'J', 'Q', 'K'],
                 ]),
             new PayTable([
@@ -418,10 +418,10 @@ describe('probability system', () => {
             ]))
         );
         expect(sut.spin(new Bet('L1'))).toStrictEqual(SpinResult.of(20, [
-            ['A', 'A', 'A'],
-            ['A', 'A', 'Q'],
-            ['A', 'Q', 'A'],
-            ['A', 'Q', 'A'],
+            ['A', 'K', 'A'],
+            ['A', 'K', 'S'],
+            ['A', 'S', 'A'],
+            ['A', 'S', 'K'],
             ['A', '10', 'J']
         ], "FREE_GAME"));
     });
