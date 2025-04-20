@@ -7,6 +7,7 @@ import {PayLine} from "./PayLine";
 import {Odds} from "./Odds";
 import {Odd} from "./Odd";
 import {SpinResult} from "./SpinResult";
+import {Screen} from "./Screen";
 
 describe('probability system', () => {
 
@@ -440,11 +441,26 @@ describe('probability system', () => {
                 PayLine.from('L1', [0, 0, 0, 0, 0]),
             ], new Odds([
                 new Odd('A', 5, 20),
-            ]))
+            ])),
+
+            Reels.create(
+                new DesignatedNumberGenerator(0, 0, 0, 0, 0), [
+                    ['K', 'J', 'Q', 'A'],
+                    ['K', 'Q', 'K', 'A'],
+                    ['Q', 'K', '10', 'K'],
+                    ['10', 'K', 'Q', 'A'],
+                    ['J', 'Q', 'K', 'A'],
+                ])
         );
 
         sut.spin(new Bet('L1'))
 
-        expect(sut.getScreen()).toBeDefined();
+        expect(sut.getScreen()).toStrictEqual(Screen.from([
+            ['K', 'J', 'Q'],
+            ['K', 'Q', 'K'],
+            ['Q', 'K', '10'],
+            ['10', 'K', 'Q'],
+            ['J', 'Q', 'K']
+        ]));
     });
 });

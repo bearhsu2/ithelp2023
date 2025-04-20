@@ -8,31 +8,29 @@ export class ProbabilitySystem {
 
     private reels: Reels;
     private payTable: PayTable;
+    private freeGameReels: Reels;
 
-    private constructor(reels: Reels, payTable: PayTable) {
+    private constructor(reels: Reels, payTable: PayTable, freeGameReels: Reels) {
         this.reels = reels;
         this.payTable = payTable;
+        this.freeGameReels = freeGameReels;
     }
-
 
     // ProbabilitySystem
     spin(bet: Bet): SpinResult {
         this.reels.spin();
-
         const screen: Screen = this.reels.getScreen();
-
         let count = screen.countSymbol('S');
-
         return SpinResult.of(this.payTable.getOdd(screen, bet), screen.getRawScreenClone(), count >= 3 ? "FREE_GAME" : "BASE_GAME");
     }
 
 
-    static create(reels: Reels, payTable: PayTable):
-        ProbabilitySystem {
-        return new ProbabilitySystem(reels, payTable);
+    getScreen() {
+        return this.freeGameReels.getScreen();
     }
 
-    getScreen() {
-        return [[]]
+    static create(reels: Reels, payTable: PayTable, freeGameReels: Reels):
+        ProbabilitySystem {
+        return new ProbabilitySystem(reels, payTable, freeGameReels);
     }
 }
