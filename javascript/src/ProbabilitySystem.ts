@@ -31,4 +31,8 @@ export class ProbabilitySystem {
         ProbabilitySystem {
         return new ProbabilitySystem(reels, payTable);
     }
+
+    getScreen() {
+        return [[]]
+    }
 }
