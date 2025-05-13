@@ -35,7 +35,7 @@ export class ProbabilitySystem {
             : this.freeGameReels.getScreen();
     }
 
-    static create(reels: Reels, payTable: PayTable, freeGameReels: Reels):
+    static create(reels: Reels, payTable: PayTable, freeGameReels: Reels, freeGamePayTable: PayTable):
         ProbabilitySystem {
         return new ProbabilitySystem(reels, payTable, freeGameReels);
     }

@@ -40,7 +40,19 @@ describe('probability system', () => {
                     ['Q', 'K', '10', 'K'],
                     ['10', 'K', 'Q', 'A'],
                     ['J', 'Q', 'K', 'A'],
-                ])
+                ]),
+            new PayTable([
+                PayLine.from('L1', [0, 0, 0, 0, 0]),
+                PayLine.from('L2', [1, 1, 1, 1, 1]),
+                PayLine.from('L3', [2, 2, 2, 2, 2])
+            ], new Odds([
+                new Odd('A', 5, 2_000),
+                new Odd('A', 4, 1_500),
+                new Odd('A', 3, 1_000),
+                new Odd('K', 5, 1_500),
+                new Odd('K', 4, 1_000),
+                new Odd('K', 3, 800),
+            ]))
         );
         expect(sut.spin(new Bet('L2'))).toStrictEqual(SpinResult.of(0, [
             ['A', 'Q', 'K'],
@@ -79,7 +91,19 @@ describe('probability system', () => {
                     ['Q', 'K', '10', 'K'],
                     ['10', 'K', 'Q', 'A'],
                     ['J', 'Q', 'K', 'A'],
-                ])
+                ]),
+            new PayTable([
+                PayLine.from('L1', [0, 0, 0, 0, 0]),
+                PayLine.from('L2', [1, 1, 1, 1, 1]),
+                PayLine.from('L3', [2, 2, 2, 2, 2])
+            ], new Odds([
+                new Odd('A', 5, 2_000),
+                new Odd('A', 4, 1_500),
+                new Odd('A', 3, 1_000),
+                new Odd('K', 5, 1_500),
+                new Odd('K', 4, 1_000),
+                new Odd('K', 3, 800),
+            ]))
         );
         expect(sut.spin(new Bet('L1'))).toStrictEqual(SpinResult.of(20, [
             ['A', 'Q', 'K'],
@@ -117,7 +141,19 @@ describe('probability system', () => {
                     ['Q', 'K', '10', 'K'],
                     ['10', 'K', 'Q', 'A'],
                     ['J', 'Q', 'K', 'A'],
-                ])
+                ]),
+            new PayTable([
+                PayLine.from('L1', [0, 0, 0, 0, 0]),
+                PayLine.from('L2', [1, 1, 1, 1, 1]),
+                PayLine.from('L3', [2, 2, 2, 2, 2])
+            ], new Odds([
+                new Odd('A', 5, 2_000),
+                new Odd('A', 4, 1_500),
+                new Odd('A', 3, 1_000),
+                new Odd('K', 5, 1_500),
+                new Odd('K', 4, 1_000),
+                new Odd('K', 3, 800),
+            ]))
         );
         expect(sut.spin(new Bet('L2'))).toStrictEqual(SpinResult.of(20, [
             ['Q', 'A', 'K'],
@@ -154,7 +190,19 @@ describe('probability system', () => {
                     ['Q', 'K', '10', 'K'],
                     ['10', 'K', 'Q', 'A'],
                     ['J', 'Q', 'K', 'A'],
-                ])
+                ]),
+            new PayTable([
+                PayLine.from('L1', [0, 0, 0, 0, 0]),
+                PayLine.from('L2', [1, 1, 1, 1, 1]),
+                PayLine.from('L3', [2, 2, 2, 2, 2])
+            ], new Odds([
+                new Odd('A', 5, 2_000),
+                new Odd('A', 4, 1_500),
+                new Odd('A', 3, 1_000),
+                new Odd('K', 5, 1_500),
+                new Odd('K', 4, 1_000),
+                new Odd('K', 3, 800),
+            ]))
         );
         expect(sut.spin(new Bet('L3'))).toStrictEqual(SpinResult.of(20, [
             ['A', 'Q', 'A'],
@@ -193,7 +241,20 @@ describe('probability system', () => {
                     ['Q', 'K', '10', 'K'],
                     ['10', 'K', 'Q', 'A'],
                     ['J', 'Q', 'K', 'A'],
-                ]));
+                ]),
+            new PayTable([
+                PayLine.from('L1', [0, 0, 0, 0, 0]),
+                PayLine.from('L2', [1, 1, 1, 1, 1]),
+                PayLine.from('L3', [2, 2, 2, 2, 2])
+            ], new Odds([
+                new Odd('A', 5, 2_000),
+                new Odd('A', 4, 1_500),
+                new Odd('A', 3, 1_000),
+                new Odd('K', 5, 1_500),
+                new Odd('K', 4, 1_000),
+                new Odd('K', 3, 800),
+            ]))
+        );
         expect(sut.spin(new Bet('L3'))).toStrictEqual(SpinResult.of(20, [
             ['K', 'Q', 'A'],
             ['10', 'J', 'A'],
@@ -230,7 +291,19 @@ describe('probability system', () => {
                     ['Q', 'K', '10', 'K'],
                     ['10', 'K', 'Q', 'A'],
                     ['J', 'Q', 'K', 'A'],
-                ])
+                ]),
+            new PayTable([
+                PayLine.from('L1', [0, 0, 0, 0, 0]),
+                PayLine.from('L2', [1, 1, 1, 1, 1]),
+                PayLine.from('L3', [2, 2, 2, 2, 2])
+            ], new Odds([
+                new Odd('A', 5, 2_000),
+                new Odd('A', 4, 1_500),
+                new Odd('A', 3, 1_000),
+                new Odd('K', 5, 1_500),
+                new Odd('K', 4, 1_000),
+                new Odd('K', 3, 800),
+            ]))
         );
         expect(sut.spin(new Bet('L3'))).toStrictEqual(SpinResult.of(20, [
             ['K', 'Q', 'A'],
@@ -268,7 +341,19 @@ describe('probability system', () => {
                     ['Q', 'K', '10', 'K'],
                     ['10', 'K', 'Q', 'A'],
                     ['J', 'Q', 'K', 'A'],
-                ])
+                ]),
+            new PayTable([
+                PayLine.from('L1', [0, 0, 0, 0, 0]),
+                PayLine.from('L2', [1, 1, 1, 1, 1]),
+                PayLine.from('L3', [2, 2, 2, 2, 2])
+            ], new Odds([
+                new Odd('A', 5, 2_000),
+                new Odd('A', 4, 1_500),
+                new Odd('A', 3, 1_000),
+                new Odd('K', 5, 1_500),
+                new Odd('K', 4, 1_000),
+                new Odd('K', 3, 800),
+            ]))
         );
         expect(sut.spin(new Bet('L1'))).toStrictEqual(SpinResult.of(20, [
             ['A', 'Q', 'K'],
@@ -306,7 +391,19 @@ describe('probability system', () => {
                     ['Q', 'K', '10', 'K'],
                     ['10', 'K', 'Q', 'A'],
                     ['J', 'Q', 'K', 'A'],
-                ])
+                ]),
+            new PayTable([
+                PayLine.from('L1', [0, 0, 0, 0, 0]),
+                PayLine.from('L2', [1, 1, 1, 1, 1]),
+                PayLine.from('L3', [2, 2, 2, 2, 2])
+            ], new Odds([
+                new Odd('A', 5, 2_000),
+                new Odd('A', 4, 1_500),
+                new Odd('A', 3, 1_000),
+                new Odd('K', 5, 1_500),
+                new Odd('K', 4, 1_000),
+                new Odd('K', 3, 800),
+            ]))
         );
         expect(sut.spin(new Bet('L1', 'L2', 'L3'))).toStrictEqual(SpinResult.of(20, [
             ['Q', 'A', 'K'],
@@ -344,7 +441,19 @@ describe('probability system', () => {
                     ['Q', 'K', '10', 'K'],
                     ['10', 'K', 'Q', 'A'],
                     ['J', 'Q', 'K', 'A'],
-                ])
+                ]),
+            new PayTable([
+                PayLine.from('L1', [0, 0, 0, 0, 0]),
+                PayLine.from('L2', [1, 1, 1, 1, 1]),
+                PayLine.from('L3', [2, 2, 2, 2, 2])
+            ], new Odds([
+                new Odd('A', 5, 2_000),
+                new Odd('A', 4, 1_500),
+                new Odd('A', 3, 1_000),
+                new Odd('K', 5, 1_500),
+                new Odd('K', 4, 1_000),
+                new Odd('K', 3, 800),
+            ]))
         );
         expect(sut.spin(new Bet('L1', 'L2', 'L3'))).toStrictEqual(SpinResult.of(40, [
             ['A', 'Q', 'A'],
@@ -382,7 +491,19 @@ describe('probability system', () => {
                     ['Q', 'K', '10', 'K'],
                     ['10', 'K', 'Q', 'A'],
                     ['J', 'Q', 'K', 'A'],
-                ])
+                ]),
+            new PayTable([
+                PayLine.from('L1', [0, 0, 0, 0, 0]),
+                PayLine.from('L2', [1, 1, 1, 1, 1]),
+                PayLine.from('L3', [2, 2, 2, 2, 2])
+            ], new Odds([
+                new Odd('A', 5, 2_000),
+                new Odd('A', 4, 1_500),
+                new Odd('A', 3, 1_000),
+                new Odd('K', 5, 1_500),
+                new Odd('K', 4, 1_000),
+                new Odd('K', 3, 800),
+            ]))
         );
         expect(sut.spin(new Bet('L4'))).toStrictEqual(SpinResult.of(20, [
             ['A', 'J', 'J'],
@@ -422,7 +543,19 @@ describe('probability system', () => {
                     ['Q', 'K', '10', 'K'],
                     ['10', 'K', 'Q', 'A'],
                     ['J', 'Q', 'K', 'A'],
-                ])
+                ]),
+            new PayTable([
+                PayLine.from('L1', [0, 0, 0, 0, 0]),
+                PayLine.from('L2', [1, 1, 1, 1, 1]),
+                PayLine.from('L3', [2, 2, 2, 2, 2])
+            ], new Odds([
+                new Odd('A', 5, 2_000),
+                new Odd('A', 4, 1_500),
+                new Odd('A', 3, 1_000),
+                new Odd('K', 5, 1_500),
+                new Odd('K', 4, 1_000),
+                new Odd('K', 3, 800),
+            ]))
         );
         expect(sut.spin(new Bet('L1'))).toStrictEqual(SpinResult.of(15, [
             ['A', 'Q', 'K'],
@@ -462,7 +595,19 @@ describe('probability system', () => {
                     ['Q', 'K', '10', 'K'],
                     ['10', 'K', 'Q', 'A'],
                     ['J', 'Q', 'K', 'A'],
-                ])
+                ]),
+            new PayTable([
+                PayLine.from('L1', [0, 0, 0, 0, 0]),
+                PayLine.from('L2', [1, 1, 1, 1, 1]),
+                PayLine.from('L3', [2, 2, 2, 2, 2])
+            ], new Odds([
+                new Odd('A', 5, 2_000),
+                new Odd('A', 4, 1_500),
+                new Odd('A', 3, 1_000),
+                new Odd('K', 5, 1_500),
+                new Odd('K', 4, 1_000),
+                new Odd('K', 3, 800),
+            ]))
         );
         expect(sut.spin(new Bet('L1'))).toStrictEqual(SpinResult.of(10, [
             ['A', 'Q', 'K'],
@@ -503,7 +648,19 @@ describe('probability system', () => {
                     ['Q', 'K', '10', 'K'],
                     ['10', 'K', 'Q', 'A'],
                     ['J', 'Q', 'K', 'A'],
-                ])
+                ]),
+            new PayTable([
+                PayLine.from('L1', [0, 0, 0, 0, 0]),
+                PayLine.from('L2', [1, 1, 1, 1, 1]),
+                PayLine.from('L3', [2, 2, 2, 2, 2])
+            ], new Odds([
+                new Odd('A', 5, 2_000),
+                new Odd('A', 4, 1_500),
+                new Odd('A', 3, 1_000),
+                new Odd('K', 5, 1_500),
+                new Odd('K', 4, 1_000),
+                new Odd('K', 3, 800),
+            ]))
         );
         expect(sut.spin(new Bet('L1'))).toStrictEqual(SpinResult.of(15, [
             ['K', 'Q', 'A'],
@@ -537,7 +694,19 @@ describe('probability system', () => {
                     ['Q', 'K', '10', 'K'],
                     ['10', 'K', 'Q', 'A'],
                     ['J', 'Q', 'K', 'A'],
-                ])
+                ]),
+            new PayTable([
+                PayLine.from('L1', [0, 0, 0, 0, 0]),
+                PayLine.from('L2', [1, 1, 1, 1, 1]),
+                PayLine.from('L3', [2, 2, 2, 2, 2])
+            ], new Odds([
+                new Odd('A', 5, 2_000),
+                new Odd('A', 4, 1_500),
+                new Odd('A', 3, 1_000),
+                new Odd('K', 5, 1_500),
+                new Odd('K', 4, 1_000),
+                new Odd('K', 3, 800),
+            ]))
         );
         expect(sut.spin(new Bet('L1'))).toStrictEqual(SpinResult.of(20, [
             ['A', 'K', 'A'],
@@ -570,7 +739,19 @@ describe('probability system', () => {
                     ['Q', 'K', '10', 'K'],
                     ['10', 'K', 'Q', 'A'],
                     ['J', 'Q', 'K', 'A'],
-                ])
+                ]),
+            new PayTable([
+                PayLine.from('L1', [0, 0, 0, 0, 0]),
+                PayLine.from('L2', [1, 1, 1, 1, 1]),
+                PayLine.from('L3', [2, 2, 2, 2, 2])
+            ], new Odds([
+                new Odd('A', 5, 2_000),
+                new Odd('A', 4, 1_500),
+                new Odd('A', 3, 1_000),
+                new Odd('K', 5, 1_500),
+                new Odd('K', 4, 1_000),
+                new Odd('K', 3, 800),
+            ]))
         );
 
         sut.spin(new Bet('L1'))
@@ -606,7 +787,19 @@ describe('probability system', () => {
                     ['Q', 'K', '10', 'K'],
                     ['10', 'K', 'Q', 'A'],
                     ['J', 'Q', 'K', 'A'],
-                ])
+                ]),
+            new PayTable([
+                PayLine.from('L1', [0, 0, 0, 0, 0]),
+                PayLine.from('L2', [1, 1, 1, 1, 1]),
+                PayLine.from('L3', [2, 2, 2, 2, 2])
+            ], new Odds([
+                new Odd('A', 5, 2_000),
+                new Odd('A', 4, 1_500),
+                new Odd('A', 3, 1_000),
+                new Odd('K', 5, 1_500),
+                new Odd('K', 4, 1_000),
+                new Odd('K', 3, 800),
+            ]))
         );
         expect(sut.getScreen()).toStrictEqual(Screen.from([
             ['A', 'K', 'A'],
@@ -617,7 +810,7 @@ describe('probability system', () => {
         ]));
     });
 
-    test('Entering Free Game, spin, win 0', () => {
+    test('Entering Free Game, spin, no hits, win 0', () => {
         const sut = ProbabilitySystem.create(
             Reels.create(
                 new DesignatedNumberGenerator(0, 0, 0, 0, 0), [
@@ -639,7 +832,19 @@ describe('probability system', () => {
                     ['Q', 'K', '10', 'K'],
                     ['10', 'K', 'Q', 'A'],
                     ['J', 'Q', 'K', 'A']
-                ])
+                ]),
+            new PayTable([
+                PayLine.from('L1', [0, 0, 0, 0, 0]),
+                PayLine.from('L2', [1, 1, 1, 1, 1]),
+                PayLine.from('L3', [2, 2, 2, 2, 2])
+            ], new Odds([
+                new Odd('A', 5, 2_000),
+                new Odd('A', 4, 1_500),
+                new Odd('A', 3, 1_000),
+                new Odd('K', 5, 1_500),
+                new Odd('K', 4, 1_000),
+                new Odd('K', 3, 800),
+            ]))
         );
         sut.spin(new Bet('L1'));
 
@@ -653,5 +858,54 @@ describe('probability system', () => {
             ['J', 'Q', 'K'],
         ], "FREE_GAME"));
     });
+
+    test('Entering Free Game, spin, A x 5 hits, win 2000', () => {
+        const sut = ProbabilitySystem.create(
+            Reels.create(
+                new DesignatedNumberGenerator(0, 0, 0, 0, 0), [
+                    ['A', 'K', 'A', '10', 'J', 'Q'],
+                    ['A', 'K', 'S', 'J', 'Q', 'K'],
+                    ['A', 'S', 'A', 'Q', 'K', '10'],
+                    ['A', 'S', 'K', '10', 'J', 'Q'],
+                    ['A', '10', 'J', 'J', 'Q', 'K'],
+                ]),
+            new PayTable([
+                PayLine.from('L1', [0, 0, 0, 0, 0]),
+            ], new Odds([
+                new Odd('A', 5, 20),
+            ])),
+            Reels.create(
+                new DesignatedNumberGenerator(0, 0, 0, 0, 0), [
+                    ['A', 'K', 'J', 'Q'],
+                    ['A', 'K', 'Q', 'K'],
+                    ['A', 'Q', 'K', '10'],
+                    ['A', '10', 'K', 'Q'],
+                    ['A', 'J', 'Q', 'K']
+                ]),
+            new PayTable([
+                PayLine.from('L1', [0, 0, 0, 0, 0]),
+                PayLine.from('L2', [1, 1, 1, 1, 1]),
+                PayLine.from('L3', [2, 2, 2, 2, 2])
+            ], new Odds([
+                new Odd('A', 5, 2_000),
+                new Odd('A', 4, 1_500),
+                new Odd('A', 3, 1_000),
+                new Odd('K', 5, 1_500),
+                new Odd('K', 4, 1_000),
+                new Odd('K', 3, 800),
+            ]))
+        );
+        sut.spin(new Bet('L1'));
+
+        const actual: SpinResult = sut.spinFree();
+
+        expect(actual).toStrictEqual(SpinResult.of(2_000, [
+            ['A', 'K', 'J'],
+            ['A', 'K', 'Q'],
+            ['A', 'Q', 'K'],
+            ['A', '10', 'K'],
+            ['A', 'J', 'Q']
+        ], "FREE_GAME"));
+    })
 
 });
