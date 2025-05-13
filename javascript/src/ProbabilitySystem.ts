@@ -39,4 +39,8 @@ export class ProbabilitySystem {
         ProbabilitySystem {
         return new ProbabilitySystem(reels, payTable, freeGameReels);
     }
+
+    spinFree(): SpinResult {
+        return null;
+    }
 }
