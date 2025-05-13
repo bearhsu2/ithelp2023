@@ -41,6 +41,13 @@ export class ProbabilitySystem {
     }
 
     spinFree(): SpinResult {
-        return null;
+        this.reels.spin();
+        const screen: Screen = this.freeGameReels.getScreen();
+
+        this.nextGameType = "FREE_GAME";
+
+        return SpinResult.of(0, screen.getRawScreenClone(), this.nextGameType);
+
+
     }
 }
