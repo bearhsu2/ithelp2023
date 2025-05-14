@@ -49,12 +49,9 @@ export class ProbabilitySystem {
 
         this.nextGameType = "FREE_GAME";
 
-        const names: string[] = this.freeGamePayTable.payLines.map(payLine => payLine.getName());
-        const bet: Bet = new Bet(...names);
-
+        const bet: Bet = new Bet(...(this.freeGamePayTable.payLines.map(payLine => payLine.getName())));
 
         return SpinResult.of(this.freeGamePayTable.getOdd(screen, bet), screen.getRawScreenClone(), this.nextGameType);
-
 
     }
 }
