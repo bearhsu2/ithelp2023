@@ -22,6 +22,10 @@ export class PayLine {
 
     }
 
+    getName(): string {
+        return this.name;
+    }
+
 
     static from(name: string, rows: number[]): PayLine {
         return new PayLine(name, rows);
