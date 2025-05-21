@@ -875,12 +875,12 @@ describe('probability system', () => {
                 new Odd('A', 5, 20),
             ])),
             Reels.create(
-                new DesignatedNumberGenerator(0, 0, 0, 0, 0), [
-                    ['A', 'K', 'J', 'Q'],
-                    ['A', 'K', 'Q', 'K'],
-                    ['A', 'Q', 'K', '10'],
-                    ['A', '10', 'K', 'Q'],
-                    ['A', 'J', 'Q', 'K']
+                new DesignatedNumberGenerator(1, 1, 1, 1, 1), [
+                    ['9', 'A', 'K', 'J', 'Q'],
+                    ['J', 'A', 'K', 'Q', 'K'],
+                    ['10', 'A', 'Q', 'K', '10'],
+                    ['8', 'A', '10', 'K', 'Q'],
+                    ['K', 'A', 'J', 'Q', 'K']
                 ]),
             new PayTable([
                 PayLine.from('L1', [0, 0, 0, 0, 0]),
