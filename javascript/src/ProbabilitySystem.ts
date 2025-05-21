@@ -44,7 +44,7 @@ export class ProbabilitySystem {
     }
 
     spinFree(): SpinResult {
-        this.reels.spin();
+        this.freeGameReels.spin();
         const screen: Screen = this.freeGameReels.getScreen();
 
         this.nextGameType = "FREE_GAME";
