@@ -22,8 +22,10 @@ export class ProbabilitySystem {
 
     // ProbabilitySystem
     spin(bet: Bet): SpinResult {
-        return this.doSpinFlow(bet, this.reels, this.payTable,
+        const spinResult = this.doSpinFlow(bet, this.reels, this.payTable,
             (screen: Screen): string => screen.countSymbol('S') >= 3 ? "FREE_GAME" : "BASE_GAME");
+        this.nextGameType = spinResult.nextGameType;
+        return spinResult;
     }
 
 
@@ -33,15 +35,17 @@ export class ProbabilitySystem {
 
         const screen: Screen = theReels.getScreen();
 
-        this.nextGameType = getNext(screen);
+        const nextGameType: string = getNext(screen);
 
-        return SpinResult.of(thePayTable.getOdd(screen, bet), screen.getRawScreenClone(), this.nextGameType);
+        return SpinResult.of(thePayTable.getOdd(screen, bet), screen.getRawScreenClone(), nextGameType);
     }
 
     spinFree(): SpinResult {
         const bet: Bet = new Bet(...(this.freeGamePayTable.payLines.map(payLine => payLine.getName())));
-        return this.doSpinFlow(bet, this.freeGameReels, this.freeGamePayTable,
+        const spinResult = this.doSpinFlow(bet, this.freeGameReels, this.freeGamePayTable,
             (screen: Screen): string => "FREE_GAME");
+        this.nextGameType = spinResult.nextGameType;
+        return spinResult
     }
 
     getScreen() {
