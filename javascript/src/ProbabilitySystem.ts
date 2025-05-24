@@ -29,13 +29,13 @@ export class ProbabilitySystem {
     }
 
 
-    private doSpinFlow(bet: Bet, theReels: Reels, thePayTable: PayTable, getNext: (screen: Screen) => string) {
+    private doSpinFlow(bet: Bet, theReels: Reels, thePayTable: PayTable, determineNextGameType: (screen: Screen) => string) {
 
         theReels.spin();
 
         const screen: Screen = theReels.getScreen();
 
-        const nextGameType: string = getNext(screen);
+        const nextGameType: string = determineNextGameType(screen);
 
         return SpinResult.of(thePayTable.getOdd(screen, bet), screen.getRawScreenClone(), nextGameType);
     }
