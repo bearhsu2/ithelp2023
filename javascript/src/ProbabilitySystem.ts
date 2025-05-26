@@ -23,30 +23,29 @@ export class ProbabilitySystem {
 
     // ProbabilitySystem
     spin(bet: Bet): SpinResult {
-        const spinResult = this.doSpinFlow(bet, this.reels, this.payTable,
-            (screen: Screen): string => screen.countSymbol('S') >= 3 ? "FREE_GAME" : "BASE_GAME");
+        const spinResult = this.doSpinFlow(bet, this.reels, this.payTable);
 
         this.freeGameCount += this.reels.getScreen().countSymbol('S') >= 3 ? 10 : 0;
-        // this.nextGameType = spinResult.nextGameType;
+        spinResult.nextGameType = this.getNextGameType();
         return spinResult;
     }
 
 
-    private doSpinFlow(bet: Bet, theReels: Reels, thePayTable: PayTable, determineNextGameType: (screen: Screen) => string) {
+    private doSpinFlow(bet: Bet, theReels: Reels, thePayTable: PayTable): SpinResult {
 
         theReels.spin();
         const screen: Screen = theReels.getScreen();
-        const nextGameType: string = determineNextGameType(screen);
-        return SpinResult.of(thePayTable.getOdd(screen, bet), screen.getRawScreenClone(), nextGameType);
+        return SpinResult.of(thePayTable.getOdd(screen, bet), screen.getRawScreenClone(), "DUMMY_VALUE");
+
     }
 
     spinFree(): SpinResult {
         const bet: Bet = new Bet(...(this.freeGamePayTable.payLines.map(payLine => payLine.getName())));
-        const spinResult = this.doSpinFlow(bet, this.freeGameReels, this.freeGamePayTable,
-            (screen: Screen): string => "FREE_GAME");
+        const spinResult = this.doSpinFlow(bet, this.freeGameReels, this.freeGamePayTable);
 
         this.freeGameCount += 0;
-        // this.nextGameType = spinResult.nextGameType;
+        spinResult.nextGameType = this.getNextGameType();
+
         return spinResult
     }
 
