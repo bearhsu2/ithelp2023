@@ -23,30 +23,24 @@ export class ProbabilitySystem {
 
     // ProbabilitySystem
     spin(bet: Bet): SpinResult {
-        const spinResult = this.doSpinFlow(bet, this.reels, this.payTable);
-
+        const {odd, screen} = this.doSpinFlow(bet, this.reels, this.payTable);
         this.freeGameCount += this.reels.getScreen().countSymbol('S') >= 3 ? 10 : 0;
-        spinResult.nextGameType = this.getNextGameType();
-        return spinResult;
+        return SpinResult.of(odd, screen, this.getNextGameType());
     }
 
 
-    private doSpinFlow(bet: Bet, theReels: Reels, thePayTable: PayTable): SpinResult {
-
+    private doSpinFlow(bet: Bet, theReels: Reels, thePayTable: PayTable): { odd: number, screen: string[][] } {
         theReels.spin();
         const screen: Screen = theReels.getScreen();
-        return SpinResult.of(thePayTable.getOdd(screen, bet), screen.getRawScreenClone(), "DUMMY_VALUE");
-
+        return {odd: thePayTable.getOdd(screen, bet), screen: screen.getRawScreenClone()};
     }
 
     spinFree(): SpinResult {
         const bet: Bet = new Bet(...(this.freeGamePayTable.payLines.map(payLine => payLine.getName())));
-        const spinResult = this.doSpinFlow(bet, this.freeGameReels, this.freeGamePayTable);
-
+        const {odd, screen} = this.doSpinFlow(bet, this.freeGameReels, this.freeGamePayTable);
         this.freeGameCount += 0;
-        spinResult.nextGameType = this.getNextGameType();
+        return SpinResult.of(odd, screen, this.getNextGameType());
 
-        return spinResult
     }
 
     getScreen() {
