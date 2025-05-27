@@ -38,7 +38,7 @@ export class ProbabilitySystem {
     spinFree(): SpinResult {
         const bet: Bet = new Bet(...(this.freeGamePayTable.payLines.map(payLine => payLine.getName())));
         const {odd, screen} = this.doSpinFlow(bet, this.freeGameReels, this.freeGamePayTable);
-        this.freeGameCount += 0;
+        this.freeGameCount--;
         return SpinResult.of(odd, screen, this.getNextGameType());
 
     }
