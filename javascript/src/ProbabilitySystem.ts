@@ -12,7 +12,6 @@ export class ProbabilitySystem {
     private freeGamePayTable: PayTable;
 
     private freeGameCount: number = 0;
-    private nextGamType: string = "BASE_GAME";
 
     private constructor(reels: Reels, payTable: PayTable, freeGameReels: Reels, freeGamePayTable: PayTable) {
         this.reels = reels;
