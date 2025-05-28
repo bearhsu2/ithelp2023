@@ -22,23 +22,40 @@ export class ProbabilitySystem {
 
     // ProbabilitySystem
     spin(bet: Bet): SpinResult {
-        const {odd, screen} = this.doSpinFlow(bet, this.reels, this.payTable);
-        this.freeGameCount += this.reels.getScreen().countSymbol('S') >= 3 ? 10 : 0;
+        const {
+            odd,
+            screen,
+            freeGameIncrement
+        } = this.doSpinFlow(bet, this.reels, this.payTable, (screen: Screen): number => screen.countSymbol('S') >= 3 ? 10 : 0);
+        this.freeGameCount += freeGameIncrement;
+
         return SpinResult.of(odd, screen, this.getNextGameType());
     }
 
 
-    private doSpinFlow(bet: Bet, theReels: Reels, thePayTable: PayTable): { odd: number, screen: string[][] } {
+    private doSpinFlow(bet: Bet, theReels: Reels, thePayTable: PayTable, calculateFreeGameIncrement: (screen: Screen) => number): {
+        odd: number,
+        screen: string[][],
+        freeGameIncrement: number
+    } {
         theReels.spin();
         const screen: Screen = theReels.getScreen();
-        return {odd: thePayTable.getOdd(screen, bet), screen: screen.getRawScreenClone()};
+        return {
+            odd: thePayTable.getOdd(screen, bet),
+            screen: screen.getRawScreenClone(),
+            freeGameIncrement: calculateFreeGameIncrement(screen)
+        };
     }
 
     spinFree(): SpinResult {
         const bet: Bet = new Bet(...(this.freeGamePayTable.payLines.map(payLine => payLine.getName())));
-        const {odd, screen} = this.doSpinFlow(bet, this.freeGameReels, this.freeGamePayTable);
 
-        this.freeGameCount += this.freeGameReels.getScreen().countSymbol('S') >= 5 ? 10 : 0;
+        const {
+            odd,
+            screen,
+            freeGameIncrement
+        } = this.doSpinFlow(bet, this.freeGameReels, this.freeGamePayTable, (screen: Screen): number => screen.countSymbol('S') >= 5 ? 10 : 0);
+        this.freeGameCount += freeGameIncrement;
 
         this.freeGameCount--;
         return SpinResult.of(odd, screen, this.getNextGameType());
