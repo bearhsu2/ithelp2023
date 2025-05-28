@@ -4,6 +4,34 @@ import {Bet} from "./Bet";
 import {Screen} from "./Screen";
 import {SpinResult} from "./SpinResult";
 
+class SlotGame {
+
+    private reels: Reels;
+    private payTable: PayTable;
+    private calculateFreeGameIncrement: (screen: Screen) => number;
+
+
+    constructor(reels: Reels, payTable: PayTable, calculateFreeGameIncrement: (screen: Screen) => number) {
+        this.reels = reels;
+        this.payTable = payTable;
+        this.calculateFreeGameIncrement = calculateFreeGameIncrement;
+    }
+
+    doSpinFlow(bet: Bet): {
+        odd: number,
+        screen: string[][],
+        freeGameIncrement: number
+    } {
+        this.reels.spin();
+        const screen: Screen = this.reels.getScreen();
+        return {
+            odd: this.payTable.getOdd(screen, bet),
+            screen: screen.getRawScreenClone(),
+            freeGameIncrement: this.calculateFreeGameIncrement(screen)
+        };
+    }
+}
+
 export class ProbabilitySystem {
 
     private reels: Reels;
@@ -12,12 +40,19 @@ export class ProbabilitySystem {
     private freeGamePayTable: PayTable;
 
     private freeGameCount: number = 0;
+    private baseGame: SlotGame;
+    private freeGame: SlotGame;
+
 
     private constructor(reels: Reels, payTable: PayTable, freeGameReels: Reels, freeGamePayTable: PayTable) {
         this.reels = reels;
         this.payTable = payTable;
         this.freeGameReels = freeGameReels;
         this.freeGamePayTable = freeGamePayTable;
+
+        this.baseGame = new SlotGame(reels, payTable, (screen: Screen): number => screen.countSymbol('S') >= 3 ? 10 : 0);
+        this.freeGame = new SlotGame(freeGameReels, freeGamePayTable, (screen: Screen): number => screen.countSymbol('S') >= 5 ? 10 : 0);
+
     }
 
     // ProbabilitySystem
@@ -26,25 +61,10 @@ export class ProbabilitySystem {
             odd,
             screen,
             freeGameIncrement
-        } = this.doSpinFlow(bet, this.reels, this.payTable, (screen: Screen): number => screen.countSymbol('S') >= 3 ? 10 : 0);
+        } = this.baseGame.doSpinFlow(bet);
         this.freeGameCount += freeGameIncrement;
 
         return SpinResult.of(odd, screen, this.getNextGameType());
-    }
-
-
-    private doSpinFlow(bet: Bet, theReels: Reels, thePayTable: PayTable, calculateFreeGameIncrement: (screen: Screen) => number): {
-        odd: number,
-        screen: string[][],
-        freeGameIncrement: number
-    } {
-        theReels.spin();
-        const screen: Screen = theReels.getScreen();
-        return {
-            odd: thePayTable.getOdd(screen, bet),
-            screen: screen.getRawScreenClone(),
-            freeGameIncrement: calculateFreeGameIncrement(screen)
-        };
     }
 
     spinFree(): SpinResult {
@@ -54,7 +74,7 @@ export class ProbabilitySystem {
             odd,
             screen,
             freeGameIncrement
-        } = this.doSpinFlow(bet, this.freeGameReels, this.freeGamePayTable, (screen: Screen): number => screen.countSymbol('S') >= 5 ? 10 : 0);
+        } = this.freeGame.doSpinFlow(bet);
         this.freeGameCount += freeGameIncrement;
 
         this.freeGameCount--;
