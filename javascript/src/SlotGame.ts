@@ -9,8 +9,11 @@ export class SlotGame {
     private payTable: PayTable;
     private calculateFreeGameIncrement: (screen: Screen) => number;
 
+    static of(reels: Reels, payTable: PayTable, calculateFreeGameIncrement: (screen: Screen) => number): SlotGame {
+        return new SlotGame(reels, payTable, calculateFreeGameIncrement);
+    }
 
-    constructor(reels: Reels, payTable: PayTable, calculateFreeGameIncrement: (screen: Screen) => number) {
+    private constructor(reels: Reels, payTable: PayTable, calculateFreeGameIncrement: (screen: Screen) => number) {
         this.reels = reels;
         this.payTable = payTable;
         this.calculateFreeGameIncrement = calculateFreeGameIncrement;

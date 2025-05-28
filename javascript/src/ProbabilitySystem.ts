@@ -16,15 +16,16 @@ export class ProbabilitySystem {
 
     private constructor(reels: Reels, payTable: PayTable, freeGameReels: Reels, freeGamePayTable: PayTable) {
 
-        this.baseGame = new SlotGame(reels, payTable, (screen: Screen): number => screen.countSymbol('S') >= 3 ? 10 : 0);
-        this.freeGame = new SlotGame(freeGameReels, freeGamePayTable, (screen: Screen): number => screen.countSymbol('S') >= 5 ? 10 : 0);
+        this.baseGame = SlotGame.of(reels, payTable, (screen: Screen): number => screen.countSymbol('S') >= 3 ? 10 : 0);
+        this.freeGame = SlotGame.of(freeGameReels, freeGamePayTable, (screen: Screen): number => screen.countSymbol('S') >= 5 ? 10 : 0);
 
         this.maxBet = new Bet(...(freeGamePayTable.payLines.map(payLine => payLine.getName())));
 
 
     }
 
-    // ProbabilitySystem
+
+// ProbabilitySystem
     spin(bet: Bet): SpinResult {
         const {
             odd,
