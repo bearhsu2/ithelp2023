@@ -36,4 +36,9 @@ export class SlotGame {
     getScreen(): Screen {
         return this.reels.getScreen();
     }
+
+
+    getMaxBet() {
+        return new Bet(...(this.payTable.payLines.map(payLine => payLine.getName())));
+    }
 }

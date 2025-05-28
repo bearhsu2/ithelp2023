@@ -19,8 +19,7 @@ export class ProbabilitySystem {
         this.baseGame = SlotGame.of(reels, payTable, (screen: Screen): number => screen.countSymbol('S') >= 3 ? 10 : 0);
         this.freeGame = SlotGame.of(freeGameReels, freeGamePayTable, (screen: Screen): number => screen.countSymbol('S') >= 5 ? 10 : 0);
 
-        this.maxBet = new Bet(...(freeGamePayTable.payLines.map(payLine => payLine.getName())));
-
+        this.maxBet = this.freeGame.getMaxBet();
 
     }
 
