@@ -1,7 +1,4 @@
-import {Reels} from "./Reels";
-import {PayTable} from "./PayTable";
 import {Bet} from "./Bet";
-import {Screen} from "./Screen";
 import {SpinResult} from "./SpinResult";
 import {SlotGame} from "./SlotGame";
 

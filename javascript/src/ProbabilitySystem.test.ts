@@ -80,18 +80,18 @@ describe('probability system', () => {
                     ['A', '10', 'J'],
                 ]),
             new PayTable([
-                PayLine.from('L1', [0, 0, 0, 0, 0]),
-                PayLine.from('L2', [1, 1, 1, 1, 1]),
-                PayLine.from('L3', [2, 2, 2, 2, 2]),
-                PayLine.from('L4', [0, 1, 2, 1, 0])],
-            new Odds([
-                new Odd('A', 5, 20),
-                new Odd('A', 4, 15),
-                new Odd('A', 3, 10),
-                new Odd('K', 5, 15),
-                new Odd('K', 4, 10),
-                new Odd('K', 3, 8)
-            ])),
+                    PayLine.from('L1', [0, 0, 0, 0, 0]),
+                    PayLine.from('L2', [1, 1, 1, 1, 1]),
+                    PayLine.from('L3', [2, 2, 2, 2, 2]),
+                    PayLine.from('L4', [0, 1, 2, 1, 0])],
+                new Odds([
+                    new Odd('A', 5, 20),
+                    new Odd('A', 4, 15),
+                    new Odd('A', 3, 10),
+                    new Odd('K', 5, 15),
+                    new Odd('K', 4, 10),
+                    new Odd('K', 3, 8)
+                ])),
             (screen: Screen): number => screen.countSymbol('S') >= 3 ? 10 : 0
         );
         const freeGame = SlotGame.of(
