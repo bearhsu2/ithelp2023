@@ -14,10 +14,10 @@ export class ProbabilitySystem {
     private maxBet: Bet;
 
 
-    private constructor(reels: Reels, payTable: PayTable, freeGameReels: Reels, freeGamePayTable: PayTable) {
+    private constructor(baseGame: SlotGame, freeGame: SlotGame) {
 
-        this.baseGame = SlotGame.of(reels, payTable, (screen: Screen): number => screen.countSymbol('S') >= 3 ? 10 : 0);
-        this.freeGame = SlotGame.of(freeGameReels, freeGamePayTable, (screen: Screen): number => screen.countSymbol('S') >= 5 ? 10 : 0);
+        this.baseGame = baseGame;
+        this.freeGame = freeGame;
 
         this.maxBet = this.freeGame.getMaxBet();
 
@@ -62,6 +62,8 @@ export class ProbabilitySystem {
 
     static create(reels: Reels, payTable: PayTable, freeGameReels: Reels, freeGamePayTable: PayTable):
         ProbabilitySystem {
-        return new ProbabilitySystem(reels, payTable, freeGameReels, freeGamePayTable);
+        return new ProbabilitySystem(SlotGame.of(reels, payTable, (screen: Screen): number => screen.countSymbol('S') >= 3 ? 10 : 0),
+            SlotGame.of(freeGameReels, freeGamePayTable, (screen: Screen): number => screen.countSymbol('S') >= 5 ? 10 : 0)
+        );
     }
 }
