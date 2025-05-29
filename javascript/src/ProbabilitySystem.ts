@@ -60,10 +60,11 @@ export class ProbabilitySystem {
         return this.freeGameCount > 0 ? "FREE_GAME" : "BASE_GAME";
     }
 
-    static create(reels: Reels, payTable: PayTable, freeGameReels: Reels, freeGamePayTable: PayTable):
+    static create(reels: Reels, payTable: PayTable, freeGameReels: Reels, freeGamePayTable: PayTable, calculateFreeGameIncrement: any, calculateFreeGameIncrementForFreeGame: any):
         ProbabilitySystem {
-        return new ProbabilitySystem(SlotGame.of(reels, payTable, (screen: Screen): number => screen.countSymbol('S') >= 3 ? 10 : 0),
-            SlotGame.of(freeGameReels, freeGamePayTable, (screen: Screen): number => screen.countSymbol('S') >= 5 ? 10 : 0)
+        return new ProbabilitySystem(
+            SlotGame.of(reels, payTable, calculateFreeGameIncrement),
+            SlotGame.of(freeGameReels, freeGamePayTable, calculateFreeGameIncrementForFreeGame)
         );
     }
 }
