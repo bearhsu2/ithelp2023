@@ -2,6 +2,15 @@ import {Bet} from "./Bet";
 import {SpinResult} from "./SpinResult";
 import {SlotGame} from "./SlotGame";
 
+class DBCTool {
+
+    static require(checkCondition: () => boolean, message: string) {
+        if (!checkCondition()) {
+            throw new Error(message);
+        }
+    }
+}
+
 export class ProbabilitySystem {
 
     private baseGame: SlotGame;
@@ -23,9 +32,7 @@ export class ProbabilitySystem {
 
     spin(bet: Bet): SpinResult {
 
-        if (this.getNextGameType() !== "BASE_GAME") {
-            throw new Error("Invalid game mode.");
-        }
+        DBCTool.require((): boolean => this.getNextGameType() == "BASE_GAME", "Invalid game mode.");
 
         const {
             odd,
