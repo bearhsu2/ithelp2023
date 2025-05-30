@@ -21,8 +21,12 @@ export class ProbabilitySystem {
     }
 
 
-// ProbabilitySystem
     spin(bet: Bet): SpinResult {
+
+        if (this.getNextGameType() !== "BASE_GAME") {
+            throw new Error("Invalid game mode.");
+        }
+
         const {
             odd,
             screen,
