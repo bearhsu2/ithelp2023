@@ -1,15 +1,7 @@
 import {Bet} from "./Bet";
 import {SpinResult} from "./SpinResult";
 import {SlotGame} from "./SlotGame";
-
-class DBCTool {
-
-    static require(checkCondition: () => boolean, message: string) {
-        if (!checkCondition()) {
-            throw new Error(message);
-        }
-    }
-}
+import {DBCTool} from "./DBCTool";
 
 export class ProbabilitySystem {
 

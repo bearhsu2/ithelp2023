@@ -1,4 +1,5 @@
 import {Hit} from "./Hit";
+import {DBCTool} from "./DBCTool";
 
 export class Screen {
     get rawScreen(): Array<Array<string>> {
@@ -24,9 +25,8 @@ export class Screen {
     }
 
     getHit(rows: number[]): Hit {
-        if (rows.length !== this._rawScreen.length) {
-            throw new Error("Invalid row number");
-        }
+
+        DBCTool.require(() => rows.length == this._rawScreen.length, "Invalid row number");
 
         const firstSymbol = this._rawScreen[0][rows[0]];
         let longestHit = 1; // Start from 1 since the first element is always counted

@@ -1,4 +1,5 @@
 import {DesignatedNumberGenerator} from "./DesignatedNumberGenerator";
+import {DBCTool} from "./DBCTool";
 
 export class Reel {
     symbols: Array<string>;
@@ -18,9 +19,8 @@ export class Reel {
             (_, k) => this.symbols[(this.index + k) % this.symbols.length]
         );
 
-        if (screenColumn.length != 3) {
-            throw new Error("Invalid Column size");
-        }
+        DBCTool.ensure((): boolean => screenColumn.length == 3, "Invalid column size");
+
 
         return screenColumn
     }
