@@ -2,6 +2,7 @@ import {Bet} from "./Bet";
 import {SpinResult} from "./SpinResult";
 import {SlotGame} from "./SlotGame";
 import {DBCTool} from "./DBCTool";
+import {Characteristic} from "./Characteristic";
 
 export class ProbabilitySystem {
 
@@ -62,5 +63,13 @@ export class ProbabilitySystem {
 
     static create(baseGame: SlotGame, freeGame: SlotGame): ProbabilitySystem {
         return new ProbabilitySystem(baseGame, freeGame);
+    }
+
+    getCharacteristic(): Characteristic {
+        return null;
+    }
+
+    static restore(characteristic: Characteristic): ProbabilitySystem {
+        return undefined;
     }
 }

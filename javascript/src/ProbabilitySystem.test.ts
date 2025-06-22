@@ -9,6 +9,7 @@ import {Odd} from "./Odd";
 import {SpinResult} from "./SpinResult";
 import {Screen} from "./Screen";
 import {SlotGame} from "./SlotGame";
+import {Characteristic} from "./Characteristic";
 
 describe('probability system', () => {
 
@@ -1176,7 +1177,7 @@ describe('probability system', () => {
 
 
         const characteristic: Characteristic = original.getCharacteristic();
-        
+
         const restored: ProbabilitySystem = ProbabilitySystem.restore(characteristic);
 
 
