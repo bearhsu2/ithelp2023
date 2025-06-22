@@ -70,6 +70,9 @@ export class ProbabilitySystem {
     }
 
     static restore(characteristic: Characteristic): ProbabilitySystem {
-        return undefined;
+        const baseGame = null;
+        const freeGame = null;
+
+        return new ProbabilitySystem(baseGame, freeGame);
     }
 }
