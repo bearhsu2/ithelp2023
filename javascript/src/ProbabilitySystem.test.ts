@@ -1176,7 +1176,7 @@ describe('probability system', () => {
 
         const characteristic: Characteristic = original.getCharacteristic();
 
-        const restored: ProbabilitySystem =  ProbabilitySystem.create(baseGame, freeGame);
+        const restored: ProbabilitySystem = ProbabilitySystem.create(baseGame, freeGame);
 
         restored.restore(characteristic);
 
