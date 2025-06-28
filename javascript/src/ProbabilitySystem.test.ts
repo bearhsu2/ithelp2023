@@ -1164,9 +1164,7 @@ describe('probability system', () => {
             new PayTable([
                 PayLine.from('L1', [0, 0, 0, 0, 0]),
             ], new Odds([
-                new Odd('A', 5, 2_000),
-
-
+                new Odd('A', 5, 2_000)
             ])),
             (screen: Screen): number => screen.countSymbol('S') >= 5 ? 10 : 0
         );
@@ -1178,7 +1176,9 @@ describe('probability system', () => {
 
         const characteristic: Characteristic = original.getCharacteristic();
 
-        const restored: ProbabilitySystem = ProbabilitySystem.restore(characteristic);
+        const restored: ProbabilitySystem =  ProbabilitySystem.create(baseGame, freeGame);
+
+        restored.restore(characteristic);
 
 
         expect(restored.getNextGameType()).toBe("BASE_GAME");

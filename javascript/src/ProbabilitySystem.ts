@@ -69,21 +69,10 @@ export class ProbabilitySystem {
         return new Characteristic();
     }
 
-    static restore(characteristic: Characteristic): ProbabilitySystem {
+    restore(characteristic: Characteristic) {
+        this.baseGame.rollReels(characteristic.getBaseGameReelsPositions());
+        this.freeGame.rollReels(characteristic.getBaseGameReelsPositions());
+        this.freeGameCount = characteristic.getFreeGameCount();
 
-        const baseGame = new SlotGame(
-            characteristic.getBaseGameReels(),
-            characteristic.getBaseGamePayTable(),
-            characteristic.getBaseGameFreeGameIncrement());
-        baseGame.rollReels(characteristic.getBaseGameReelsPositions());
-        const freeGame = new SlotGame(
-            characteristic.getFreeGameReels(),
-            characteristic.getFreeGamePayTable(),
-            characteristic.getFreeGameFreeGameIncrement()
-        );
-        freeGame.rollReels(characteristic.getBaseGameReelsPositions());
-
-        const probabilitySystem: ProbabilitySystem = new ProbabilitySystem(baseGame, freeGame);
-        probabilitySystem.freeGameCount = characteristic.getFreeGameCount();
     }
 }
