@@ -1133,7 +1133,6 @@ describe('probability system', () => {
             ['S', 'S', 'J'],
             ['J', 'Q', 'S']
         ]));
-
     })
 
 
