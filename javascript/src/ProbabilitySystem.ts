@@ -70,8 +70,8 @@ export class ProbabilitySystem {
     }
 
     restore(characteristic: Characteristic) {
-        this.baseGame.rollReels(characteristic.getBaseGameReelsIndice());
-        this.freeGame.rollReels(characteristic.getBaseGameReelsIndice()); // TODO: fix this with free game reels
+        this.baseGame.rollReels(characteristic.getBaseGameReelsIndexes());
+        this.freeGame.rollReels(characteristic.getBaseGameReelsIndexes()); // TODO: fix this with free game reels
         this.freeGameCount = characteristic.getFreeGameCount();
 
     }
