@@ -70,3 +70,25 @@ test('Recovery BaseGame', () => {
         )
     );
 });
+
+test('Recovery Free Game Count', () => {
+    const original: ProbabilitySystem = create_probability_system([2, 2, 2, 2, 2]);
+
+    original.spin(new Bet('L1'));
+
+    const characteristic: Characteristic = original.getCharacteristic();
+
+    const restored: ProbabilitySystem = create_probability_system([2, 2, 2, 2, 2])
+    restored.restore(characteristic);
+
+    expect(restored.getNextGameType()).toBe("FREE_GAME");
+    expect(restored.getScreen()).toStrictEqual(Screen.from([
+                ['K', 'J', 'Q'],
+                ['K', 'Q', 'K'],
+                ['Q', 'K', '10'],
+                ['10', 'K', 'Q'],
+                ['J', 'Q', 'K']
+            ]
+        )
+    );
+});
