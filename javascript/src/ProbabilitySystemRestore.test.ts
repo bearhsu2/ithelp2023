@@ -47,48 +47,52 @@ export function create_probability_system(baseGameRandoms: number[]) {
     return original;
 }
 
-
-test('Recovery BaseGame', () => {
-    const original: ProbabilitySystem = create_probability_system([1, 1, 1, 1, 1]);
-
-    original.spin(new Bet('L1'));
-
-    const characteristic: Characteristic = original.getCharacteristic();
-
-    const restored: ProbabilitySystem = create_probability_system([1, 1, 1, 1, 1])
-    restored.restore(characteristic);
+describe('probability system restores', () => {
 
 
-    expect(restored.getNextGameType()).toBe("BASE_GAME");
-    expect(restored.getScreen()).toStrictEqual(Screen.from([
-                ['Q', 'A', 'A'],
-                ['10', 'J', 'A'],
-                ['Q', 'A', 'J'],
-                ['Q', 'A', 'K'],
-                ['10', 'J', 'Q']
-            ]
-        )
-    );
-});
+    test('Recovery BaseGame', () => {
+        const original: ProbabilitySystem = create_probability_system([1, 1, 1, 1, 1]);
 
-test('Recovery Free Game Count', () => {
-    const original: ProbabilitySystem = create_probability_system([2, 2, 2, 2, 2]);
+        original.spin(new Bet('L1'));
 
-    original.spin(new Bet('L1'));
+        const characteristic: Characteristic = original.getCharacteristic();
 
-    const characteristic: Characteristic = original.getCharacteristic();
+        const restored: ProbabilitySystem = create_probability_system([1, 1, 1, 1, 1])
+        restored.restore(characteristic);
 
-    const restored: ProbabilitySystem = create_probability_system([2, 2, 2, 2, 2])
-    restored.restore(characteristic);
 
-    expect(restored.getNextGameType()).toBe("FREE_GAME");
-    expect(restored.getScreen()).toStrictEqual(Screen.from([
-                ['K', 'J', 'Q'],
-                ['K', 'Q', 'K'],
-                ['Q', 'K', '10'],
-                ['10', 'K', 'Q'],
-                ['J', 'Q', 'K']
-            ]
-        )
-    );
+        expect(restored.getNextGameType()).toBe("BASE_GAME");
+        expect(restored.getScreen()).toStrictEqual(Screen.from([
+                    ['Q', 'A', 'A'],
+                    ['10', 'J', 'A'],
+                    ['Q', 'A', 'J'],
+                    ['Q', 'A', 'K'],
+                    ['10', 'J', 'Q']
+                ]
+            )
+        );
+    });
+
+    test('Recovery Free Game Count', () => {
+        const original: ProbabilitySystem = create_probability_system([2, 2, 2, 2, 2]);
+
+        original.spin(new Bet('L1'));
+
+        const characteristic: Characteristic = original.getCharacteristic();
+
+        const restored: ProbabilitySystem = create_probability_system([2, 2, 2, 2, 2])
+        restored.restore(characteristic);
+
+        expect(restored.getNextGameType()).toBe("FREE_GAME");
+        expect(restored.getScreen()).toStrictEqual(Screen.from([
+                    ['K', 'J', 'Q'],
+                    ['K', 'Q', 'K'],
+                    ['Q', 'K', '10'],
+                    ['10', 'K', 'Q'],
+                    ['J', 'Q', 'K']
+                ]
+            )
+        );
+    });
+
 });
