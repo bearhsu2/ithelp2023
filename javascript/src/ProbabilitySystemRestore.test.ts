@@ -10,15 +10,15 @@ import {ProbabilitySystem} from "./ProbabilitySystem";
 import {Bet} from "./Bet";
 import {Characteristic} from "./Characteristic";
 
-export function create_probability_system() {
+export function create_probability_system(baseGameRandoms: number[]) {
     const baseGame = SlotGame.of(
         Reels.create(
-            new DesignatedNumberGenerator(1, 1, 1, 1, 1), [
-                ['K', 'Q', 'A', 'A'],
-                ['K', '10', 'J', 'A'],
-                ['K', 'Q', 'A', 'J'],
-                ['K', 'Q', 'A', 'K'],
-                ['K', '10', 'J', 'Q'],
+            new DesignatedNumberGenerator(...baseGameRandoms), [
+                ['K', 'Q', 'A', 'A', 'S'],
+                ['K', '10', 'J', 'A', 'S'],
+                ['K', 'Q', 'A', 'J', 'Q'],
+                ['K', 'Q', 'A', 'K', 'S'],
+                ['K', '10', 'J', 'Q', 'J'],
             ]),
         new PayTable([
             PayLine.from('L1', [0, 0, 0, 0, 0]),
@@ -49,13 +49,13 @@ export function create_probability_system() {
 
 
 test('Recovery BaseGame', () => {
-    const original = create_probability_system();
+    const original: ProbabilitySystem = create_probability_system([1, 1, 1, 1, 1]);
 
     original.spin(new Bet('L1'));
 
     const characteristic: Characteristic = original.getCharacteristic();
 
-    const restored: ProbabilitySystem = create_probability_system()
+    const restored: ProbabilitySystem = create_probability_system([1, 1, 1, 1, 1])
     restored.restore(characteristic);
 
 
