@@ -18,7 +18,7 @@ export function create_probability_system(baseGameRandoms: number[]) {
                 ['K', '10', 'J', 'A', 'S'],
                 ['K', 'Q', 'A', 'J', 'Q'],
                 ['K', 'Q', 'A', 'K', 'S'],
-                ['K', '10', 'J', 'Q', 'J'],
+                ['K', '10', 'J', 'Q', 'J']
             ]),
         new PayTable([
             PayLine.from('L1', [0, 0, 0, 0, 0]),
@@ -34,7 +34,7 @@ export function create_probability_system(baseGameRandoms: number[]) {
                 ['K', 'Q', 'K', 'A'],
                 ['Q', 'K', '10', 'K'],
                 ['10', 'K', 'Q', 'A'],
-                ['J', 'Q', 'K', 'A'],
+                ['J', 'Q', 'K', 'A']
             ]),
         new PayTable([
             PayLine.from('L1', [0, 0, 0, 0, 0]),
@@ -93,6 +93,19 @@ describe('probability system restores', () => {
                 ]
             )
         );
+
+        for (let i = 0; i < 10; i++) {
+            restored.spinFree();
+        }
+
+        expect(restored.getNextGameType()).toBe("BASE_GAME");
+        expect(restored.getScreen()).toStrictEqual(Screen.from([
+            ['A', 'A', 'S'],
+            ['J', 'A', 'S'],
+            ['A', 'J', 'Q'],
+            ['A', 'K', 'S'],
+            ['J', 'Q', 'J'],
+        ]));
     });
 
 });
