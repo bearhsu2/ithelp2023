@@ -66,7 +66,10 @@ export class ProbabilitySystem {
     }
 
     getCharacteristic(): Characteristic {
-        return new Characteristic(this.baseGame.getReelsIndexes(), this.freeGame.getReelsIndexes(), this.freeGameCount);
+        return new Characteristic(
+            this.baseGame.getReelsIndexes(),
+            this.freeGame.getReelsIndexes(),
+            this.freeGameCount);
     }
 
     restore(characteristic: Characteristic) {
