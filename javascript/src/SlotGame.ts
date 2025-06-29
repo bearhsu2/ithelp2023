@@ -42,7 +42,11 @@ export class SlotGame {
         return new Bet(...(this.payTable.payLines.map(payLine => payLine.getName())));
     }
 
-    rollReels(baseGameReelsPositions: Array<number>) {
+    rollReels(reelsIndexes: Array<number>) {
+        this.reels.setIndexes(reelsIndexes);
+    }
 
+    getReelsIndexes():number[] {
+        return this.reels.getIndexes();
     }
 }

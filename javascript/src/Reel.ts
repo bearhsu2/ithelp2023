@@ -12,6 +12,15 @@ export class Reel {
         this.index = 0;
     }
 
+    getIndex(): number {
+        return this.index;
+    }
+
+    setIndex(index: number): void {
+        this.index = index;
+    }
+
+
     getScreenColumn(): string[] {
 
         const screenColumn: string[] = Array.from(

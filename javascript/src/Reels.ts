@@ -1,6 +1,7 @@
 import {Screen} from "./Screen";
 import {Reel} from "./Reel";
 import {DesignatedNumberGenerator} from "./DesignatedNumberGenerator";
+import {DBCTool} from "./DBCTool";
 
 export class Reels {
     reels: Array<Reel>;
@@ -26,5 +27,17 @@ export class Reels {
 
     static create(randomNumberGenerator: DesignatedNumberGenerator, rawReels: Array<Array<string>>): Reels {
         return new Reels(rawReels, randomNumberGenerator);
+    }
+
+    getIndexes(): number[] {
+        return this.reels.map((reel: Reel): number => reel.getIndex());
+    }
+
+    setIndexes(reelsIndexes: Array<number>) {
+        DBCTool.require(() => reelsIndexes.length == this.reels.length, "Invalid reels indexes length");
+
+        for (let i = 0; i < reelsIndexes.length; i++) {
+            this.reels[i].setIndex(reelsIndexes[i]);
+        }
     }
 }
