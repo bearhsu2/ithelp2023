@@ -10,7 +10,7 @@ import {ProbabilitySystem} from "./ProbabilitySystem";
 import {Bet} from "./Bet";
 import {Characteristic} from "./Characteristic";
 
-export function create_probability_system(baseGameRandoms: number[]) {
+export function create_probability_system(baseGameRandoms: number[], freeGameRandoms: number[]) {
     const baseGame = SlotGame.of(
         Reels.create(
             new DesignatedNumberGenerator(...baseGameRandoms), [
@@ -27,9 +27,10 @@ export function create_probability_system(baseGameRandoms: number[]) {
         ])),
         (screen: Screen): number => screen.countSymbol('S') >= 3 ? 10 : 0
     );
+
     const freeGame = SlotGame.of(
         Reels.create(
-            new DesignatedNumberGenerator(0, 0, 0, 0, 0), [
+            new DesignatedNumberGenerator(...freeGameRandoms), [
                 ['K', 'J', 'Q', 'A'],
                 ['K', 'Q', 'K', 'A'],
                 ['Q', 'K', '10', 'K'],
@@ -51,13 +52,13 @@ describe('probability system restores', () => {
 
 
     test('Recovery BaseGame', () => {
-        const original: ProbabilitySystem = create_probability_system([1, 1, 1, 1, 1]);
+        const original: ProbabilitySystem = create_probability_system([1, 1, 1, 1, 1], [0, 0, 0, 0, 0]);
 
         original.spin(new Bet('L1'));
 
         const characteristic: Characteristic = original.getCharacteristic();
 
-        const restored: ProbabilitySystem = create_probability_system([1, 1, 1, 1, 1])
+        const restored: ProbabilitySystem = create_probability_system([1, 1, 1, 1, 1], [0, 0, 0, 0, 0])
         restored.restore(characteristic);
 
 
@@ -73,14 +74,14 @@ describe('probability system restores', () => {
         );
     });
 
-    test('Recovery Free Game Count', () => {
-        const original: ProbabilitySystem = create_probability_system([2, 2, 2, 2, 2]);
+    test('Recovery Free Game Count (a.k.a. Game Type)', () => {
+        const original: ProbabilitySystem = create_probability_system([2, 2, 2, 2, 2], [0, 0, 0, 0, 0]);
 
         original.spin(new Bet('L1'));
 
         const characteristic: Characteristic = original.getCharacteristic();
 
-        const restored: ProbabilitySystem = create_probability_system([2, 2, 2, 2, 2])
+        const restored: ProbabilitySystem = create_probability_system([2, 2, 2, 2, 2], [0, 0, 0, 0, 0])
         restored.restore(characteristic);
 
         expect(restored.getNextGameType()).toBe("FREE_GAME");
@@ -105,6 +106,29 @@ describe('probability system restores', () => {
             ['A', 'J', 'Q'],
             ['A', 'K', 'S'],
             ['J', 'Q', 'J'],
+        ]));
+    });
+
+
+    test('Recovery Free Game', () => {
+        const original: ProbabilitySystem = create_probability_system([2, 2, 2, 2, 2], [1, 1, 1, 1, 1]);
+
+        original.spin(new Bet('L1'));
+
+        original.spinFree();
+
+        const characteristic: Characteristic = original.getCharacteristic();
+
+        const restored: ProbabilitySystem = create_probability_system([2, 2, 2, 2, 2], [1, 1, 1, 1, 1])
+        restored.restore(characteristic);
+
+        expect(restored.getNextGameType()).toBe("FREE_GAME");
+        expect(restored.getScreen()).toStrictEqual(Screen.from([
+            ['J', 'Q', 'A'],
+            ['Q', 'K', 'A'],
+            ['K', '10', 'K'],
+            ['K', 'Q', 'A'],
+            ['Q', 'K', 'A']
         ]));
     });
 
