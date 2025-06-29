@@ -41,4 +41,8 @@ export class SlotGame {
     getMaxBet() {
         return new Bet(...(this.payTable.payLines.map(payLine => payLine.getName())));
     }
+
+    rollReels(baseGameReelsPositions: Array<Array<number>>) {
+
+    }
 }
