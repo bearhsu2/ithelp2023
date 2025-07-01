@@ -9,8 +9,6 @@ import {Odd} from "./Odd";
 import {SpinResult} from "./SpinResult";
 import {Screen} from "./Screen";
 import {SlotGame} from "./SlotGame";
-import {Characteristic} from "./Characteristic";
-import {create_probability_system} from "./ProbabilitySystemRestore.test";
 
 describe('probability system', () => {
 
@@ -1134,7 +1132,6 @@ describe('probability system', () => {
             ['J', 'Q', 'S']
         ]));
     })
-
 
 
 });

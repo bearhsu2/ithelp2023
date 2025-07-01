@@ -2,7 +2,7 @@ import {Bet} from "./Bet";
 import {SpinResult} from "./SpinResult";
 import {SlotGame} from "./SlotGame";
 import {DBCTool} from "./DBCTool";
-import {Characteristic} from "./Characteristic";
+import {Memento} from "./Memento";
 
 export class ProbabilitySystem {
 
@@ -65,17 +65,17 @@ export class ProbabilitySystem {
         return new ProbabilitySystem(baseGame, freeGame);
     }
 
-    getCharacteristic(): Characteristic {
-        return new Characteristic(
+    createMemento(): Memento {
+        return new Memento(
             this.baseGame.getReelsIndexes(),
             this.freeGame.getReelsIndexes(),
             this.freeGameCount);
     }
 
-    restore(characteristic: Characteristic) {
-        this.baseGame.rollReels(characteristic.getBaseGameReelsIndexes());
-        this.freeGame.rollReels(characteristic.getFreeGameReelsIndexes());
-        this.freeGameCount = characteristic.getFreeGameCount();
+    restore(memento: Memento) {
+        this.baseGame.rollReels(memento.getBaseGameReelsIndexes());
+        this.freeGame.rollReels(memento.getFreeGameReelsIndexes());
+        this.freeGameCount = memento.getFreeGameCount();
 
     }
 }

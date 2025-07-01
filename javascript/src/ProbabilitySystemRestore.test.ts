@@ -8,7 +8,7 @@ import {Odd} from "./Odd";
 import {Screen} from "./Screen";
 import {ProbabilitySystem} from "./ProbabilitySystem";
 import {Bet} from "./Bet";
-import {Characteristic} from "./Characteristic";
+import {Memento} from "./Memento";
 
 export function create_probability_system(baseGameRandoms: number[], freeGameRandoms: number[]) {
     const baseGame = SlotGame.of(
@@ -56,10 +56,10 @@ describe('probability system restores', () => {
 
         original.spin(new Bet('L1'));
 
-        const characteristic: Characteristic = original.getCharacteristic();
+        const memento: Memento = original.createMemento();
 
         const restored: ProbabilitySystem = create_probability_system([1, 1, 1, 1, 1], [0, 0, 0, 0, 0])
-        restored.restore(characteristic);
+        restored.restore(memento);
 
 
         expect(restored.getNextGameType()).toBe("BASE_GAME");
@@ -79,10 +79,10 @@ describe('probability system restores', () => {
 
         original.spin(new Bet('L1'));
 
-        const characteristic: Characteristic = original.getCharacteristic();
+        const memento: Memento = original.createMemento();
 
         const restored: ProbabilitySystem = create_probability_system([2, 2, 2, 2, 2], [0, 0, 0, 0, 0])
-        restored.restore(characteristic);
+        restored.restore(memento);
 
         expect(restored.getNextGameType()).toBe("FREE_GAME");
         expect(restored.getScreen()).toStrictEqual(Screen.from([
@@ -117,10 +117,10 @@ describe('probability system restores', () => {
 
         original.spinFree();
 
-        const characteristic: Characteristic = original.getCharacteristic();
+        const memento: Memento = original.createMemento();
 
         const restored: ProbabilitySystem = create_probability_system([2, 2, 2, 2, 2], [1, 1, 1, 1, 1])
-        restored.restore(characteristic);
+        restored.restore(memento);
 
         expect(restored.getNextGameType()).toBe("FREE_GAME");
         expect(restored.getScreen()).toStrictEqual(Screen.from([
