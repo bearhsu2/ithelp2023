@@ -104,7 +104,7 @@ describe('probability system simulator', () => {
         );
         const sut = ProbabilitySystem.create(baseGame, freeGame);
 
-        let nextGameType = "BASE_GAME";
+        let nextGameType = sut.getNextGameType();
         const rounds = 1_000_000;
         let totalOdd = 0;
         for (let i = 0; i < rounds; i++) {
@@ -119,7 +119,7 @@ describe('probability system simulator', () => {
         }
 
         console.log(`Total odd: ${totalOdd}, Average odd: ${totalOdd / rounds}`);
-     
+
     });
 
 
