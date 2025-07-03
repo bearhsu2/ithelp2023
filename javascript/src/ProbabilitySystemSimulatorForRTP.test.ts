@@ -7,6 +7,7 @@ import {Odds} from "./Odds";
 import {Odd} from "./Odd";
 import {Screen} from "./Screen";
 import {SlotGame} from "./SlotGame";
+import {NativeRandomNumberGenerator} from "./NativeRandomNumberGenerator";
 
 describe('probability system simulator', () => {
 
@@ -25,7 +26,7 @@ describe('probability system simulator', () => {
 
         const baseGame: SlotGame = SlotGame.of(
             Reels.create(
-                new DesignatedNumberGenerator(0, 0, 0, 0, 0), [
+                new NativeRandomNumberGenerator(???), [
                     ['A', 'Q', 'K', 'A', 'S', 'A', '9', '10', 'K', 'J', 'S', '10', 'J', 'A', 'Q', 'A', '9'],
                     ['A', '10', 'J', 'J', 'Q', '10', 'J', '10', '9', 'A', 'K', '10', '10'],
                     ['A', 'Q', 'K', 'J', 'J', 'A', 'S', 'Q', 'Q', '9', '10', 'S', 'J', '9', '9', '9', 'Q', 'A'],
