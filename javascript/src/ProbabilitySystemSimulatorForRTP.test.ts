@@ -11,16 +11,6 @@ import {Bet} from "./Bet";
 
 describe('probability system simulator', () => {
 
-    test.skip("temp", async () => {
-        function generateRandomPokerArray(length: number): string[] {
-            const pokerNumbers = ['A', '9', '10', 'J', 'Q', 'K', 'A', '9', '9', '10', 'J', 'Q', 'K'];
-            return Array.from({length}, () => pokerNumbers[Math.floor(Math.random() * pokerNumbers.length)]);
-        }
-
-        console.log(generateRandomPokerArray(8)); // 输出类似 ["A", "10", "3", "K", "7", "2", "Q", "5", "J", "8"]
-
-
-    })
 
     test('RTP Simulator', () => {
 
