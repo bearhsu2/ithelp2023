@@ -1,6 +1,5 @@
 import {ProbabilitySystem} from "./ProbabilitySystem";
 import {Reels} from "./Reels";
-import {DesignatedNumberGenerator} from "./DesignatedNumberGenerator";
 import {PayTable} from "./PayTable";
 import {PayLine} from "./PayLine";
 import {Odds} from "./Odds";
@@ -26,7 +25,7 @@ describe('probability system simulator', () => {
 
         const baseGame: SlotGame = SlotGame.of(
             Reels.create(
-                new NativeRandomNumberGenerator(???), [
+                new NativeRandomNumberGenerator(), [
                     ['A', 'Q', 'K', 'A', 'S', 'A', '9', '10', 'K', 'J', 'S', '10', 'J', 'A', 'Q', 'A', '9'],
                     ['A', '10', 'J', 'J', 'Q', '10', 'J', '10', '9', 'A', 'K', '10', '10'],
                     ['A', 'Q', 'K', 'J', 'J', 'A', 'S', 'Q', 'Q', '9', '10', 'S', 'J', '9', '9', '9', 'Q', 'A'],
@@ -69,7 +68,7 @@ describe('probability system simulator', () => {
         );
         const freeGame: SlotGame = SlotGame.of(
             Reels.create(
-                new DesignatedNumberGenerator(0, 0, 0, 0, 0), [
+                new NativeRandomNumberGenerator(), [
                     ['K', 'J', 'Q', 'S', 'S', 'S', 'A', '9', 'Q', 'A', 'J', 'S', 'A', 'K', 'Q', '10'],
                     ['K', 'Q', 'K', 'A', '9', 'K', '9', 'Q', '9', '9', '9', 'S', 'S', 'S', 'S', 'K', '9', 'K', '9', 'Q', '9', '9', '9', 'K'],
                     ['Q', 'K', '10', 'K', 'S', 'K', 'A', 'S', 'Q', 'Q', '10', '10', 'J', 'J'],

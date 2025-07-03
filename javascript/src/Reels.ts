@@ -2,11 +2,12 @@ import {Screen} from "./Screen";
 import {Reel} from "./Reel";
 import {DesignatedNumberGenerator} from "./DesignatedNumberGenerator";
 import {DBCTool} from "./DBCTool";
+import {RandomNumberGenerator} from "./RandomNumberGenerator";
 
 export class Reels {
     reels: Array<Reel>;
 
-    private constructor(reels: Array<Array<string>>, randomNumberGenerator: DesignatedNumberGenerator) {
+    private constructor(reels: Array<Array<string>>, randomNumberGenerator: RandomNumberGenerator) {
         this.reels = reels.map((reel: Array<string>): Reel => Reel.from(reel, randomNumberGenerator));
     }
 
@@ -25,7 +26,7 @@ export class Reels {
         return Screen.from(rawScreen);
     }
 
-    static create(randomNumberGenerator: DesignatedNumberGenerator, rawReels: Array<Array<string>>): Reels {
+    static create(randomNumberGenerator: RandomNumberGenerator, rawReels: Array<Array<string>>): Reels {
         return new Reels(rawReels, randomNumberGenerator);
     }
 

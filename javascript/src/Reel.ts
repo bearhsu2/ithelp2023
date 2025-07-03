@@ -1,12 +1,12 @@
-import {DesignatedNumberGenerator} from "./DesignatedNumberGenerator";
 import {DBCTool} from "./DBCTool";
+import {RandomNumberGenerator} from "./RandomNumberGenerator";
 
 export class Reel {
     symbols: Array<string>;
-    private randomNumberGenerator: DesignatedNumberGenerator;
+    private randomNumberGenerator: RandomNumberGenerator;
     private index: number;
 
-    constructor(symbols: Array<string>, randomNumberGenerator: DesignatedNumberGenerator) {
+    constructor(symbols: Array<string>, randomNumberGenerator: RandomNumberGenerator) {
         this.symbols = symbols;
         this.randomNumberGenerator = randomNumberGenerator;
         this.index = 0;
@@ -34,11 +34,11 @@ export class Reel {
         return screenColumn
     }
 
-    static from(reel: Array<string>, randomNumberGenerator: DesignatedNumberGenerator) {
+    static from(reel: Array<string>, randomNumberGenerator: RandomNumberGenerator) {
         return new Reel(reel, randomNumberGenerator);
     }
 
     spin() {
-        this.index = this.randomNumberGenerator.nextInteger();
+        this.index = this.randomNumberGenerator.nextInteger(this.symbols.length);
     }
 }
