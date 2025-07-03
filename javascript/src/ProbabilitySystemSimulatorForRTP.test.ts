@@ -10,7 +10,7 @@ import {SlotGame} from "./SlotGame";
 
 describe('probability system simulator', () => {
 
-    test("temp", async () => {
+    test.skip("temp", async () => {
         function generateRandomPokerArray(length: number): string[] {
             const pokerNumbers = ['A', '9', '10', 'J', 'Q', 'K', 'A', '9', '9', '10', 'J', 'Q', 'K'];
             return Array.from({length}, () => pokerNumbers[Math.floor(Math.random() * pokerNumbers.length)]);
@@ -23,7 +23,7 @@ describe('probability system simulator', () => {
 
     test('RTP Simulator', () => {
 
-        const baseGame = SlotGame.of(
+        const baseGame: SlotGame = SlotGame.of(
             Reels.create(
                 new DesignatedNumberGenerator(0, 0, 0, 0, 0), [
                     ['A', 'Q', 'K', 'A', 'S', 'A', '9', '10', 'K', 'J', 'S', '10', 'J', 'A', 'Q', 'A', '9'],
@@ -66,14 +66,14 @@ describe('probability system simulator', () => {
                 ])),
             (screen: Screen): number => screen.countSymbol('S') >= 3 ? 10 : 0
         );
-        const freeGame = SlotGame.of(
+        const freeGame: SlotGame = SlotGame.of(
             Reels.create(
                 new DesignatedNumberGenerator(0, 0, 0, 0, 0), [
-                    ['K', 'J', 'Q', 'S', 'S', 'S', 'A', '9', 'Q', 'A', 'J', 'A', 'K', 'Q', '10'],
+                    ['K', 'J', 'Q', 'S', 'S', 'S', 'A', '9', 'Q', 'A', 'J', 'S', 'A', 'K', 'Q', '10'],
                     ['K', 'Q', 'K', 'A', '9', 'K', '9', 'Q', '9', '9', '9', 'S', 'S', 'S', 'S', 'K', '9', 'K', '9', 'Q', '9', '9', '9', 'K'],
-                    ['Q', 'K', '10', 'K', 'K', 'A', 'S', 'Q', 'Q', '10', '10', 'J', 'J'],
-                    ['10', 'K', 'Q', 'A', '9', '9', '10', 'S', 'K', 'J', '10', 'A', 'J', 'J', 'K', 'J', 'A', 'Q', 'J', '9', '9', '9', 'A'],
-                    ['J', 'Q', 'S', 'K', 'A', '9', '10', 'Q', 'A', 'S', 'S', 'A', 'J', 'Q', 'J'],
+                    ['Q', 'K', '10', 'K', 'S', 'K', 'A', 'S', 'Q', 'Q', '10', '10', 'J', 'J'],
+                    ['10', 'K', 'Q', 'A', '9', '9', '10', 'S', 'K', 'S', 'J', '10', 'A', 'J', 'J', 'K', 'J', 'A', 'Q', 'J', '9', '9', '9', 'A'],
+                    ['J', 'Q', 'S', 'K', 'A', '9', '10', 'Q', 'A', 'S', 'S', 'A', 'S', 'J', 'Q', 'J'],
                 ]),
             new PayTable([
                 PayLine.from('L1', [0, 0, 0, 0, 0]),
