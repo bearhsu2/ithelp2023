@@ -53,9 +53,9 @@ describe('probability system simulator', () => {
                 {"symbol": "9", "count": 4, "odd": 8},
                 {"symbol": "9", "count": 3, "odd": 5}
             ],
+            "baseGameIncrementParameters": {"symbol": "S", "count": 3, "increment": 10}
         };
 
-        // "freeGameIncrement": (screen: Screen): number => screen.countSymbol('S') >= 3 ? 10 : 0
         const baseGame: SlotGame = SlotGame.of(
             Reels.create(
                 new NativeRandomNumberGenerator(),
@@ -65,7 +65,7 @@ describe('probability system simulator', () => {
                 baseGameSettings.payLines.map(pl => PayLine.from(pl.name, pl.indexes)),
                 new Odds(baseGameSettings.odds.map(od => new Odd(od.symbol, od.count, od.odd)))
             ),
-            (screen: Screen): number => screen.countSymbol('S') >= 3 ? 10 : 0
+            (screen: Screen): number => screen.countSymbol(baseGameSettings.baseGameIncrementParameters.symbol) >= baseGameSettings.baseGameIncrementParameters.count ? baseGameSettings.baseGameIncrementParameters.increment : 0
         );
         const freeGame: SlotGame = SlotGame.of(
             Reels.create(
