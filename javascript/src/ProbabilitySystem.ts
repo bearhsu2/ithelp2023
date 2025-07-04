@@ -65,6 +65,8 @@ export class ProbabilitySystem {
         return new ProbabilitySystem(baseGame, freeGame);
     }
 
+
+
     createMemento(): Memento {
         return new Memento(
             this.baseGame.getReelsIndexes(),

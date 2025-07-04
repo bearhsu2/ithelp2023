@@ -129,7 +129,7 @@ describe('probability system simulator', () => {
 
     test('RTP Simulator', () => {
 
-        const sut = createProbabilitySystem(settings);
+        const sut: ProbabilitySystem = createProbabilitySystem(settings);
 
         let nextGameType = sut.getNextGameType();
         const rounds = 1_000;
