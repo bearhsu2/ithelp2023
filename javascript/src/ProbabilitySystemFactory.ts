@@ -25,7 +25,6 @@ export class ProbabilitySystemFactory {
                     {"name": "L1", "indexes": [0, 0, 0, 0, 0]},
                     {"name": "L2", "indexes": [1, 1, 1, 1, 1]},
                     {"name": "L3", "indexes": [2, 2, 2, 2, 2]},
-                    // 後略…
                     {"name": "L4", "indexes": [0, 1, 2, 1, 0]},
                     {"name": "L5", "indexes": [2, 1, 0, 1, 2]},
                     {"name": "L6", "indexes": [0, 0, 1, 0, 0]},
