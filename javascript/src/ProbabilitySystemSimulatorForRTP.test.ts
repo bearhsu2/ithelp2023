@@ -7,7 +7,7 @@ describe('probability system simulator', () => {
 
     test('RTP Simulator', () => {
 
-        const sut: ProbabilitySystem = new ProbabilitySystemFactory().createProbabilitySystem();
+        const sut: ProbabilitySystem = new ProbabilitySystemFactory().createProbabilitySystem('JinInManWu');
 
         let nextGameType = sut.getNextGameType();
         const rounds = 1_000;
